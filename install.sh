@@ -46,7 +46,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 
 # Grub theme
 git clone https://github.com/catppuccin/grub.git
-mkdir -p /usr/share/grub/themes/
+sudo mkdir -p /usr/share/grub/themes/
 sudo cp -r grub/src/* /usr/share/grub/themes/
 rm -rf grub
 sudo cp config/grub /etc/default/grub
