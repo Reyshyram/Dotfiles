@@ -90,7 +90,8 @@ wget https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloL
 wget https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Bold.ttf
 wget https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Italic.ttf
 wget https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Bold%20Italic.ttf
-mv MesloLGS* /home/reyshyram/.local/share/fonts
+mkdir -p ~/.local/share/fonts
+mv MesloLGS* ~/.local/share/fonts
 cp config/.zshrc ~/.zshrc
 cp config/.p10k.zsh ~/.p10k.zsh
 
