@@ -57,7 +57,8 @@ wget https://github.com/catppuccin/gtk/releases/download/v0.7.1/Catppuccin-Mocha
 file-roller --extract-here Catppuccin-Mocha-Standard-Lavender-Dark.zip 
 rm Catppuccin-Mocha-Standard-Lavender-Dark.zip
 mkdir -p ~/.themes
-mv Catppuccin-Mocha-Standard-Lavender-Dark* ~/.themes
+mv Catppuccin-Mocha-Standard-Lavender-Dark/* ~/.themes
+rm -r Catppuccin-Mocha-Standard-Lavender-Dark
 gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Lavender-Dark'
 mkdir -p ~/.config/gtk-4.0
 ln -sf ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets ~/.config/gtk-4.0/assets
