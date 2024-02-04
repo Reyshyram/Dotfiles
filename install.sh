@@ -5,7 +5,7 @@ sudo cp config/dnf.conf /etc/dnf/dnf.conf
 
 # Install required packages
 sudo dnf copr enable peterwu/rendezvous
-sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra ark qt5ct hydrapaper neofetch vlc zsh kitty
+sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra file-roller qt5ct hydrapaper neofetch vlc zsh kitty
 flatpak install flathub io.bassi.Amberol
 
 # Setting up gnome settings
