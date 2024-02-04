@@ -46,6 +46,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 
 # Grub theme
 git clone https://github.com/catppuccin/grub.git
+mkdir -p /usr/share/grub/themes/
 sudo cp -r grub/src/* /usr/share/grub/themes/
 rm -rf grub
 sudo cp config/grub /etc/default/grub
@@ -53,11 +54,10 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # GTK Theme
 wget https://github.com/catppuccin/gtk/releases/download/v0.7.1/Catppuccin-Mocha-Standard-Lavender-Dark.zip
-ark -b -a Catppuccin-Mocha-Standard-Lavender-Dark.zip 
+file-roller --extract-here Catppuccin-Mocha-Standard-Lavender-Dark.zip 
 rm Catppuccin-Mocha-Standard-Lavender-Dark.zip
 mkdir -p ~/.themes
-mv Catppuccin-Mocha-Standard-Lavender-Dark/* ~/.themes
-rm -r Catppuccin-Mocha-Standard-Lavender-Dark
+mv Catppuccin-Mocha-Standard-Lavender-Dark* ~/.themes
 gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Lavender-Dark'
 mkdir -p ~/.config/gtk-4.0
 ln -sf ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets ~/.config/gtk-4.0/assets
