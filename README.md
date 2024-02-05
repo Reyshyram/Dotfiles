@@ -1,8 +1,28 @@
-Here are my dotfiles.
-You can install the base by using the install.sh script, then install the Gnome Extensions app, and finally install the extensions that you can see in the screenshots and configure them.
-Don´t forget to change the default gnome apps.
-You can change your wallpapers using Hydrapaper.
+# How to use
 
-Preview :
-![Desktop](./preview/desktop.png)
-![App Menu](./preview/app-menu.png)
+In order to install my dotfiles, you first need to clone the repository :
+
+    git clone https://github.com/Reyshyram/Dotfiles.git
+Then, cd into the directory containing the dotfiles :
+
+    cd Dotfiles
+Finally, launch the install script :
+
+    ./install.sh
+You will need to relaunch the install script when a big "Oh My Zosh" text appear in order to complete the installation.
+
+## Compatibility
+This script is only confirmed to be working under Fedora 39 and Gnome 45, because it uses dnf in order to install the required packages.
+
+# Preview :
+![Desktop](./preview/desktop.png)![App Grid](./preview/app-menu.png)
+
+# Shortcuts
+|Action|Keybind|
+|--|--|
+| Exit an app | Super + Q|
+| Open the browser | Super + F |
+| Open the file manager | Super + E |
+| Open the terminal | Super + T |
+| Open a notepad | Super + B |
+
