@@ -9,7 +9,7 @@ sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes
 flatpak install flathub io.bassi.Amberol
 
 # Setting up gnome settings
-gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic' # Cursor theme
+gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 gsettings set org.gnome.mutter workspaces-only-on-primary false
 gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
@@ -20,26 +20,24 @@ gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,c
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 
 # Custom shortcuts
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
+
 # Firefox
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Browser'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'firefox'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>f'
 
 # Nemo
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name 'File Browser'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command 'nemo'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding '<Super>e'
 
 # Terminal
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name 'Terminal'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command 'kitty'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding '<Super>t'
 
 # Text editor
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ name 'Text Editor'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ command 'gnome-text-editor'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ binding '<Super>b'
@@ -73,10 +71,6 @@ cp config/gnome-shell.css ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gnom
 # Set nemo as default
 xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
-# Kitty as default
-sudo mv /usr/bin/gnome-terminal /usr/bin/gnome-terminal.NOPE
-sudo ln -sfv /usr/bin/kitty /usr/bin/gnome-terminal
-
 # Zsh config
 chsh -s $(which zsh)
 sudo chsh -s $(which zsh)
@@ -96,9 +90,7 @@ cp config/.zshrc ~/.zshrc
 cp config/.p10k.zsh ~/.p10k.zsh
 
 # Kitty config
+sudo mv /usr/bin/gnome-terminal /usr/bin/gnome-terminal.NOPE
+sudo ln -sfv /usr/bin/kitty /usr/bin/gnome-terminal
 mkdir -p ~/.config/kitty
 cp -r config/kitty/* ~/.config/kitty
-
-echo "Please launch the extensions app and add User Themes, then add Catppuccinn as the shell theme"
-echo "Please install extensions and configure them"
-echo "Please set default apps"
