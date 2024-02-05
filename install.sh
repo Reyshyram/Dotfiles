@@ -94,3 +94,6 @@ sudo mv /usr/bin/gnome-terminal /usr/bin/gnome-terminal.NOPE
 sudo ln -sfv /usr/bin/kitty /usr/bin/gnome-terminal
 mkdir -p ~/.config/kitty
 cp -r config/kitty/* ~/.config/kitty
+
+# Wallpaper
+hydrapaper -c Wallpapers/zero-two-and-hiro.jpg Wallpapers/zero-two-and-hiro.jpg Wallpapers/zero-two-and-hiro.jpg Wallpapers/zero-two-and-hiro.jpg Wallpapers/zero-two-and-hiro.jpg
