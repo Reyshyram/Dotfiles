@@ -15,7 +15,7 @@ You will need to relaunch the install script when a big "Oh My Zosh" text appear
 This script is only confirmed to be working under Fedora 39 and Gnome 45, because it uses dnf in order to install the required packages.
 
 # Preview :
-![Desktop](./preview/desktop.png)![App Grid](./preview/app-menu.png)
+![Desktop](./preview/desktop.png)![App Grid](./preview/app-grid.png)
 
 # Shortcuts
 |Action|Keybind|
