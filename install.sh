@@ -7,6 +7,7 @@ sudo cp config/dnf.conf /etc/dnf/dnf.conf
 sudo dnf copr enable peterwu/rendezvous
 sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra file-roller qt5ct hydrapaper neofetch vlc zsh kitty
 flatpak install flathub io.bassi.Amberol
+flatpak install flathub org.gnome.Extensions
 
 # Setting up gnome settings
 gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic' # Cursor
@@ -64,7 +65,6 @@ ln -sf ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk.css ~/.conf
 ln -sf ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
 sudo flatpak override --filesystem=$HOME/.themes
 sudo flatpak override --env=GTK_THEME=Catppuccin-Mocha-Standard-Lavender-Dark
-flatpak install flathub org.gnome.Extensions
 rm ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gnome-shell/gnome-shell.css
 cp config/gnome-shell.css ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gnome-shell/gnome-shell.css
 
