@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Make dnf better
-sudo cp config/dnf.conf /etc/dnf/dnf.conf
+sudo cp ./config/dnf.conf /etc/dnf/dnf.conf
 
 # Install required packages
 sudo dnf copr enable peterwu/rendezvous
@@ -46,18 +46,18 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 # Grub theme
 git clone https://github.com/catppuccin/grub.git
 sudo mkdir -p /usr/share/grub/themes/
-sudo cp -r grub/src/* /usr/share/grub/themes/
+sudo cp -r ./grub/src/* /usr/share/grub/themes/
 rm -rf grub
-sudo cp config/grub /etc/default/grub
+sudo cp ./config/grub /etc/default/grub
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # GTK Theme
 wget https://github.com/catppuccin/gtk/releases/download/v0.7.1/Catppuccin-Mocha-Standard-Lavender-Dark.zip
-file-roller --extract-here Catppuccin-Mocha-Standard-Lavender-Dark.zip 
-rm Catppuccin-Mocha-Standard-Lavender-Dark.zip
+file-roller --extract-here ./Catppuccin-Mocha-Standard-Lavender-Dark.zip 
+rm ./Catppuccin-Mocha-Standard-Lavender-Dark.zip
 mkdir -p ~/.themes
-mv Catppuccin-Mocha-Standard-Lavender-Dark/* ~/.themes
-rm -r Catppuccin-Mocha-Standard-Lavender-Dark
+mv ./Catppuccin-Mocha-Standard-Lavender-Dark/* ~/.themes
+rm -r ./Catppuccin-Mocha-Standard-Lavender-Dark
 gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Lavender-Dark'
 mkdir -p ~/.config/gtk-4.0
 ln -sf ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets ~/.config/gtk-4.0/assets
@@ -85,15 +85,18 @@ wget https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloL
 wget https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Italic.ttf
 wget https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20Bold%20Italic.ttf
 mkdir -p ~/.local/share/fonts
-mv MesloLGS* ~/.local/share/fonts
-cp config/.zshrc ~/.zshrc
-cp config/.p10k.zsh ~/.p10k.zsh
+mv ./MesloLGS* ~/.local/share/fonts
+cp ./config/.zshrc ~/.zshrc
+cp ./config/.p10k.zsh ~/.p10k.zsh
 
 # Kitty config
 sudo mv /usr/bin/gnome-terminal /usr/bin/gnome-terminal.NOPE
 sudo ln -sfv /usr/bin/kitty /usr/bin/gnome-terminal
 mkdir -p ~/.config/kitty
-cp -r config/kitty/* ~/.config/kitty
+cp -r ./config/kitty/* ~/.config/kitty
 
 # Wallpaper
-hydrapaper -c Wallpapers/zero-two-and-hiro.jpg Wallpapers/zero-two-and-hiro.jpg Wallpapers/zero-two-and-hiro.jpg Wallpapers/zero-two-and-hiro.jpg Wallpapers/zero-two-and-hiro.jpg
+hydrapaper -c ./Wallpapers/zero-two-and-hiro.jpg ./Wallpapers/zero-two-and-hiro.jpg ./Wallpapers/zero-two-and-hiro.jpg ./Wallpapers/zero-two-and-hiro.jpg ./Wallpapers/zero-two-and-hiro.jpg
+
+# Set default apps
+cp ./config/mimeapps.list ~/.config/mimeapps.list
