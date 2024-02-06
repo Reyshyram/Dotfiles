@@ -17,7 +17,7 @@ gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'inter
 gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat' # Enable raw input
 gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super>q']" # Close window with Super + q
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['F11']" # Fullscreen with F11
-gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,close' # Show minimize and maximize buttons
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close' # Show minimize and maximize buttons
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true # Move window with Super + Right Click
 
 # Custom shortcuts
