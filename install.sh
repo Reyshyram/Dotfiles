@@ -5,7 +5,7 @@ sudo cp ./config/dnf.conf /etc/dnf/dnf.conf
 
 # Install required packages
 sudo dnf copr enable peterwu/rendezvous
-sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra file-roller qt5ct hydrapaper neofetch vlc zsh kitty
+sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra file-roller hydrapaper neofetch vlc zsh kitty pipx
 flatpak install flathub io.bassi.Amberol
 flatpak install flathub org.gnome.Extensions
 
@@ -100,3 +100,32 @@ hydrapaper -c ./Wallpapers/zero-two-and-hiro.jpg ./Wallpapers/zero-two-and-hiro.
 
 # Set default apps
 cp ./config/mimeapps.list ~/.config/mimeapps.list
+
+# Configure Gnome Extensions
+pipx ensurepath
+pipx install gnome-extensions-cli --system-site-packages
+
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install user-theme@gnome-shell-extensions.gcampax.github.com
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install appindicatorsupport@rgcjonas.gmail.com
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install update-extension@purejava.org
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install clipboard-history@alexsaveau.dev
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install color-picker@tuberry
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install just-perfection-desktop@just-perfection
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install quick-settings-tweaks@qwreey
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install tiling-assistant@leleat-on-github
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install dash-to-dock@micxgx.gmail.com
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install blur-my-shell@aunetx
+
+dconf load /org/gnome/shell/extensions/ < ./config/extension-settings.dconf
+
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable user-theme@gnome-shell-extensions.gcampax.github.com
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable appindicatorsupport@rgcjonas.gmail.com
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable update-extension@purejava.org
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable clipboard-history@alexsaveau.dev
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable color-picker@tuberry
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable just-perfection-desktop@just-perfection
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable quick-settings-tweaks@qwreey
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable tiling-assistant@leleat-on-github
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable dash-to-dock@micxgx.gmail.com
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable blur-my-shell@aunetx
+
