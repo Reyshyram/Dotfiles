@@ -9,7 +9,7 @@ Then, cd into the directory containing the dotfiles :
 Finally, launch the install script :
 
     ./install.sh
-You will need to relaunch the install script when a big "Oh My Zsh" text appear in order to complete the installation.
+The installation should now be completed. If there is any problem, feel free to open an issue.
 
 ## Compatibility
 This script is only confirmed to be working under Fedora 39 and Gnome 45, because it uses dnf in order to install the required packages.
@@ -21,6 +21,8 @@ This script is only confirmed to be working under Fedora 39 and Gnome 45, becaus
 |Action|Keybind|
 |--|--|
 | Exit an app | Super + Q|
+| Resize a window | Super + Right Click|
+| Move a window | Super + Left Click|
 | Open the browser | Super + F |
 | Open the file manager | Super + E |
 | Open the terminal | Super + T |
