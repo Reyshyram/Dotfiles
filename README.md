@@ -16,7 +16,7 @@ The installation should now be completed. If there is any problem, feel free to 
 This script is only confirmed to be working under Fedora 39 and Gnome 45, because it uses dnf in order to install the required packages.
 
 # Preview :
-![Desktop](./preview/desktop.png)![App Grid](./preview/app-grid.png)
+![Desktop](./preview.png)
 
 # Shortcuts
 |Action|Keybind|
