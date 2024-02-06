@@ -9,15 +9,15 @@ sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes
 flatpak install flathub io.bassi.Amberol
 
 # Setting up gnome settings
-gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
-gsettings set org.gnome.desktop.interface enable-hot-corners false
-gsettings set org.gnome.mutter workspaces-only-on-primary false
-gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
-gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
-gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super>q']"
-gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['F11']"
-gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,close'
-gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic' # Cursor
+gsettings set org.gnome.desktop.interface enable-hot-corners false # Disable hot corner
+gsettings set org.gnome.mutter workspaces-only-on-primary false # Enable workspaces on all monitors
+gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive' # Power button will shut down the computer
+gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat' # Enable raw input
+gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super>q']" # Close window with Super + q
+gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['F11']" # Fullscreen with F11
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,close' # Show minimize and maximize buttons
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true # Move window with Super + Right Click
 
 # Custom shortcuts
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
@@ -32,7 +32,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command 'nemo'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding '<Super>e'
 
-# Terminal
+# Kitty
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name 'Terminal'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command 'kitty'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding '<Super>t'
