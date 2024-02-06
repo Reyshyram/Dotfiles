@@ -15,7 +15,7 @@ The installation should now be completed. If there is any problem, feel free to 
 ## Compatibility
 This script is only confirmed to be working under Fedora 39 and Gnome 45, because it uses dnf in order to install the required packages.
 
-# Preview :
+# Preview
 ![Desktop](./preview.png)
 
 # Shortcuts
