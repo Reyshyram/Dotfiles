@@ -14,7 +14,7 @@ customize=false
 style-dialogs=1
 
 [blur-my-shell/applications]
-blacklist=['Plank', 'firefox', 'Miru']
+blacklist=['Plank', 'firefox', 'org.gnome.Loupe']
 blur=true
 blur-on-overview=false
 brightness=1.0
@@ -102,10 +102,14 @@ use-buildin-icons=false
 [just-perfection]
 accessibility-menu=true
 activities-button=true
+alt-tab-icon-size=0
+alt-tab-small-icon-size=0
+alt-tab-window-preview-size=0
 animation=6
 background-menu=true
 clock-menu=true
 clock-menu-position=0
+clock-menu-position-offset=0
 controls-manager-spacing-size=0
 dash=true
 dash-icon-size=0
@@ -139,17 +143,36 @@ workspace-switcher-should-show=false
 workspace-switcher-size=0
 workspaces-in-app-grid=true
 
+[mediacontrols]
+colored-player-icon=false
+elements-order=['ICON', 'LABEL', 'CONTROLS']
+extension-index=uint32 1
+extension-position='Left'
+fixed-label-width=false
+hide-media-notification=true
+label-width=uint32 200
+labels-order=['TITLE', '-', 'ARTIST']
+scroll-labels=false
+show-player-icon=true
+
 [quick-settings-tweaks]
+add-dnd-quick-toggle-enabled=true
+add-unsafe-quick-toggle-enabled=false
 datemenu-remove-media-control=true
 datemenu-remove-notifications=true
+disable-adjust-content-border-radius=false
 input-always-show=false
 input-show-selected=true
-list-buttons='[{"name":"SystemItem","title":null,"visible":true},{"name":"OutputStreamSlider","title":null,"visible":true},{"name":"InputStreamSlider","title":null,"visible":false},{"name":"St_BoxLayout","title":null,"visible":true},{"name":"BrightnessItem","title":null,"visible":false},{"name":"NMWiredToggle","title":"Wired","visible":true},{"name":"NMWirelessToggle","title":null,"visible":false},{"name":"NMModemToggle","title":null,"visible":false},{"name":"NMBluetoothToggle","title":null,"visible":false},{"name":"NMVpnToggle","title":null,"visible":false},{"name":"BluetoothToggle","title":"Bluetooth","visible":true},{"name":"PowerProfilesToggle","title":"Power Mode","visible":true},{"name":"NightLightToggle","title":"Night Light","visible":true},{"name":"DarkModeToggle","title":"Dark Style","visible":true},{"name":"KeyboardBrightnessToggle","title":"Keyboard","visible":false},{"name":"RfkillToggle","title":"Airplane Mode","visible":false},{"name":"RotationToggle","title":"Auto Rotate","visible":false},{"name":"DndQuickToggle","title":"Do Not Disturb","visible":true},{"name":"BackgroundAppsToggle","title":"No Background Apps","visible":false},{"name":"MediaSection","title":null,"visible":false},{"name":"Notifications","title":null,"visible":false}]'
+list-buttons='[{"name":"SystemItem","title":null,"visible":true},{"name":"OutputStreamSlider","title":null,"visible":false},{"name":"InputStreamSlider","title":null,"visible":false},{"name":"St_BoxLayout","title":null,"visible":true},{"name":"BrightnessItem","title":null,"visible":false},{"name":"NMWiredToggle","title":"Wired","visible":true},{"name":"NMWirelessToggle","title":null,"visible":false},{"name":"NMModemToggle","title":null,"visible":false},{"name":"NMBluetoothToggle","title":null,"visible":false},{"name":"NMVpnToggle","title":null,"visible":false},{"name":"BluetoothToggle","title":"Bluetooth","visible":true},{"name":"PowerProfilesToggle","title":"Power Mode","visible":true},{"name":"NightLightToggle","title":"Night Light","visible":true},{"name":"DarkModeToggle","title":"Dark Style","visible":true},{"name":"KeyboardBrightnessToggle","title":"Keyboard","visible":false},{"name":"RfkillToggle","title":"Airplane Mode","visible":false},{"name":"RotationToggle","title":"Auto Rotate","visible":false},{"name":"DndQuickToggle","title":"Do Not Disturb","visible":true},{"name":"BackgroundAppsToggle","title":"No Background Apps","visible":false},{"name":"MediaSection","title":null,"visible":false},{"name":"Notifications","title":null,"visible":false}]'
+media-control-enabled=true
+notifications-enabled=true
 notifications-integrated=true
+notifications-position='bottom'
 notifications-use-native-controls=false
 output-show-selected=true
 user-removed-buttons=@as []
 volume-mixer-enabled=true
+volume-mixer-position='top'
 
 [tiling-assistant]
 activate-layout0=@as []

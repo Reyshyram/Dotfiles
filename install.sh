@@ -120,7 +120,7 @@ pipx install gnome-extensions-cli --system-site-packages
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install dash-to-dock@micxgx.gmail.com
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install blur-my-shell@aunetx
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install quicksettings-audio-devices-renamer@marcinjahn.com
-
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli install mediacontrols@cliffniff.github.com
 
 dconf load /org/gnome/shell/extensions/ < ./config/extension-settings.dconf
 
@@ -135,4 +135,4 @@ dconf load /org/gnome/shell/extensions/ < ./config/extension-settings.dconf
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable dash-to-dock@micxgx.gmail.com
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable blur-my-shell@aunetx
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable quicksettings-audio-devices-renamer@marcinjahn.com
-
+~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable mediacontrols@cliffniff.github.com
