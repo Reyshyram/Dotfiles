@@ -29,6 +29,9 @@ This script is only confirmed to be working under Fedora 39 and Gnome 45, becaus
 | Open the terminal | Super + T |
 | Open a notepad | Super + B |
 
+# After installation
+You can customize your wallpapers using the Hydrapaper app. You can also change devices' names in the Quick Settings panel by opening the Extensions app and modifying the settings of the Quick Settings Audio Devices Renamer extension. In this app, you can also customize the other extensions.
+
 # Things used
  - [Bibata](https://github.com/ful1e5/Bibata_Cursor) cursor theme
  - [Nemo](https://github.com/linuxmint/nemo/) file manager
