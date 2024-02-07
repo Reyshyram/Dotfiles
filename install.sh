@@ -5,11 +5,14 @@ sudo cp ./config/dnf.conf /etc/dnf/dnf.conf
 
 # Install required packages
 sudo dnf copr enable peterwu/rendezvous
-sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra file-roller hydrapaper neofetch vlc zsh kitty pipx
+sudo dnf copr enable dusansimic/themes
+sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra file-roller hydrapaper neofetch vlc zsh kitty pipx morewaita-icon-theme
 flatpak install flathub io.bassi.Amberol
 flatpak install flathub org.gnome.Extensions
 
 # Setting up gnome settings
+gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita' # Icon Theme
+sudo gtk-update-icon-cache -f -t /usr/share/icons/MoreWaita && xdg-desktop-menu forceupdate # Reload icon theme
 gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic' # Cursor
 gsettings set org.gnome.desktop.interface enable-hot-corners false # Disable hot corner
 gsettings set org.gnome.mutter workspaces-only-on-primary false # Enable workspaces on all monitors
