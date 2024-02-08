@@ -68,7 +68,9 @@ ln -sf ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets ~/.confi
 ln -sf ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
 ln -sf ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
 sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --filesystem=/usr/share/icons
 sudo flatpak override --env=GTK_THEME=Catppuccin-Mocha-Standard-Lavender-Dark
+sudo flatpak override --env=ICON_THEME=MoreWaita
 rm ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gnome-shell/gnome-shell.css
 cp config/gnome-shell.css ~/.themes/Catppuccin-Mocha-Standard-Lavender-Dark/gnome-shell/gnome-shell.css
 
