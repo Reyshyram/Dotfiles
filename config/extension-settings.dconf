@@ -14,7 +14,7 @@ customize=false
 style-dialogs=1
 
 [blur-my-shell/applications]
-blacklist=['Plank', 'firefox', 'org.gnome.Loupe']
+blacklist=['Plank', 'firefox', 'org.gnome.Loupe', 'floorp']
 blur=true
 blur-on-overview=false
 brightness=1.0
