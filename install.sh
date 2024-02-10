@@ -110,6 +110,11 @@ hydrapaper -c ./Wallpapers/zero-two-and-hiro.jpg ./Wallpapers/zero-two-and-hiro.
 # Set default apps
 cp ./config/mimeapps.list ~/.config/mimeapps.list
 
+# Media Codecs
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-plugin-libav --exclude=gstreamer1-plugins-bad-free-devel
+sudo dnf install lame\* --exclude=lame-devel
+sudo dnf group upgrade --with-optional Multimedia
+
 # Configure Gnome Extensions
 pipx ensurepath
 pipx install gnome-extensions-cli --system-site-packages
