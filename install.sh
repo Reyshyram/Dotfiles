@@ -24,6 +24,7 @@ gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['F11']" # Ful
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close' # Show minimize and maximize buttons
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true # Move window with Super + Right Click
 dconf write /org/gnome/mutter/center-new-windows true # Center new windows
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true # Touchpad tap to click
 
 # Custom shortcuts
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
