@@ -66,6 +66,10 @@ video/x-fli=vlc.desktop
 video/x-flv=vlc.desktop
 inode/directory=nemo.desktop
 application/x-gnome-saved-search=nemo.desktop
+x-scheme-handler/http=one.ablaze.floorp.desktop
+text/html=one.ablaze.floorp.desktop
+application/xhtml+xml=one.ablaze.floorp.desktop
+x-scheme-handler/https=one.ablaze.floorp.desktop
 
 [Added Associations]
 audio/mpeg=io.bassi.Amberol.desktop;
@@ -131,3 +135,7 @@ video/flv=vlc.desktop;
 video/x-flc=vlc.desktop;
 video/x-fli=vlc.desktop;
 video/x-flv=vlc.desktop;
+x-scheme-handler/http=one.ablaze.floorp.desktop;
+text/html=one.ablaze.floorp.desktop;
+application/xhtml+xml=one.ablaze.floorp.desktop;
+x-scheme-handler/https=one.ablaze.floorp.desktop;
