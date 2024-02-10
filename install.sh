@@ -150,3 +150,10 @@ dconf load /org/gnome/shell/extensions/ < ./config/extension-settings.dconf
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable mediacontrols@cliffniff.github.com
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable applications-overview-tooltip@RaphaelRochet
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable steal-my-focus-window@steal-my-focus-window
+
+# Auto cpu frequency
+git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+cd auto-cpufreq && sudo ./auto-cpufreq-installer
+cd ..
+ rm -rf ./auto-cpufreq/
+ sudo auto-cpufreq --install
