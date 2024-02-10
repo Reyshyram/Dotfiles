@@ -2476,14 +2476,17 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 #panel.unlock-screen .panel-button,
 #panel.login-screen .panel-button,
 #panel:overview .panel-button {
-    box-shadow: none;
     font-weight: bold;
     color: #cdd6f4;
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
     transition-duration: 150ms;
-    border: 3px solid transparent;
-    border-radius: 8px;
+    border: 2px solid transparent #b4befe;
+    background-color: #11111b;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+    border-radius: 12px;
+    padding: 3px;
+    margin: 0 3px;
 }
 
 #panel.unlock-screen .panel-button:hover,
@@ -2491,6 +2494,7 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 #panel:overview .panel-button:hover {
     box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.1);
     color: #11111b;
+    background-color: #b4befe;
 }
 
 #panel.unlock-screen .panel-button:active,
@@ -2526,19 +2530,9 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 }
 
 /*clock lockscreen*/
-#panel.unlock-screen .panel-button.clock-display,
-#panel.login-screen .panel-button.clock-display,
-#panel:overview .panel-button.clock-display {
-    box-shadow: none;
-    transition-duration: 150ms;
-    border: 3px solid transparent;
-    border-radius: 8px;
-}
-
 #panel.unlock-screen .panel-button.clock-display .clock,
 #panel.login-screen .panel-button.clock-display .clock,
 #panel:overview .panel-button.clock-display .clock {
-    box-shadow: none;
     transition-duration: 150ms;
     border: 3px solid transparent;
     border-radius: 8px;
