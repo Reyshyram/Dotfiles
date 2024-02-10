@@ -155,5 +155,5 @@ dconf load /org/gnome/shell/extensions/ < ./config/extension-settings.dconf
 git clone https://github.com/AdnanHodzic/auto-cpufreq.git
 cd auto-cpufreq && sudo ./auto-cpufreq-installer
 cd ..
- rm -rf ./auto-cpufreq/
- sudo auto-cpufreq --install
+rm -rf ./auto-cpufreq/
+sudo auto-cpufreq --install
