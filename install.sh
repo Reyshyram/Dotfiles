@@ -95,6 +95,7 @@ mkdir -p ~/.local/share/fonts
 mv ./MesloLGS* ~/.local/share/fonts
 cp ./config/.zshrc ~/.zshrc
 cp ./config/.p10k.zsh ~/.p10k.zsh
+cp ./config/autosuggestions.zsh ~/.oh-my-zsh/custom/autosuggestions.zsh
 
 # Kitty config
 sudo mv /usr/bin/gnome-terminal /usr/bin/gnome-terminal.NOPE
