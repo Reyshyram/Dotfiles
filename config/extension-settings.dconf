@@ -2,7 +2,7 @@
 custom-icons=@a(sss) []
 icon-size=0
 legacy-tray-enabled=true
-tray-pos='right'
+tray-pos='left'
 
 [blur-my-shell]
 brightness=0.59999999999999998
