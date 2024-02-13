@@ -31,6 +31,7 @@ This script is only confirmed to be working under Fedora 39 and Gnome 45, becaus
 
 # After installation
 You can customize your wallpapers using the Hydrapaper app. You can also change devices' names in the Quick Settings panel by opening the Extensions app and modifying the settings of the Quick Settings Audio Devices Renamer extension. In this app, you can also customize the other extensions.
+You may want to use the [Catppuccin for duckduckgo](https://github.com/catppuccin/duckduckgo) theme
 
 # Things used
  - [Bibata](https://github.com/ful1e5/Bibata_Cursor) cursor theme
@@ -46,6 +47,5 @@ You can customize your wallpapers using the Hydrapaper app. You can also change 
  - [Catppuccin Mocha](https://github.com/catppuccin/grub) grub theme
  - A combination of [Catppuccin Mocha Standard Lavender Dark](https://github.com/catppuccin/gtk) gtk theme and the custom topbar of [ART3MISTICAL](https://github.com/ART3MISTICAL/dotfiles)
  - [MoreWaita](https://github.com/somepaulo/MoreWaita) icon theme
-
-
-
+ - [Floorp](https://floorp.app/en/) browser
+ - [Shina Fox](https://github.com/Shina-SG/Shina-Fox) floorp theme
