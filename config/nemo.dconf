@@ -1,0 +1,13 @@
+[preferences]
+default-folder-viewer='list-view'
+show-edit-icon-toolbar=false
+show-hidden-files=true
+show-location-entry=false
+show-open-in-terminal-toolbar=true
+tooltips-in-list-view=true
+
+[window-state]
+geometry='800x550+103+103'
+maximized=false
+sidebar-bookmark-breakpoint=5
+start-with-sidebar=true

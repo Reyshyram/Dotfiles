@@ -151,6 +151,9 @@ dconf load /org/gnome/shell/extensions/ < ./config/extension-settings.dconf
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable applications-overview-tooltip@RaphaelRochet
 ~/.local/share/pipx/venvs/gnome-extensions-cli/bin/gnome-extensions-cli enable steal-my-focus-window@steal-my-focus-window
 
+# Load nemo config
+dconf load /org/nemo/ < ./config/nemo.dconf
+
 # Auto cpu frequency
 git clone https://github.com/AdnanHodzic/auto-cpufreq.git
 cd auto-cpufreq && sudo ./auto-cpufreq-installer
