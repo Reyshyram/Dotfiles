@@ -1,19 +1,26 @@
 
 # How to use
 
-In order to install my dotfiles, you first need to clone the repository :
+In order to install my dotfiles, you first need to update your system:
+
+    sudo dnf upgrade --refresh
+
+If you're using nobara, use `nobara-sync` instead.
+After that, you can now clone the repository:
 
     git clone https://github.com/Reyshyram/Dotfiles.git
-Then, cd into the directory containing the dotfiles :
+Then, cd into the directory containing the dotfiles:
 
     cd Dotfiles
-Finally, launch the install script :
+Finally, launch the install script:
 
     ./install.sh
+If you're using Nobara, please also install Gnome Text Editor : `sudo dnf install gnome-text-editor`. The GTK theme will only work on system-wide flatpak installs.
+
 The installation should now be completed. If there is any problem, feel free to open an issue.
 
 ## Compatibility
-This script is only confirmed to be working under Fedora 39 and Gnome 45, because it uses dnf in order to install the required packages.
+This script is only confirmed to be working under Nobara / Fedora 39 and Gnome 45, because it uses dnf in order to install the required packages.
 
 # Preview
 ![Desktop](./preview.png)
