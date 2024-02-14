@@ -161,14 +161,3 @@ cd ..
 rm -rf ./auto-cpufreq/
 sudo auto-cpufreq --install
 
-# Floorp config
-# Source directory
-source_dir=./config/floorp
-# Destination directory
-dest_dir=~/.var/app/one.ablaze.floorp/.floorp
-# Loop through each subdirectory in the destination directory
-for d in $dest_dir/*/; do
-  # Copy the contents of the source directory to the current subdirectory
-  cp -r $source_dir/* $d
-done
-
