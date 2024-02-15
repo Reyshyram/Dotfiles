@@ -6,7 +6,7 @@ sudo cp ./config/dnf.conf /etc/dnf/dnf.conf
 # Install required packages
 sudo dnf copr enable peterwu/rendezvous
 sudo dnf copr enable dusansimic/themes
-sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra file-roller hydrapaper neofetch vlc zsh kitty pipx morewaita-icon-theme
+sudo dnf install git firefox nemo gnome-tweaks bibata-cursor-themes gnome-themes-extra file-roller hydrapaper neofetch vlc zsh kitty pipx morewaita-icon-theme plymouth
 flatpak install flathub io.bassi.Amberol
 flatpak install flathub org.gnome.Extensions
 flatpak install flathub one.ablaze.floorp
@@ -179,3 +179,8 @@ cd ..
 rm -rf ./auto-cpufreq/
 sudo auto-cpufreq --install
 
+# Plymouth theme
+git clone https://github.com/catppuccin/plymouth.git
+sudo cp -r ./plymouth/themes/* /usr/share/plymouth/themes/
+sudo rm -rf ./plymouth
+sudo plymouth-set-default-theme -R catppuccin-mocha
