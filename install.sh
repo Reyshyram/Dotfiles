@@ -82,5 +82,5 @@ sudo rm -rf ./plymouth
 sudo plymouth-set-default-theme -R catppuccin-mocha
 
 # Disable mouse acceleration
-sudo sed -i '/Identifier "libinput pointer catchall"/,/^EndSection/{/^EndSection/i \    Option "Accel Profile Enabled" "0 1 0"
+sudo sed -i '/Identifier "libinput pointer catchall"/,/^EndSection/{/^EndSection/i \        Option "Accel Profile Enabled" "0 1 0"
 }' /usr/share/X11/xorg.conf.d/40-libinput.conf
