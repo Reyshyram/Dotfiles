@@ -93,7 +93,3 @@ chmod +x ~/.config/hypr/scripts/dontkillsteam.sh
 # Applications Associations
 xdg-settings set default-web-browser firefox.desktop
 xdg-mime default pcmanfm-qt.desktop inode/directory
-
-# Applications Associations
-xdg-settings set default-web-browser firefox.desktop
-xdg-mime default pcmanfm-qt.desktop inode/directory
