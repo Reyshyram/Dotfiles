@@ -1,57 +1,44 @@
 
-# How to use
+# Installation
 
-In order to install my dotfiles, you first need to update your system:
+>[!CAUTION]
+>The installation script is meant to be used on a minimal Arch installation with grub and systemd. It will replace any existing configuration. Please proceed with caution.
 
-    sudo dnf upgrade --refresh
+First, update your system.
+```
+sudo pacman -Syu
+```
 
-If you're using nobara, use `nobara-sync` instead.
+Then, install git.
+```
+sudo pacman -S git
+```
+
 After that, you can now clone the repository:
+```
+git clone https://github.com/Reyshyram/Dotfiles.git
+```
 
-    git clone https://github.com/Reyshyram/Dotfiles.git
 Then, cd into the directory containing the dotfiles:
+```
+cd Dotfiles
+```
 
-    cd Dotfiles
-Finally, launch the install script:
+Finally, make sure the install script has the required permissions and launch it.
+```
+chmod +x ./install.sh && ./install.sh
+```
 
-    ./install.sh
-If you're using Nobara, please also install Gnome Text Editor : `sudo dnf install gnome-text-editor`. The GTK theme will only work on system-wide flatpak installs.
+Follow the instructions on your terminal. If there's a problem, feel free to open an issue.
 
-The installation should now be completed. If there is any problem, feel free to open an issue.
+>[!IMPORTANT]
+>If you are using a Nvidia GPU, please follow the instructions on the [Hyprland wiki](https://wiki.hyprland.org/Nvidia/) before rebooting.
 
-## Compatibility
-This script is only confirmed to be working under Nobara / Fedora 39 and Gnome 45, because it uses dnf in order to install the required packages.
+
+
+## Informations
+
+This rice relies heavily on the [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) color scheme.
+You can show a list of keybinds using the `Super + /` shortcut.
 
 # Preview
-![Desktop](./preview.png)
-
-# Shortcuts
-|Action|Keybind|
-|--|--|
-| Exit an app | Super + Q|
-| Resize a window | Super + Right Click|
-| Move a window | Super + Left Click|
-| Open the browser | Super + F |
-| Open the file manager | Super + E |
-| Open the terminal | Super + T |
-| Open a notepad | Super + B |
-
-# After installation
-You can customize your wallpapers using the Hydrapaper app. You can also change devices' names in the Quick Settings panel by opening the Extensions app and modifying the settings of the Quick Settings Audio Devices Renamer extension. In this app, you can also customize the other extensions.
-You may want to use the [Shina Fox](https://github.com/Shina-SG/Shina-Fox) floorp theme, as well as [Catppuccin for dark reader](https://github.com/catppuccin/dark-reader), [Catppuccin userstyles](https://github.com/catppuccin/userstyles) and [Catppuccin for DuckDuckGo](https://github.com/catppuccin/duckduckgo).
-# Things used
- - [Bibata](https://github.com/ful1e5/Bibata_Cursor) cursor theme
- - [Nemo](https://github.com/linuxmint/nemo/) file manager
- - [File Roller](https://gitlab.gnome.org/GNOME/file-roller) archiver
- - [Zsh](https://www.zsh.org/) shell 
- - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) zsh plugin manager
- - [Zsh Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) plugin
- - [Zsh Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) plugin with [Catppuccin Mocha](https://github.com/catppuccin/zsh-syntax-highlighting) color scheme
- - [Kitty](https://github.com/kovidgoyal/kitty) terminal with [Catppuccin Mocha](https://github.com/catppuccin/kitty) color scheme
- - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) zsh theme
- - [Amberol](https://gitlab.gnome.org/World/amberol) music player
- - [Catppuccin Mocha](https://github.com/catppuccin/grub) grub theme
- - A combination of [Catppuccin Mocha Standard Lavender Dark](https://github.com/catppuccin/gtk) gtk theme and the custom topbar of [ART3MISTICAL](https://github.com/ART3MISTICAL/dotfiles)
- - [MoreWaita](https://github.com/somepaulo/MoreWaita) icon theme
- - [Floorp](https://floorp.app/en/) browser
-
