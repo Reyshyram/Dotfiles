@@ -17,8 +17,8 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland
-yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k 
+sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib pcmanfm-qt
+yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin
 sudo flatpak install flathub one.ablaze.floorp
 sudo flatpak install flathub io.bassi.Amberol
 
@@ -89,3 +89,11 @@ sudo sed -i '/Identifier "libinput pointer catchall"/,/^EndSection/{/^EndSection
 mdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr
 chmod +x ~/.config/hypr/scripts/dontkillsteam.sh
+
+# Applications Associations
+xdg-settings set default-web-browser firefox.desktop
+xdg-mime default pcmanfm-qt.desktop inode/directory
+
+# Applications Associations
+xdg-settings set default-web-browser firefox.desktop
+xdg-mime default pcmanfm-qt.desktop inode/directory
