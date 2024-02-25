@@ -8,7 +8,7 @@ In order to install my dotfiles, you first need to update your system:
 If you're using nobara, use `nobara-sync` instead.
 After that, you can now clone the repository:
 
-    git clone https://github.com/Reyshyram/Dotfiles.git
+    git clone -b fedora https://github.com/Reyshyram/Dotfiles.git
 Then, cd into the directory containing the dotfiles:
 
     cd Dotfiles
