@@ -17,7 +17,7 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth
+sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland
 yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k 
 sudo flatpak install flathub one.ablaze.floorp
 sudo flatpak install flathub io.bassi.Amberol
@@ -67,6 +67,7 @@ git clone https://github.com/catppuccin/micro.git
 mkdir -p ~/.config/micro/colorschemes
 cp -r ./micro/src/* ~/.config/micro/colorschemes
 rm -rf ./micro
+sed -i '1d' ~/.config/micro/colorschemes/catppuccin-mocha.micro
 cp ./config/micro/settings.json ~/.config/micro/settings.json
 
 # Plymouth theme
@@ -79,3 +80,18 @@ git clone https://github.com/catppuccin/plymouth.git
 sudo cp -r ./plymouth/themes/* /usr/share/plymouth/themes/
 sudo rm -rf ./plymouth
 sudo plymouth-set-default-theme -R catppuccin-mocha
+
+# Disable mouse acceleration
+sudo sed -i '/Section "InputClass"\
+    Identifier "libinput pointer catchall"\
+    MatchIsPointer "on"\
+    MatchDevicePath "/dev/input/event*"\
+    Driver "libinput"\
+EndSection/c\
+Section "InputClass"\
+    Identifier "libinput pointer catchall"\
+    MatchIsPointer "on"\
+    MatchDevicePath "/dev/input/event*"\
+    Driver "libinput"\
+    Option "Accel Profile Enabled" "0 1 0"\
+EndSection' /usr/share/X11/xorg.conf.d/40-libinput.conf
