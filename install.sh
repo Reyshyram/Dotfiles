@@ -17,7 +17,7 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh
+sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland
 yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k 
 sudo flatpak install flathub one.ablaze.floorp
 sudo flatpak install flathub io.bassi.Amberol
