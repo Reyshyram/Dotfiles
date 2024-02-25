@@ -71,7 +71,7 @@ cp ./config/micro/settings.json ~/.config/micro/settings.json
 # Plymouth theme
 echo "Preparing plymouth theme..."
 sudo sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT=".*\)"/\1 splash"/' /etc/default/grub
-grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo sed -i '/^HOOKS=/ s/)$/ plymouth)/' /etc/mkinitcpio.conf
 git clone https://github.com/catppuccin/plymouth.git
 sudo cp -r ./plymouth/themes/* /usr/share/plymouth/themes/
