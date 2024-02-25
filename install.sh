@@ -70,7 +70,8 @@ cp ./config/micro/settings.json ~/.config/micro/settings.json
 
 # Plymouth theme
 echo "Preparing plymouth theme..."
-sudo sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT=".*\)"/\1 splash"/' /etc/default/grub
+sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 splash"/' /etc/default/grub
+sudo sed -i '/^\[Daemon\]/a ShowDelay=0' /etc/plymouth/plymouthd.conf
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo sed -i '/^HOOKS=/ s/)$/ plymouth)/' /etc/mkinitcpio.conf
 git clone https://github.com/catppuccin/plymouth.git
