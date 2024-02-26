@@ -96,7 +96,7 @@ cp -r ./config/swaync/* ~/.config/swaync/
 
 # Copy Hyprland config
 echo "Copying Hyprland config..."
-mdir -p ~/.config/hypr
+mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
 chmod +x ~/.config/hypr/scripts/dontkillsteam.sh
 
