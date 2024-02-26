@@ -18,7 +18,7 @@ makepkg -si
 cd ..
 rm -rf yay
 sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib pcmanfm-qt gnome-keyring btop
-yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol
+yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
