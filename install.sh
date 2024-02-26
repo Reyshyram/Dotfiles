@@ -17,8 +17,8 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib nemo gnome-keyring btop polkit-kde-agent nwg-look qt5ct qt6ct papirus-icon-theme kvantum gnome-themes-extra
-yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha
+sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib nemo gnome-keyring btop polkit-kde-agent nwg-look qt5ct qt6ct papirus-icon-theme kvantum gnome-themes-extra sddm
+yay -S bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
