@@ -25,6 +25,7 @@
     "widgets": [
         "mpris",
         "volume",
+        "backlight",
         "dnd",
         "title",
         "notifications"
@@ -48,6 +49,11 @@
         },
         "volume": {
             "label": " 󰕾 "
+        },
+        "backlight": {
+            "label": "  ",
+            "device": "intel_backlight",
+            "min": 10
         }
     }
 }
