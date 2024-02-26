@@ -23,9 +23,8 @@ yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-stu
 # SDDM Configuration
 echo "Preparing SDDM theme..."
 systemctl enable sddm.service
-sudo mkdir -p /etc/sddm.conf.d/
 sudo cp -r ./config/sddm/sugar-candy /usr/share/sddm/themes/
-sudo cp ./config/sddm/sddm.conf /etc/sddm.conf.d/kde_settings.conf
+sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
 
 # Grub theme and configuration
 echo "Preparing grub theme..."
