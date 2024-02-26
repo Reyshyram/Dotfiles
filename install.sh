@@ -87,6 +87,10 @@ sudo sed -i '/Identifier "libinput pointer catchall"/,/^EndSection/{/^EndSection
 mkdir -p ~/.config/btop/themes/
 cp -r ./config/btop/* ~/.config/btop/
 
+# Swaync config
+mkdir -p ~/.config/swaync
+cp -r ./config/swaync/* ~/.config/swaync/
+
 # Copy Hyprland config
 mdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
