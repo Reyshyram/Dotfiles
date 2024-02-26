@@ -1,0 +1,5 @@
+[preferences]
+default-folder-viewer='list-view'
+show-edit-icon-toolbar=false
+show-hidden-files=true
+show-open-in-terminal-toolbar=true

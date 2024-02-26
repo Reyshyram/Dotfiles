@@ -109,6 +109,9 @@ echo "Applying icon theme..."
 sudo hardcode-fixer
 papirus-folders -C cat-mocha-lavender
 
+# Load nemo config
+dconf load /org/nemo/ < ./config/nemo.dconf
+
 # Gtk theme
 echo "Applying Gtk theme..."
 mkdir -p ~/.config/gtk-4.0
