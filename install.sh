@@ -131,3 +131,7 @@ cp ./config/.gtkrc-2.0 ~/.gtkrc-2.0
 echo "Applying Qt theme..."
 cp -r ./config/qt* ~/.config/
 cp -r ./config/Kvantum ~/.config/
+
+# Rofi Config
+echo "Applying rofi theme..."
+cp -r ./config/rofi ~/.config/

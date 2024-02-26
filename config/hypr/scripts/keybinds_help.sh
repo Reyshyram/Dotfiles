@@ -44,6 +44,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + C" "Code Editor" "(vscode)" \
 "CTRL + SHIFT + ESCAPE" "System Monitor" "(btop)" \
 "" "" "" \
+"   + A" "Search Applications" "(rofi)" \
 "   + N" "Toggle Notification Area" "(swaync)" \
 "" "" "" \
 "   + Q" "Close Active Window" "(killactive)" \
