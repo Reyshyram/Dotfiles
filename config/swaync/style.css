@@ -49,7 +49,7 @@
 .notification {
   transition: all 200ms ease;
   border-radius: 12px;
-  margin: 6px 6px;
+  margin: 8px 6px 6px 2px;
   box-shadow: none;
   padding: 0;
 }
@@ -243,7 +243,7 @@
 .widget-mpris {
   /* The parent to all players */
   background-color: @shade-lighter;
-  padding: 8px;
+  padding: 20px 8px 0px 8px;
   margin: 8px;
   border-radius: 12px;
   border: 1px solid @shade-lighter;
