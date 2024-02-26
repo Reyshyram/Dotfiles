@@ -17,8 +17,8 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib pcmanfm-qt gnome-keyring btop polkit-kde-agent
-yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync
+sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib nemo gnome-keyring btop polkit-kde-agent nwg-look qt5ct qt6ct papirus-icon-theme kvantum
+yay -S sddm-git bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
@@ -80,22 +80,47 @@ sudo rm -rf ./plymouth
 sudo plymouth-set-default-theme -R catppuccin-mocha
 
 # Disable mouse acceleration
+echo "Disabling mouse acceleration..."
 sudo sed -i '/Identifier "libinput pointer catchall"/,/^EndSection/{/^EndSection/i \        Option "Accel Profile Enabled" "0 1 0"
 }' /usr/share/X11/xorg.conf.d/40-libinput.conf
 
 # Btop theme
+echo "Preparing btop theme..."
 mkdir -p ~/.config/btop/themes/
 cp -r ./config/btop/* ~/.config/btop/
 
 # Swaync config
+echo "Applying swaync config..."
 mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
 
 # Copy Hyprland config
+echo "Copying Hyprland config..."
 mdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
 chmod +x ~/.config/hypr/scripts/dontkillsteam.sh
 
 # Applications Associations
 xdg-settings set default-web-browser floorp.desktop
-xdg-mime default pcmanfm-qt.desktop inode/directory
+xdg-mime default nemo.desktop inode/directory
+
+# Papyrus icon theme
+echo "Applying icon theme..."
+sudo hardcode-fixer
+papirus-folders -C cat-mocha-lavender
+
+# Gtk theme
+echo "Applying Gtk theme..."
+mkdir -p ~/.config/gtk-4.0
+sudo ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets ~/.config/gtk-4.0/assets
+sudo ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
+sudo ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
+cp -r ./config/gtk-* ~/.config/
+cp -r ./config/nwg-look ~/.config/
+cp -r ./config/xsettingsd ~/.config/
+cp ./config/.gtkrc-2.0 ~/.gtkrc-2.0
+
+# QT theme
+echo "Applying Qt theme..."
+cp -r ./config/qt* ~/.config/
+cp -r ./config/Kvantum ~/.config/
