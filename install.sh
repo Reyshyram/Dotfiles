@@ -85,7 +85,7 @@ sudo sed -i '/Identifier "libinput pointer catchall"/,/^EndSection/{/^EndSection
 
 # Copy Hyprland config
 mdir -p ~/.config/hypr
-cp -r ./config/hypr/* ~/.config/hypr
+cp -r ./config/hypr/* ~/.config/hypr/
 chmod +x ~/.config/hypr/scripts/dontkillsteam.sh
 
 # Applications Associations
