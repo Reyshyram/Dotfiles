@@ -47,6 +47,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + A" "Search Applications" "(nwg-drawer)" \
 "   + N" "Toggle Notification Area" "(swaync)" \
 "   + Backspace" "Logout menu" "(wlogout)" \
+"   + L" "Lock Screen" "(swaylock-effects)" \
 "" "" "" \
 "   + Q" "Close Active Window" "(killactive)" \
 "Alt + Enter" "Toggle Fullscreen" "(fullscreen)" \
