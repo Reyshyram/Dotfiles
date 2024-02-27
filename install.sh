@@ -144,3 +144,11 @@ cp -r ./config/nwg-drawer ~/.config/
 # Logout menu
 echo "Applying wlogout config..."
 cp -r ./config/wlogout ~/.config/
+
+# Auto cpu frequency
+echo "Installing auto-cpufreq, please select install..."
+git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+cd auto-cpufreq && sudo ./auto-cpufreq-installer
+cd ..
+rm -rf ./auto-cpufreq/
+sudo auto-cpufreq --install
