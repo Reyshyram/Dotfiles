@@ -8,7 +8,8 @@ window {
 /* search entry */
 entry {
     box-shadow: 0 0 6px 5px #2e3440;
-    background-color: rgba (0, 0, 0, 0.2)
+    background-color: rgba (0, 0, 0, 0.2);
+    margin-top: 30px;
 }
 
 button,
@@ -29,7 +30,7 @@ button:focus {
 
 /* in case you wanted to give category buttons a different look */
 #category-button {
-    margin: 0 10px 0 10px
+    margin: 0 10px 0 10px;
 }
 
 #pinned-box {
