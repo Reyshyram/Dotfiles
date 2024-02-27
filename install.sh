@@ -18,7 +18,7 @@ makepkg -si
 cd ..
 rm -rf yay
 sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib nemo gnome-keyring btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc gwenview tumbler ffmpegthumbnailerro polkit-gnome
-yay -S bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland-git nwg-drawer-bin
+yay -S bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland-git nwg-drawer-bin wlogout
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
@@ -103,6 +103,7 @@ chmod +x ~/.config/hypr/scripts/media.sh
 chmod +x ~/.config/hypr/scripts/volume.sh
 chmod +x ~/.config/hypr/scripts/brightness.sh
 chmod +x ~/.config/hypr/scripts/keybinds_help.sh
+chmod +x ~/.config/hypr/scripts/logoutmenu.sh
 
 # Applications Associations
 xdg-settings set default-web-browser floorp.desktop
@@ -139,3 +140,7 @@ cp -r ./config/rofi ~/.config/
 # Nwg-drawer config
 echo "Applying nwg-drawer theme..."
 cp -r ./config/nwg-drawer ~/.config/
+
+# Logout menu
+echo "Applying wlogout config..."
+cp -r ./config/wlogout ~/.config/

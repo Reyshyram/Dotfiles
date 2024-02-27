@@ -1,0 +1,102 @@
+* {
+    background-image: none;
+    font-size: 24px;
+}
+
+window {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+button {
+    color: white;
+    background-color: #11111b;
+    outline-style: none;
+    border: none;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    border-radius: 0px;
+    box-shadow: none;
+    text-shadow: none;
+    animation: gradient_f 20s ease-in infinite;
+}
+
+button:focus {
+    background-color: #a6adc8;
+    background-size: 35%;
+}
+
+button:hover {
+    background-color: #f5c2e7;
+    background-size: 45%;
+    border-radius: 10px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682);
+}
+
+button:hover#lock {
+    border-radius: 10px;
+    margin: 225px 0px 225px 275px;
+}
+
+button:hover#logout {
+    border-radius: 10px;
+    margin: 225px 0px 225px 0px;
+}
+
+button:hover#suspend {
+    border-radius: 10px;
+    margin: 225px 0px 225px 0px;
+}
+
+button:hover#shutdown {
+    border-radius: 10px;
+    margin: 225px 0px 225px 0px;
+}
+
+button:hover#hibernate {
+    border-radius: 10px;
+    margin: 225px 0px 225px 0px;
+}
+
+button:hover#reboot {
+    border-radius: 10px;
+    margin: 225px 275px 225px 0px;
+}
+
+#lock {
+    background-image: url("./icons/lock.png");
+    border-radius: 16px 0px 0px 16px;
+    margin: 275px 0px 275px 275px;
+}
+
+#logout {
+    background-image: url("./icons/logout.png");
+    border-radius: 0px 0px 0px 0px;
+    margin: 275px 0px 275px 0px;
+}
+
+#suspend {
+    background-image: url("./icons/suspend.png");
+    border-radius: 0px 0px 0px 0px;
+    margin: 275px 0px 275px 0px;
+}
+
+#shutdown {
+    background-image: url("./icons/shutdown.png");
+    border-radius: 0px 0px 0px 0px;
+    margin: 275px 0px 275px 0px;
+}
+
+#hibernate {
+    background-image: url("./icons/hibernate.png");
+    border-radius: 0px 0px 0px 0px;
+    margin: 275px 0px 275px 0px;
+}
+
+#reboot {
+    background-image: url("./icons/reboot.png");
+    border-radius: 0px 16px 16px 0px;
+    margin: 275px 275px 275px 0px;
+}
