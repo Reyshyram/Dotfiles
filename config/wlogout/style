@@ -23,7 +23,7 @@ button {
 }
 
 button:focus {
-    background-color: #a6adc8;
+    background-color: #9399b2;
     background-size: 35%;
 }
 
