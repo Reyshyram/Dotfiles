@@ -77,3 +77,5 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "" "" "" \
 "   + S" "Toggle Special Workspace" "(togglespecialworkspace)" \
 "   + Shift + S" "Move Active Windows to Special Workspace" "(movetoworkspace special)" \
+"" "" "" \
+"   + O" "Show overview of all workspaces" "(workspacer)" \
