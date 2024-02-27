@@ -50,7 +50,8 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + L" "Lock Screen" "(swaylock-effects)" \
 "" "" "" \
 "   + Q" "Close Active Window" "(killactive)" \
-"Alt + Enter" "Toggle Fullscreen" "(fullscreen)" \
+"Alt + Enter" "Kind of maximize a floating windows" "(resizeactive and center)" \
+"   + Enter" "Toggle Fullscreen" "(fullscreen)" \
 "F11" "Toggle Fullscreen" "(fullscreen)" \
 "   + V" "Toggle Floating Mode" "(togglefloating)" \
 "   + Shift + V" "Toggle Floating Mode For All Windows" "(allfloat)" \
