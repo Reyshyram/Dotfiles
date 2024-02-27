@@ -104,6 +104,7 @@ chmod +x ~/.config/hypr/scripts/volume.sh
 chmod +x ~/.config/hypr/scripts/brightness.sh
 chmod +x ~/.config/hypr/scripts/keybinds_help.sh
 chmod +x ~/.config/hypr/scripts/logoutmenu.sh
+chmod +x ~/.config/hypr/scripts/workspacer/workspace_listener.sh
 
 # Applications Associations
 xdg-settings set default-web-browser floorp.desktop
