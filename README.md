@@ -4,6 +4,9 @@
 >[!CAUTION]
 >The installation script is meant to be used on a minimal Arch installation with grub and systemd. It will replace any existing configuration. Please proceed with caution.
 
+>[!CAUTION]
+>Currently WIP, will not work like intended
+
 First, update your system.
 ```
 sudo pacman -Syu
