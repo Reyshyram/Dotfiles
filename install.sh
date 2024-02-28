@@ -18,13 +18,14 @@ makepkg -si
 cd ..
 rm -rf yay
 sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib nemo gnome-keyring btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc gwenview tumbler ffmpegthumbnailerro polkit-gnome udiskie grim socat
-yay -S bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland-git nwg-drawer-bin wlogout xwaylandvideobridge-git github-desktop-bin hyprlock-git
+yay -S bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland-git nwg-drawer-bin wlogout xwaylandvideobridge-git github-desktop-bin hyprlock-git swww
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
 systemctl enable sddm.service
 sudo cp -r ./config/sddm/sugar-candy /usr/share/sddm/themes/
 sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
+sudo chown $USER /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
 
 # Grub theme and configuration
 echo "Preparing grub theme..."
@@ -104,6 +105,7 @@ chmod +x ~/.config/hypr/scripts/volume.sh
 chmod +x ~/.config/hypr/scripts/brightness.sh
 chmod +x ~/.config/hypr/scripts/keybinds_help.sh
 chmod +x ~/.config/hypr/scripts/logoutmenu.sh
+chmod +x ~/.config/hypr/scripts/wallpaper.sh
 chmod +x ~/.config/hypr/scripts/workspacer/workspace_listener.sh
 
 # Applications Associations
@@ -153,3 +155,8 @@ cd auto-cpufreq && sudo ./auto-cpufreq-installer
 cd ..
 rm -rf ./auto-cpufreq/
 sudo auto-cpufreq --install
+
+# Copy wallpapers
+echo "Copying wallpapers..."
+mkdir -p ~/Pictures/Wallpapers
+cp -r ./Wallpapers/* ~/Pictures/Wallpapers

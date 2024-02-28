@@ -39,6 +39,10 @@ Follow the instructions on your terminal. If there's a problem, feel free to ope
 ## Informations
 
 This rice relies heavily on the [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) color scheme.
-You can show a list of keybinds using the `Super + /` shortcut.
+You can show a list of keybinds using the `Super + /` (or the key to the left of Right Shift) shortcut.
+
+You can modify your keyboard language by editing the `~/.config/hypr/input.conf` file.
+
+Wallpapers are changed randomly every 60 minutes. If you don't want that, in the `~/.config/hypr/startup.conf` file, comment or delete the line `exec-once = ~/.config/hypr/scripts/wallpaper.sh` and use a program like Waypaper to set the one you want.
 
 # Preview
