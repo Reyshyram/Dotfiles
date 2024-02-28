@@ -19,7 +19,7 @@ execute_swww_img() {
     while IFS= read -r line; do
         output_name=$(echo "$line" | cut -d':' -f1 | sed 's/^[[:space:]]*//')
         image_path=$(get_random_image)
-        swww img "$image_path" -o "$output_name"
+        swww img "$image_path" -o "$output_name" -t any --transition-fps 60
         cp "$image_path" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
     done < <(swww query)
 }
@@ -29,6 +29,6 @@ execute_swww_img
 
 # Loop to execute the script every hour
 while true; do
-    sleep 1h
+    sleep 15m
     execute_swww_img
 done

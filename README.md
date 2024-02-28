@@ -43,6 +43,6 @@ You can show a list of keybinds using the `Super + /` (or the key to the left of
 
 You can modify your keyboard language by editing the `~/.config/hypr/input.conf` file.
 
-Wallpapers are changed randomly every 60 minutes. If you don't want that, in the `~/.config/hypr/startup.conf` file, comment or delete the line `exec-once = ~/.config/hypr/scripts/wallpaper.sh` and use a program like Waypaper to set the one you want.
+Wallpapers are changed randomly every 15 minutes. If you don't want that, in the `~/.config/hypr/startup.conf` file, comment or delete the line `exec-once = ~/.config/hypr/scripts/wallpaper.sh` and use a program like Waypaper to set the one you want.
 
 # Preview
