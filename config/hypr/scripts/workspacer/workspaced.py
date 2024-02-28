@@ -2,36 +2,38 @@
 import gi
 import os
 import glob
+import json
 
 gi.require_version("Gtk", "3.0")
 
-from gi.repository import Gtk, GdkPixbuf, Gdk, GLib
+from gi.repository import Gtk, GdkPixbuf, Gdk
 
-current_workspace = int(os.popen("hyprctl activeworkspace -j | jq '.id'").read())
-
-# get the geometry of the active monitor
-geometry = (
-    os.popen(
-        "hyprctl monitors -j | jq -r '.[] | select(.focused) | \"\(.x) \(.y) \(.width) \(.height)\"'"
-    )
-    .read()
-    .split()
-)
-offset_x = int(geometry[0])
-offset_y = int(geometry[1])
-width = int(geometry[2])
-height = int(geometry[3])
-
-geometry = f"{offset_x},{offset_y} {width}x{height}"
-
-os.system(f"grim -l1 -g {geometry} /tmp/workspace{current_workspace}.png")
+current_workspace = None
 
 
 class WorkspaceSelector(Gtk.Window):
     def __init__(self):
+        # Take a screenshot of the current workspace before launching the window
+        current_workspace = int(
+            os.popen("hyprctl activeworkspace -j | jq '.id'").read()
+        )
+        geometry = (
+            os.popen(
+                "hyprctl monitors -j | jq -r '.[] | select(.focused) | \"\(.x) \(.y) \(.width) \(.height)\"'"
+            )
+            .read()
+            .split()
+        )
+        offset_x = int(geometry[0])
+        offset_y = int(geometry[1])
+        width = int(geometry[2])
+        height = int(geometry[3])
+        geometry = f"{offset_x},{offset_y} {width}x{height}"
+        # os.system(f'grim -l1 -g {geometry} /tmp/workspace{current_workspace}.png')
+        os.system(f"grim -type jpeg -q 50 /tmp/workspace{current_workspace}.png")
+        # GTK START
         Gtk.Window.__init__(self, title="Workspace Selector")
-
-        width = 800
+        width = 1000
         height = 700
 
         marg = 42
@@ -46,29 +48,22 @@ class WorkspaceSelector(Gtk.Window):
         box.set_margin_end(marg)
 
         grid = Gtk.Grid()
-
         grid.set_column_homogeneous(True)
-
         grid.set_column_spacing(marg)
         grid.set_row_spacing(marg)
-
-        box.pack_start(grid, True, True, 0)
-
         self.grid = grid
 
-        # make background transparent
+        box.pack_start(grid, True, True, 0)
         self.set_app_paintable(True)
-        self.override_background_color(
-            Gtk.StateFlags.NORMAL, Gdk.RGBA(0, 0, 0, 0)
-        )  # Set transparent background
 
+        # self.override_background_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(0, 0, 0, 0))  # Set transparent background
         workspace_files = sorted(glob.glob("/tmp/workspace*.png"))
         num_workspaces = len(workspace_files)
 
-        if num_workspaces > 3:
-            # grid.set_row_homogeneous(True)
-            self.num_columns = (num_workspaces + 2) // 2
-            self.num_rows = (num_workspaces + self.num_columns - 2) // self.num_columns
+        if num_workspaces > 10:
+            self.num_columns = 5
+        if num_workspaces < 10 and num_workspaces > 3:
+            self.num_columns = 3
         elif num_workspaces <= 3:
             grid.set_row_homogeneous(True)
             self.num_rows = 1
@@ -78,6 +73,19 @@ class WorkspaceSelector(Gtk.Window):
             if num_workspaces == 1:
                 self.num_rows = 1
                 self.num_columns = 1
+
+        # Get the absolute path of the script's directory
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        # Construct the absolute path for color.conf
+        color_conf_path = os.path.join(script_dir, "colors.conf")
+
+        # Load colors from config file
+        with open(color_conf_path, "r") as color_file:
+            colors = json.load(color_file)
+
+        self.current_workspace_color = colors.get("current_workspace")
+        self.workspace_button_color = colors.get("workspace_button")
+        self.workspace_button_focus_color = colors.get("workspace_button_focus")
 
         self.load_workspace_images(workspace_files)
 
@@ -146,19 +154,19 @@ win.show_all()
 win.set_focus(None)
 css_provider = Gtk.CssProvider()
 css_provider.load_from_data(
-    """
+    f"""
 
-    .current-workspace {
-        background-color: rgba(180, 190, 254, 0.5);
-    }
-                       
-    .workspace-button {
-        background-color: rgba(0, 0, 0, 0);
+    .current-workspace {{
+        background-color: {win.current_workspace_color};
+    }}
 
-    }
-    .workspace-button:focus {
-        background-color: rgba(0, 0, 0, 0);
-    }
+    .workspace-button {{
+        background-color: {win.workspace_button_color};
+
+    }}
+    .workspace-button:focus {{
+        background-color: {win.workspace_button_focus_color};
+    }}
 """
 )
 screen = Gdk.Screen.get_default()
