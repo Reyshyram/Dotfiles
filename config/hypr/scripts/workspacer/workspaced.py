@@ -29,8 +29,7 @@ class WorkspaceSelector(Gtk.Window):
         width = int(geometry[2])
         height = int(geometry[3])
         geometry = f"{offset_x},{offset_y} {width}x{height}"
-        # os.system(f'grim -l1 -g {geometry} /tmp/workspace{current_workspace}.png')
-        os.system(f"grim -type jpeg -q 50 /tmp/workspace{current_workspace}.png")
+        os.system(f"grim -t jpeg -q 50 /tmp/workspace{current_workspace}.jpg")
         # GTK START
         Gtk.Window.__init__(self, title="Workspace Selector")
         width = 1000
@@ -57,7 +56,7 @@ class WorkspaceSelector(Gtk.Window):
         self.set_app_paintable(True)
 
         # self.override_background_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(0, 0, 0, 0))  # Set transparent background
-        workspace_files = sorted(glob.glob("/tmp/workspace*.png"))
+        workspace_files = sorted(glob.glob("/tmp/workspace*.jpg"))
         num_workspaces = len(workspace_files)
 
         if num_workspaces > 10:
@@ -74,10 +73,16 @@ class WorkspaceSelector(Gtk.Window):
                 self.num_rows = 1
                 self.num_columns = 1
 
-        # Get the absolute path of the script's directory
+        # TODO : abstract all this file thins
+
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        # Construct the absolute path for color.conf
         color_conf_path = os.path.join(script_dir, "colors.conf")
+        if not os.path.isfile(color_conf_path):
+            print(
+                "Error: colors.conf not found on script folder ",
+                color_conf_path,
+            )
+            exit()
 
         # Load colors from config file
         with open(color_conf_path, "r") as color_file:
@@ -86,6 +91,7 @@ class WorkspaceSelector(Gtk.Window):
         self.current_workspace_color = colors.get("current_workspace")
         self.workspace_button_color = colors.get("workspace_button")
         self.workspace_button_focus_color = colors.get("workspace_button_focus")
+        # ---------------------------------------------------------------------
 
         self.load_workspace_images(workspace_files)
 
@@ -116,7 +122,7 @@ class WorkspaceSelector(Gtk.Window):
             button.set_size_request(image_width, image_height / 2)
             button.set_relief(Gtk.ReliefStyle.NONE)
 
-            img_index = int(workspace_file.split("workspace")[1].split(".png")[0]) - 1
+            img_index = int(workspace_file.split("workspace")[1].split(".jpg")[0]) - 1
 
             button.connect("clicked", self.on_workspace_selected, img_index)
 
