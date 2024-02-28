@@ -3,12 +3,27 @@ import gi
 import os
 import glob
 import json
+import fcntl
 
 gi.require_version("Gtk", "3.0")
 
 from gi.repository import Gtk, GdkPixbuf, Gdk
 
 current_workspace = None
+
+# Check if lock file exists, if it does, exit
+lock_file = "/tmp/workspace_selector.lock"
+if os.path.isfile(lock_file):
+    print("Another instance is already running. Exiting...")
+    exit()
+
+# Create lock file
+with open(lock_file, "w") as f:
+    try:
+        fcntl.lockf(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except IOError:
+        print("Another instance is already running. Exiting...")
+        exit()
 
 
 class WorkspaceSelector(Gtk.Window):
@@ -32,7 +47,9 @@ class WorkspaceSelector(Gtk.Window):
         height = int(geometry[3])
 
         geometry = f"{offset_x},{offset_y} {width}x{height}"
-        os.system(f"grim -t jpeg -q 50 /tmp/workspace{current_workspace}.jpg")
+        os.system(
+            f"grim -t jpeg -q 50 -g '{geometry}' /tmp/workspace{current_workspace}.jpg"
+        )
         # GTK START
         width = 900
         height = 700
@@ -75,7 +92,6 @@ class WorkspaceSelector(Gtk.Window):
                 self.num_columns = 1
 
         # TODO : abstract all this file parsing
-
         script_dir = os.path.dirname(os.path.abspath(__file__))
         color_conf_path = os.path.join(script_dir, "colors.conf")
         if not os.path.isfile(color_conf_path):
@@ -153,9 +169,12 @@ class WorkspaceSelector(Gtk.Window):
         if keyval == Gdk.KEY_Escape or chr(keyval) == "q":
             self.destroy()
 
+    # detect clicks in the application window
+    # def on_button_press_event(self, widget, event):
+    #     print("clicked")
+
 
 # TODO destroy if mouse is clicked outside the window
-
 win = WorkspaceSelector()
 win.connect("destroy", Gtk.main_quit)
 win.show_all()
@@ -183,3 +202,6 @@ style_context.add_provider_for_screen(
     screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
 )
 Gtk.main()
+
+# Remove lock file
+os.unlink(lock_file)
