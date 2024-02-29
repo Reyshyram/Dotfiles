@@ -45,6 +45,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "CTRL + SHIFT + ESCAPE" "System Monitor" "(btop)" \
 "" "" "" \
 "   + A" "Search Applications" "(nwg-drawer)" \
+"   + V" "Clipboard Manager" "(cliphist | rofi)" \
 "   + N" "Toggle Notification Area" "(swaync)" \
 "   + Backspace" "Logout menu" "(wlogout)" \
 "   + L" "Lock Screen" "(hyprlock)" \
@@ -53,8 +54,8 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "Alt + Enter" "Kind of maximize a floating windows" "(resizeactive and center)" \
 "   + Enter" "Toggle Fullscreen" "(fullscreen)" \
 "F11" "Toggle Fullscreen" "(fullscreen)" \
-"   + V" "Toggle Floating Mode" "(togglefloating)" \
-"   + Shift + V" "Toggle Floating Mode For All Windows" "(allfloat)" \
+"   + W" "Toggle Floating Mode" "(togglefloating)" \
+"   + Shift + W" "Toggle Floating Mode For All Windows" "(allfloat)" \
 "" "" "" \
 "Alt + Tab" "Cycle to Next Window" "(cyclenext)" \
 "   + Left/Right/Up/Down" "Move Focus in Selected direction" "(movefocus)" \
