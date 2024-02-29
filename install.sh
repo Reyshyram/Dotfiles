@@ -17,7 +17,7 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib nemo gnome-keyring btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc gwenview tumbler ffmpegthumbnailerro polkit-gnome udiskie grim socat
+sudo pacman -S --needed micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk pacman-contrib nemo gnome-keyring btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc gwenview tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire
 yay -S bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland-git nwg-drawer-bin wlogout xwaylandvideobridge-git github-desktop-bin hyprlock-git swww hypridle
 
 # SDDM Configuration
