@@ -46,9 +46,15 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "" "" "" \
 "   + A" "Search Applications" "(nwg-drawer)" \
 "   + V" "Clipboard Manager" "(cliphist | rofi)" \
+"   + P" "Color picker" "(hyprpicker)" \
 "   + N" "Toggle Notification Area" "(swaync)" \
 "   + Backspace" "Logout menu" "(wlogout)" \
 "   + L" "Lock Screen" "(hyprlock)" \
+"" "" "" \
+"Print Screen" "Screenshot of all monitors" "(grimblast | swappy)" \
+"Alt + Print Screen" "Screenshot of current monitor" "(grimblast | swappy)" \
+"   + Print Screen" "Select the area of the screenshot" "(slurp | grimblast | swappy)" \
+"Ctrl + Print Screen" "Select the area of the screenshot, frozen screen" "(slurp | grimblast | swappy)" \
 "" "" "" \
 "   + Q" "Close Active Window" "(killactive)" \
 "Alt + Enter" "Kind of maximize a floating windows" "(resizeactive and center)" \
