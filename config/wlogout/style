@@ -23,12 +23,12 @@ button {
 }
 
 button:focus {
-    background-color: #9399b2;
+    background-color: #313244;
     background-size: 35%;
 }
 
 button:hover {
-    background-color: #f5c2e7;
+    background-color: #6c7086;
     background-size: 45%;
     border-radius: 10px;
     animation: gradient_f 20s ease-in infinite;
