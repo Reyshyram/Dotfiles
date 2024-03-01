@@ -47,6 +47,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + A" "Search Applications" "(nwg-drawer)" \
 "   + V" "Clipboard Manager" "(cliphist | rofi)" \
 "   + P" "Color picker" "(hyprpicker)" \
+"   + B" "Emoji picker" "(rofi)" \
 "   + N" "Toggle Notification Area" "(swaync)" \
 "   + Backspace" "Logout menu" "(wlogout)" \
 "   + L" "Lock Screen" "(hyprlock)" \
