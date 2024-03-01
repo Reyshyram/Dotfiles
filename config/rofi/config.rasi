@@ -5,6 +5,9 @@ configuration {
     show-icons:                 true;
 	drun-display-format:        "{name}";
     font:                        "FiraCode Mono Nerd Font 10";
+    hover-select:               true;
+    me-select-entry:            "MouseSecondary";
+    me-accept-entry:            "MousePrimary";
 }
 
 /* ---- Global Properties ---- */
