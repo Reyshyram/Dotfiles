@@ -108,6 +108,7 @@ chmod +x ~/.config/hypr/scripts/logoutmenu.sh
 chmod +x ~/.config/hypr/scripts/wallpaper.sh
 chmod +x ~/.config/hypr/scripts/clipboard.sh
 chmod +x ~/.config/hypr/scripts/emoji.sh
+chmod +x ~/.config/hypr/scripts/desktop-portal.sh
 chmod +x ~/.config/hypr/scripts/workspacer/workspace_listener.sh
 
 # Applications Associations
