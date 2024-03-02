@@ -63,6 +63,8 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "F11" "Toggle Fullscreen" "(fullscreen)" \
 "   + Shift + F" "Pin a Window" "(pin)" \
 "   + G" "Toggle group mode" "(togglegroup)" \
+"   + Shift + G" "Lock current group" "(lockactivegroup)" \
+"   + Alt + Tab" "Switch to the next window of the group" "(changegroupactive)" \
 "   + W" "Toggle Floating Mode" "(togglefloating)" \
 "   + Shift + W" "Toggle Floating Mode For All Windows" "(allfloat)" \
 "" "" "" \
