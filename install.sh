@@ -168,3 +168,7 @@ cp -r ./Wallpapers/* ~/Pictures/Wallpapers
 # Enable firewalld
 echo "Enabling firewalld..."
 systemctl enable firewalld.service
+
+# Adding user to input group
+echo "Adding user to input group..."
+sudo usermod -a -G input $USER
