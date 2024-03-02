@@ -61,6 +61,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "Alt + Enter" "Kind of maximize a floating windows" "(resizeactive and center)" \
 "   + Enter" "Toggle Fullscreen" "(fullscreen)" \
 "F11" "Toggle Fullscreen" "(fullscreen)" \
+"   + Shift + F" "Pin a Window" "(pin)" \
 "   + W" "Toggle Floating Mode" "(togglefloating)" \
 "   + Shift + W" "Toggle Floating Mode For All Windows" "(allfloat)" \
 "" "" "" \
