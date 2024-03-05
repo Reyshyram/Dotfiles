@@ -17,8 +17,8 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S --needed micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib nemo btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc gwenview tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar
-yay -S bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland-git nwg-drawer-bin wlogout xwaylandvideobridge-git github-desktop-bin hyprlock-git swww hypridle hyprpicker-git grimblast-git
+sudo pacman -S --needed micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib nemo btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc gwenview tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring
+yay -S bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland-git nwg-drawer-bin wlogout xwaylandvideobridge-git github-desktop-bin hyprlock-git swww hypridle hyprpicker-git grimblast-git aurutils arch-update
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
@@ -172,3 +172,12 @@ systemctl enable firewalld.service
 # Adding user to input group
 echo "Adding user to input group..."
 sudo usermod -a -G input $USER
+
+# Enabling bluetooth
+echo "Enabling bluetooth..."
+systemctl enable bluetooth.service
+
+# Copying waybar config
+echo "Copying waybar configuration..."
+cp -r ./config/waybar ~/.config/
+chmod +x ~/.config/waybar/scripts/checkupdates.sh
