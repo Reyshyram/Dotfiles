@@ -4,9 +4,6 @@
 >[!CAUTION]
 >The installation script is meant to be used on a minimal Arch installation with grub and systemd. It will replace any existing configuration. Please proceed with caution.
 
->[!CAUTION]
->Currently WIP, will not work like intended
-
 First, update your system.
 ```
 sudo pacman -Syu
@@ -49,3 +46,4 @@ You can modify your keyboard language by editing the `~/.config/hypr/input.conf`
 Wallpapers are changed randomly every 15 minutes. If you don't want that, in the `~/.config/hypr/startup.conf` file, comment or delete the line `exec-once = ~/.config/hypr/scripts/wallpaper.sh` and use a program like Waypaper to set the one you want.
 
 # Preview
+![Preview](preview.png)
