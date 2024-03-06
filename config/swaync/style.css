@@ -49,7 +49,7 @@
 .notification {
     transition: all 200ms ease;
     border-radius: 12px;
-    margin: 0px 6px 0px 2px;
+    margin: 9px 6px 0px 4px;
     box-shadow: none;
     padding: 0;
 }

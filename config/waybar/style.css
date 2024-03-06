@@ -1,0 +1,163 @@
+* {
+    font-family: "MesloLGS NF", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 10px;
+}
+
+@import "mocha.css";
+
+window#waybar {
+    background-color: transparent;
+}
+
+tooltip {
+    background-color: @crust;
+    color: @text;
+    border: 1px solid @lavender;
+}
+
+/* Workspaces */
+#workspaces {
+    background: @crust;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: @lavender;
+}
+
+#workspaces button {
+    padding: 0px 4px;
+    margin: 4px 2px;
+    border-radius: 15px;
+    color: @lavender;
+    background-color: @crust;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    color: @green;
+    background: @base;
+    border-radius: 15px;
+    min-width: 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+    color: @teal;
+    background: @base;
+    border-radius: 15px;
+}
+
+/* Default for all modules */
+#clock,
+#custom-notification,
+#custom-updates,
+#tray,
+#window,
+#workspaces,
+#mpris,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-wlogout {
+    padding: 0 10px;
+    margin-right: 8px;
+    color: @text;
+    background-color: @crust;
+    border: 2px solid @lavender;
+}
+
+/* Remove margin if first or last */
+.modules-left>widget:first-child>#workspaces {
+    margin-left: 0;
+}
+
+.modules-right>widget:last-child>#workspaces {
+    margin-right: 0;
+}
+
+/* Don't show window's name if there's not one */
+window#waybar.empty #window {
+    background-color: transparent;
+    border: none;
+}
+
+/* Customize each module */
+#clock {
+    color: @flamingo;
+    border: 2px solid @flamingo;
+}
+
+#custom-notification {
+    color: @sapphire;
+    border: 2px solid @sapphire;
+    font-size: 20px;
+    padding: 0 12px;
+}
+
+#custom-updates {
+    font-size: 14px;
+    color: @red;
+    border: 2px solid @red;
+}
+
+#tray {
+    color: @text;
+    border: 2px solid @lavender;
+}
+
+#window {
+    color: @mauve;
+    border: 2px solid @mauve;
+}
+
+#mpris {
+    color: @rosewater;
+    border: 2px solid @rosewater;
+}
+
+#mpris.paused {
+    color: @peach;
+    border: 2px solid @peach;
+}
+
+#pulseaudio {
+    color: @blue;
+    border: 2px solid @blue;
+    font-family: "MesloLGS Nerd Font";
+}
+
+#backlight {
+    color: @yellow;
+    border: 2px solid @yellow;
+}
+
+#battery {
+    color: @green;
+    border: 2px solid @green;
+}
+
+#battery.good {
+    color: @teal;
+    border: 2px solid @teal;
+}
+
+#battery.warning {
+    color: @peach;
+    border: 2px solid @peach;
+}
+
+#battery.critical {
+    color: @red;
+    border: 2px solid @red;
+}
+
+#custom-wlogout {
+    color: @red;
+    border: 2px solid @red;
+    font-size: 16px;
+    margin-right: 0px;
+    padding: 0 14px;
+}
