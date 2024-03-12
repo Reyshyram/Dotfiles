@@ -45,5 +45,7 @@ You can modify your keyboard language by editing the `~/.config/hypr/input.conf`
 
 Wallpapers are changed randomly every 15 minutes. If you don't want that, in the `~/.config/hypr/startup.conf` file, comment or delete the line `exec-once = ~/.config/hypr/scripts/wallpaper.sh` and use a program like Waypaper to set the one you want.
 
+You can modify your display settings using the nwg-displays app.
+
 # Preview
 ![Preview](preview.png)
