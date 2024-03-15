@@ -11,14 +11,14 @@ sudo sed -i '/^#\[multilib\]/,+1 s/^#//' /etc/pacman.conf
 
 # Install required packages
 echo "Installing required packages..."
-sudo pacman -S --needed git base-devel
+sudo pacman -S --needed --noconfirm git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S --needed micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib nemo btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc shotwell tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring ntfs-3g kooha nemo-fileroller kvantum-qt5
-yay -S --needed bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin hyprlock swww hypridle hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr
+sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib nemo btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc shotwell tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring ntfs-3g kooha nemo-fileroller kvantum-qt5
+yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin floorp-bin amberol swaync hardcode-fixer-git papirus-folders-catppuccin-git catppuccin-gtk-theme-mocha rofi-lbonn-wayland nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin hyprlock swww hypridle hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
