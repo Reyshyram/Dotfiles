@@ -40,7 +40,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "" "" "" \
 "   + T" "Terminal" "(kitty)" \
 "   + E" "File Browser" "(nemo)" \
-"   + F" "Internet Browser" "(floorp)" \
+"   + F" "Internet Browser" "(firefox)" \
 "   + C" "Code Editor" "(vscode)" \
 "CTRL + SHIFT + ESCAPE" "System Monitor" "(btop)" \
 "" "" "" \
