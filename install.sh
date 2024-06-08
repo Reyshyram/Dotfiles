@@ -121,9 +121,9 @@ dconf load /org/nemo/ < ./config/nemo.dconf
 # Gtk theme
 echo "Applying Gtk theme..."
 mkdir -p ~/.config/gtk-4.0
-sudo ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/assets ~/.config/gtk-4.0/assets
-sudo ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
-sudo ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Lavender-Dark/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
+sudo ln -sf /usr/share/themes/catppuccin-mocha-lavender-standard+default/gtk-4.0/assets ~/.config/gtk-4.0/assets
+sudo ln -sf /usr/share/themes/catppuccin-mocha-lavender-standard+default/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
+sudo ln -sf /usr/share/themes/catppuccin-mocha-lavender-standard+default/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
 cp -r ./config/gtk-* ~/.config/
 cp -r ./config/nwg-look ~/.config/
 cp -r ./config/xsettingsd ~/.config/
