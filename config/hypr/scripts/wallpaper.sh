@@ -27,7 +27,7 @@ execute_swww_img() {
 # Execute swww img and copy images initially
 execute_swww_img
 
-# Loop to execute the script every hour
+# Loop to execute the script
 while true; do
     sleep 15m
     execute_swww_img
