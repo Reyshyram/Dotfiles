@@ -90,5 +90,5 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + S" "Toggle Special Workspace" "(togglespecialworkspace)" \
 "   + Shift + S" "Move Active Windows to Special Workspace" "(movetoworkspace special)" \
 "" "" "" \
-"   + H" "Choose a wallpaper" "(rofi)" \
-"   + Shift + H" "Choose a random wallpaper" "(rofi)" \
+"   + H" "Choose a wallpaper" "(yad)" \
+"   + Shift + H" "Choose a random wallpaper" "(script)" \
