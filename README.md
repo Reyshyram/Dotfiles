@@ -48,5 +48,5 @@ You can change your wallpaper using `Super + H`, or select a random one using `S
 You can modify your display settings using the nwg-displays app.
 
 # Preview
-(Out of date)
 ![Preview](preview.png)
+![Preview2](preview2.png)

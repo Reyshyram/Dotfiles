@@ -180,6 +180,14 @@ chmod +x ~/.config/waybar/scripts/checkupdates.sh
 echo "Applying pcmanfm-qt configuration..."
 cp -r ./config/pcmanfm-qt ~/.config/
 
+# Neofetch
+echo "Copying neofetch theme..."
+cp -r ./config/neofetch ~/.config/
+
+# Swappy
+echo "Copying swappy config..."
+cp -r ./config/swappy ~/.config/
+
 # Pywal setup
 pipx install pywal16
 pipx ensurepath
