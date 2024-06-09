@@ -17,7 +17,7 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland plymouth pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib nemo btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc shotwell tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha nemo-fileroller kvantum-qt5 gnome-disk-utility firefox
+sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib nemo btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc shotwell tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha nemo-fileroller kvantum-qt5 gnome-disk-utility firefox
 yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin g4music swaync hardcode-fixer-git rofi-lbonn-wayland nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin hyprlock swww hypridle hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr
 
 # SDDM Configuration
@@ -39,11 +39,13 @@ sudo sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=saved/; s/^#GRUB_SAVEDEFAULT=true/G
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Kitty configuration
+#TODO
 echo "Preparing kitty configuration..."
 mkdir -p ~/.config/kitty
 cp -r ./config/kitty/* ~/.config/kitty
 
 # Zsh configuration
+#TODO
 echo "Preparing zsh configuration..."
 chsh -s $(which zsh)
 sudo chsh -s $(which zsh)
@@ -60,6 +62,7 @@ cp ./config/autosuggestions.zsh ~/.oh-my-zsh/custom/autosuggestions.zsh
 fc-cache
 
 # Micro theme configuration
+#TODO
 echo "Preparing micro theme..."
 git clone https://github.com/catppuccin/micro.git
 mkdir -p ~/.config/micro/colorschemes
@@ -74,22 +77,23 @@ sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet 
 sudo sed -i '/^\[Daemon\]/a ShowDelay=0' /etc/plymouth/plymouthd.conf
 sudo sed -i '/^HOOKS=/ s/)$/ plymouth)/' /etc/mkinitcpio.conf
 sudo grub-mkconfig -o /boot/grub/grub.cfg
-git clone https://github.com/catppuccin/plymouth.git
-sudo cp -r ./plymouth/themes/* /usr/share/plymouth/themes/
-sudo rm -rf ./plymouth
-sudo plymouth-set-default-theme -R catppuccin-mocha
+sudo cp -r ./config/plymouth/black_hud /usr/share/plymouth/themes/
+sudo plymouth-set-default-theme -R black_hud
 
 # Btop theme
+#TODO
 echo "Preparing btop theme..."
 mkdir -p ~/.config/btop/themes/
 cp -r ./config/btop/* ~/.config/btop/
 
 # Swaync config
+#TODO
 echo "Applying swaync config..."
 mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
 
 # Copy Hyprland config
+#TODO
 echo "Copying Hyprland config..."
 mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
@@ -119,6 +123,7 @@ papirus-folders -C cat-mocha-lavender
 dconf load /org/nemo/ < ./config/nemo.dconf
 
 # Gtk theme
+#TODO
 echo "Applying Gtk theme..."
 mkdir -p ~/.config/gtk-4.0
 sudo ln -sf /usr/share/themes/catppuccin-mocha-lavender-standard+default/gtk-4.0/assets ~/.config/gtk-4.0/assets
@@ -130,11 +135,13 @@ cp -r ./config/xsettingsd ~/.config/
 cp ./config/.gtkrc-2.0 ~/.gtkrc-2.0
 
 # QT theme
+#TODO
 echo "Applying Qt theme..."
 cp -r ./config/qt* ~/.config/
 cp -r ./config/Kvantum ~/.config/
 
 # Rofi Config
+#TODO
 echo "Applying rofi theme..."
 cp -r ./config/rofi ~/.config/
 
@@ -143,6 +150,7 @@ echo "Applying nwg-drawer theme..."
 cp -r ./config/nwg-drawer ~/.config/
 
 # Logout menu
+#TODO
 echo "Applying wlogout config..."
 cp -r ./config/wlogout ~/.config/
 
@@ -173,6 +181,7 @@ echo "Enabling bluetooth..."
 systemctl enable bluetooth.service
 
 # Copying waybar config
+#TODO
 echo "Copying waybar configuration..."
 cp -r ./config/waybar ~/.config/
 chmod +x ~/.config/waybar/scripts/checkupdates.sh
