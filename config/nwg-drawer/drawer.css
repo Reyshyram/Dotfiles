@@ -1,13 +1,15 @@
+@import '../../.cache/wal/colors-waybar.css';
+
 window {
-    background-color: shade(#1e1e2e, 0.9);
+    background-color: @background;
     color: #eeeeee;
     border-radius: 10px;
-    border: 2px solid #b4befe;
+    border: 2px solid @foreground;
 }
 
 /* search entry */
 entry {
-    box-shadow: 0 0 6px 5px #2e3440;
+    box-shadow: 0 0 6px 5px @color1;
     background-color: rgba (0, 0, 0, 0.2);
     margin-top: 30px;
 }
@@ -25,7 +27,7 @@ button:hover {
 }
 
 button:focus {
-    background-color: #5e81ac;
+    background-color: @color5;
 }
 
 /* in case you wanted to give category buttons a different look */
@@ -40,6 +42,6 @@ button:focus {
 
 #files-box {
     padding: 5px;
-    border: 1px dotted gray;
+    border: none;
     border-radius: 15px
 }
