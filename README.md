@@ -5,7 +5,7 @@
 >The installation script is meant to be used on a minimal Arch installation with grub and systemd. It will replace any existing configuration. Please proceed with caution.
 
 First, update your system.
-```
+```>
 sudo pacman -Syu
 ```
 
@@ -38,14 +38,15 @@ Follow the instructions on your terminal. If there's a problem, feel free to ope
 
 ## Informations
 
-This rice relies heavily on the [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) color scheme.
+This rice relies heavily on pywal for the color scheme.
 You can show a list of keybinds using the `Super + /` (or the key to the left of Right Shift) shortcut.
 
 You can modify your keyboard language by editing the `~/.config/hypr/input.conf` file.
 
-Wallpapers are changed randomly every 15 minutes. If you don't want that, in the `~/.config/hypr/startup.conf` file, comment or delete the line `exec-once = ~/.config/hypr/scripts/wallpaper.sh` and use a program like Waypaper to set the one you want.
+You can change your wallpaper using `Super + H`, or select a random one using `Super + Shift + H`. To add new wallpapers, put them in `~/Pictures/Wallpapers`.
 
 You can modify your display settings using the nwg-displays app.
 
 # Preview
+(Out of date)
 ![Preview](preview.png)
