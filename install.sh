@@ -87,7 +87,6 @@ mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
 
 # Copy Hyprland config
-#TODO
 echo "Copying Hyprland config..."
 mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
@@ -103,6 +102,9 @@ chmod +x ~/.config/hypr/scripts/random-wallpaper.sh
 chmod +x ~/.config/hypr/scripts/clipboard.sh
 chmod +x ~/.config/hypr/scripts/emoji.sh
 chmod +x ~/.config/hypr/scripts/desktop-portal.sh
+
+mkdir -p ~/.config/wal/templates
+cp -r ./config/pywal/* ~/.config/wal/templates
 
 # Plugins
 hyprpm update
@@ -182,9 +184,6 @@ chmod +x ~/.config/waybar/scripts/checkupdates.sh
 # Pcmanfm-qt
 echo "Applying pcmanfm-qt configuration..."
 cp -r ./config/pcmanfm-qt ~/.config/
-
-
-#TODO Hyprlock colors
 
 # Pywal setup
 pipx install pywal16
