@@ -15,6 +15,7 @@ execute_swww_img() {
     pkill -f nwg-drawer
     nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 125 -mb 125 -ml 150 -mr 150 -c 6 -ovl &
     swaync-client -rs
+    killall -SIGUSR2 waybar
 }
 
 # Detect monitor resolution and scale
