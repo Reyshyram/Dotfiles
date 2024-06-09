@@ -139,7 +139,6 @@ echo "Applying rofi theme..."
 cp -r ./config/rofi ~/.config/
 
 # Nwg-drawer config
-#TODO
 echo "Applying nwg-drawer theme..."
 cp -r ./config/nwg-drawer ~/.config/
 
