@@ -117,7 +117,6 @@ papirus-folders -C cat-mocha-lavender
 dconf load /org/nemo/ < ./config/nemo.dconf
 
 # Gtk theme
-#TODO
 echo "Applying Gtk theme..."
 mkdir -p ~/.config/gtk-4.0
 mkdir -p ~/.config/gtk-3.0
