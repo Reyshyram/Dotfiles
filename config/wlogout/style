@@ -1,3 +1,5 @@
+@import '../../.cache/wal/colors-waybar.css';
+
 * {
     background-image: none;
     font-size: 24px;
@@ -9,7 +11,7 @@ window {
 
 button {
     color: white;
-    background-color: #11111b;
+    background-color: @background;
     outline-style: none;
     border: none;
     border-width: 0px;
@@ -23,12 +25,12 @@ button {
 }
 
 button:focus {
-    background-color: #313244;
+    background-color: shade(@color5, 0.5);
     background-size: 35%;
 }
 
 button:hover {
-    background-color: #6c7086;
+    background-color: @color5;
     background-size: 45%;
     border-radius: 10px;
     animation: gradient_f 20s ease-in infinite;

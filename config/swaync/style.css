@@ -6,7 +6,7 @@
 @define-color noti-close-bg @color0;
 @define-color noti-close-bg-hover @color5;
 @define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
-@define-color bg-selected @color0;
+@define-color bg-selected shade(@color5, 0.5);
 @define-color shade-lighter rgba(255, 255, 255, 0.1);
 
 .notification-row {

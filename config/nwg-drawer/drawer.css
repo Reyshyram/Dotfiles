@@ -9,7 +9,7 @@ window {
 
 /* search entry */
 entry {
-    box-shadow: 0 0 6px 5px @color1;
+    box-shadow: 0 0 6px 5px shade(@color5, 0.5);
     background-color: rgba (0, 0, 0, 0.2);
     margin-top: 30px;
 }
@@ -23,11 +23,13 @@ image {
 }
 
 button:hover {
-    background-color: rgba (255, 255, 255, 0.1)
+    background-color: rgba (255, 255, 255, 0.1);
+    border: none;
 }
 
 button:focus {
-    background-color: @color5;
+    background-color: shade(@color5, 0.75);
+    border: none;
 }
 
 /* in case you wanted to give category buttons a different look */
