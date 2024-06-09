@@ -32,7 +32,7 @@ tooltip {
     margin: 4px 2px;
     border-radius: 15px;
     color: @color5;
-    background-color: @crust;
+    background-color: @background;
     transition: all 0.3s ease-in-out;
 }
 
