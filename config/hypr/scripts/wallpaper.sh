@@ -12,6 +12,8 @@ execute_swww_img() {
     # Pywal
     wal -i $image_path -n
     gradience-cli apply -n "pywal" --gtk both
+    pkill -f nwg-drawer
+    nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 125 -mb 125 -ml 150 -mr 150 -c 6 -ovl &
 }
 
 # Detect monitor resolution and scale
