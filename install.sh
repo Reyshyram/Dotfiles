@@ -185,3 +185,6 @@ systemctl enable bluetooth.service
 echo "Copying waybar configuration..."
 cp -r ./config/waybar ~/.config/
 chmod +x ~/.config/waybar/scripts/checkupdates.sh
+
+
+#TODO: Replace shotwell by gwenview
