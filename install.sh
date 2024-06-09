@@ -17,8 +17,8 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib nemo btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc shotwell tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha nemo-fileroller kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle
-yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin g4music hardcode-fixer-git rofi-lbonn-wayland nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin swww hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr
+sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts neofetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib nemo btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq file-roller vlc shotwell tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha nemo-fileroller kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle python-pipx
+yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin g4music hardcode-fixer-git rofi-lbonn-wayland nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin swww hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr python-zombie-imp gradience adw-gtk-theme
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
@@ -39,13 +39,11 @@ sudo sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=saved/; s/^#GRUB_SAVEDEFAULT=true/G
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Kitty configuration
-#TODO
 echo "Preparing kitty configuration..."
 mkdir -p ~/.config/kitty
 cp -r ./config/kitty/* ~/.config/kitty
 
 # Zsh configuration
-#TODO
 echo "Preparing zsh configuration..."
 chsh -s $(which zsh)
 sudo chsh -s $(which zsh)
@@ -53,7 +51,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 mkdir -p ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/themes
-git clone https://github.com/catppuccin/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/themes/catppuccin
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 cp ./config/.zshrc ~/.zshrc
 cp ./config/.zprofile ~/.zprofile
@@ -62,7 +59,6 @@ cp ./config/autosuggestions.zsh ~/.oh-my-zsh/custom/autosuggestions.zsh
 fc-cache
 
 # Micro theme configuration
-#TODO
 echo "Preparing micro theme..."
 git clone https://github.com/catppuccin/micro.git
 mkdir -p ~/.config/micro/colorschemes
@@ -81,9 +77,7 @@ sudo cp -r ./config/plymouth/black_hud /usr/share/plymouth/themes/
 sudo plymouth-set-default-theme -R black_hud
 
 # Btop theme
-#TODO
 echo "Preparing btop theme..."
-mkdir -p ~/.config/btop/themes/
 cp -r ./config/btop/* ~/.config/btop/
 
 # Swaync config
@@ -126,16 +120,13 @@ dconf load /org/nemo/ < ./config/nemo.dconf
 #TODO
 echo "Applying Gtk theme..."
 mkdir -p ~/.config/gtk-4.0
-sudo ln -sf /usr/share/themes/catppuccin-mocha-lavender-standard+default/gtk-4.0/assets ~/.config/gtk-4.0/assets
-sudo ln -sf /usr/share/themes/catppuccin-mocha-lavender-standard+default/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
-sudo ln -sf /usr/share/themes/catppuccin-mocha-lavender-standard+default/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
+mkdir -p ~/.config/gtk-3.0
 cp -r ./config/gtk-* ~/.config/
 cp -r ./config/nwg-look ~/.config/
 cp -r ./config/xsettingsd ~/.config/
 cp ./config/.gtkrc-2.0 ~/.gtkrc-2.0
 
 # QT theme
-#TODO
 echo "Applying Qt theme..."
 cp -r ./config/qt* ~/.config/
 cp -r ./config/Kvantum ~/.config/
@@ -188,4 +179,17 @@ cp -r ./config/waybar ~/.config/
 chmod +x ~/.config/waybar/scripts/checkupdates.sh
 
 
-#TODO: Replace shotwell by gwenview
+#TODO: Replace shotwell by gwenview and file-roller by ark
+#TODO Hyprlock colors
+
+# Pywal setup
+pipx install pywal16
+pipx ensurepath
+
+mkdir -p ~/.config/wal/templates
+cp -r ./pywal16-libadwaita/templates ~/.config/wal/templates
+ 
+./pywal16-libadwaita/scripts/apply-theme.sh
+
+~/.local/bin/wal -i ~/Pictures/Wallpapers/celeste.png -n
+gradience-cli apply -n "pywal" --gtk both

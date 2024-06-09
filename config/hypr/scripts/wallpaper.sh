@@ -8,6 +8,10 @@ execute_swww_img() {
         swww img "$image_path" -o "$output_name" -t any --transition-fps 60
         cp "$image_path" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
     done < <(swww query)
+
+    # Pywal
+    wal -i $image_path -n
+    gradience-cli apply -n "pywal" --gtk both
 }
 
 # Detect monitor resolution and scale
