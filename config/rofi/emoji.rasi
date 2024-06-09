@@ -8,7 +8,7 @@ configuration {
     me-accept-entry:            "MousePrimary";
 }
 
-@theme "~/.config/rofi/catppuccin-mocha.rasi"
+@theme "~/.config/rofi/colors.rasi"
 
 
 // Main //
@@ -32,7 +32,6 @@ mainbox {
     orientation:                 vertical;
     children:                    [ "inputbar" , "listbox" ];
     background-color:            transparent;
-    background-image:            url("~/.config/swww/wall.blur", height);
 }
 
 

@@ -1,0 +1,11 @@
+@import "~/.cache/wal/colors-rofi-dark"
+
+* {
+    main-bg:            @background;
+    main-fg:            @foreground;
+    main-br:            @urgent-background;
+    select-bg:          @selected-urgent-background;
+    select-fg:          @background;
+    separatorcolor:     transparent;
+    border-color:       transparent;
+}

@@ -8,7 +8,7 @@ configuration {
     me-accept-entry:            "MousePrimary";
 }
 
-@theme "~/.config/rofi/catppuccin-mocha.rasi"
+@theme "~/.config/rofi/colors.rasi"
 
 
 // Main //
