@@ -176,6 +176,3 @@ systemctl enable bluetooth.service
 echo "Copying waybar configuration..."
 cp -r ./config/waybar ~/.config/
 chmod +x ~/.config/waybar/scripts/checkupdates.sh
-
-# For ntfs drives
-echo 'blacklist ntfs3' | sudo tee /etc/modprobe.d/disable-ntfs3.conf
