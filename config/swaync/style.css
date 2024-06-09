@@ -1,16 +1,13 @@
-@define-color noti-border-color #1e1e2e;
-@define-color noti-bg #1e1e2e;
-@define-color noti-bg-hover #9399b2;
-@define-color noti-bg-focus #6c7086;
-@define-color noti-close-bg #1e1e2e;
-@define-color noti-close-bg-hover #9399b2;
-@define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
-@define-color bg-selected #6c7086;
-@define-color shade-lighter rgba(255, 255, 255, 0.1);
+@import '../../.cache/wal/colors-waybar.css';
 
-.testing {
-    background-color: red;
-}
+@define-color noti-border-color @foreground;
+@define-color noti-bg @background;
+@define-color noti-bg-hover @color1;
+@define-color noti-close-bg @color0;
+@define-color noti-close-bg-hover @color5;
+@define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
+@define-color bg-selected @color0;
+@define-color shade-lighter rgba(255, 255, 255, 0.1);
 
 .notification-row {
     transition: all 200ms ease;

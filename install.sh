@@ -81,7 +81,6 @@ echo "Preparing btop theme..."
 cp -r ./config/btop/* ~/.config/btop/
 
 # Swaync config
-#TODO
 echo "Applying swaync config..."
 mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
