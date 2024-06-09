@@ -39,7 +39,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   =  " "SUPER KEY (Windows Key)" "(SUPER KEY)" \
 "" "" "" \
 "   + T" "Terminal" "(kitty)" \
-"   + E" "File Browser" "(nemo)" \
+"   + E" "File Browser" "(pcmanfm-qt)" \
 "   + F" "Internet Browser" "(firefox)" \
 "   + C" "Code Editor" "(vscode)" \
 "CTRL + SHIFT + ESCAPE" "System Monitor" "(btop)" \
