@@ -6,16 +6,15 @@
     "control-center-margin-bottom": 15,
     "control-center-margin-right": 15,
     "control-center-margin-left": 15,
-    "notification-icon-size": 32,
+    "notification-icon-size": 48,
     "notification-body-image-height": 100,
     "notification-body-image-width": 200,
-    "timeout": 1,
+    "timeout": 5,
     "timeout-low": 5,
-    "timeout-critical": 5,
-    "fit-to-screen": false,
-    "control-center-width": 370,
-    "control-center-height": 700,
-    "notification-window-width": 400,
+    "timeout-critical": 20,
+    "fit-to-screen": true,
+    "control-center-width": 350,
+    "notification-window-width": 350,
     "keyboard-shortcuts": true,
     "image-visibility": "when-available",
     "transition-time": 200,
@@ -23,27 +22,36 @@
     "hide-on-action": true,
     "script-fail-notify": true,
     "widgets": [
-        "mpris",
-        "dnd",
         "title",
-        "notifications"
+        "dnd",
+        "notifications",
+        "mpris",
+        "volume",
+        "backlight"
     ],
     "widget-config": {
         "title": {
-            "text": "Notifications",
+            "text": "󰂚   Notifications",
             "clear-all-button": true,
-            "button-text": "Clear"
+            "button-text": "󰎟"
         },
         "dnd": {
-            "text": "DND Mode"
+            "text": "Do Not Disturb"
         },
         "label": {
             "max-lines": 1,
-            "text": "Notifications"
+            "text": "Notification Center"
         },
         "mpris": {
             "image-size": 96,
-            "image-radius": 12
+            "image-radius": 10
+        },
+        "volume": {
+            "label": "󰕾 "
+        },
+        "backlight": {
+            "label": "󰃟 ",
+            "subsystem": "backlight"
         }
     }
 }
