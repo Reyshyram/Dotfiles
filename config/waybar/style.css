@@ -92,8 +92,8 @@ window#waybar.empty #window {
 
 #custom-updates {
     font-size: 14px;
-    color: @color10;
-    border: 2px solid @color10;
+    color: @color5;
+    border: 2px solid @color5;
 }
 
 #pulseaudio {
@@ -102,22 +102,22 @@ window#waybar.empty #window {
 
 #battery {
     color: @color5;
-    border: 2px solid @color15;
+    border: 2px solid @color5;
 }
 
 #battery.good {
-    color: @color8;
-    border: 2px solid @color10;
+    color: @color5;
+    border: 2px solid @color5;
 }
 
 #battery.warning {
     color: @color11;
-    border: 2px solid @color8;
+    border: 2px solid @color11;
 }
 
 #battery.critical {
     color: @color15;
-    border: 2px solid @color6;
+    border: 2px solid @color15;
 }
 
 #custom-wlogout {
