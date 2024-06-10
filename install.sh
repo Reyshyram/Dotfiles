@@ -197,5 +197,5 @@ cp -r ./pywal16-libadwaita/templates ~/.config/wal/templates
  
 ./pywal16-libadwaita/scripts/apply-theme.sh
 
-~/.local/bin/wal -i ~/Pictures/Wallpapers/celeste.png -n
+~/.local/bin/wal --cols16 -i ~/Pictures/Wallpapers/celeste.png -n
 gradience-cli apply -n "pywal" --gtk both
