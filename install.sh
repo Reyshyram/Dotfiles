@@ -188,6 +188,9 @@ cp -r ./config/neofetch ~/.config/
 echo "Copying swappy config..."
 cp -r ./config/swappy ~/.config/
 
+# Fix imagemagick convert policy for pywal
+sudo sed -i 's/\(<policy domain="path" rights="\)none\(" pattern="-"\/>\)/\1write\2/' /etc/ImageMagick-7/policy.xml
+
 # Pywal setup
 pipx install pywal16
 pipx ensurepath
