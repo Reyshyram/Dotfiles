@@ -25,9 +25,7 @@
         "title",
         "dnd",
         "notifications",
-        "mpris",
-        "volume",
-        "backlight"
+        "mpris"
     ],
     "widget-config": {
         "title": {
@@ -45,13 +43,6 @@
         "mpris": {
             "image-size": 96,
             "image-radius": 10
-        },
-        "volume": {
-            "label": "󰕾 "
-        },
-        "backlight": {
-            "label": "󰃟 ",
-            "subsystem": "backlight"
         }
     }
 }
