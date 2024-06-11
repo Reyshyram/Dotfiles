@@ -176,7 +176,6 @@ echo "Enabling bluetooth..."
 systemctl enable bluetooth.service
 
 # Copying waybar config
-# TODO
 echo "Copying waybar configuration..."
 cp -r ./config/waybar ~/.config/
 chmod +x ~/.config/waybar/scripts/checkupdates.sh
