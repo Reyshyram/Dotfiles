@@ -13,8 +13,8 @@ window#waybar {
 
 tooltip {
     background-color: @background;
-    color: @color4;
-    border: 1px solid @color12;
+    color: @color1;
+    border: 1px solid @color9;
 }
 
 /* Workspaces */
@@ -24,29 +24,29 @@ tooltip {
     margin-right: 0px;
     border-radius: 10px;
     font-size: 16px;
-    color: @color12;
+    color: @color9;
 }
 
 #workspaces button {
     padding: 0px 4px;
     margin: 4px 2px;
     border-radius: 15px;
-    color: @color12;
+    color: @color9;
     background-color: @background;
     transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.active {
-    color: shade(@color12, 1.2);
-    background: shade(@color4, 0.5);
+    color: shade(@color9, 1.2);
+    background: shade(@color1, 0.5);
     border-radius: 15px;
     min-width: 40px;
     transition: all 0.3s ease-in-out;
 }
 
 #workspaces button:hover {
-    color: @color12;
-    background: shade(@color4, 0.35);
+    color: @color9;
+    background: shade(@color1, 0.35);
     border-radius: 15px;
 }
 
@@ -64,9 +64,9 @@ tooltip {
 #custom-wlogout {
     padding: 0 10px;
     margin-right: 8px;
-    color: @color12;
+    color: @color9;
     background-color: @background;
-    border: 2px solid @color12;
+    border: 2px solid @color9;
 }
 
 /* Remove margin if first or last */
@@ -92,8 +92,8 @@ window#waybar.empty #window {
 
 #custom-updates {
     font-size: 14px;
-    color: @color12;
-    border: 2px solid @color12;
+    color: @color9;
+    border: 2px solid @color9;
 }
 
 #pulseaudio {
@@ -101,23 +101,23 @@ window#waybar.empty #window {
 }
 
 #battery {
-    color: @color12;
-    border: 2px solid @color12;
+    color: @color9;
+    border: 2px solid @color9;
 }
 
 #battery.good {
-    color: @color12;
-    border: 2px solid @color12;
+    color: @color9;
+    border: 2px solid @color9;
 }
 
 #battery.warning {
-    color: @color11;
-    border: 2px solid @color11;
+    color: @color13;
+    border: 2px solid @color13;
 }
 
 #battery.critical {
-    color: @color10;
-    border: 2px solid @color10;
+    color: @color12;
+    border: 2px solid @color12;
 }
 
 #custom-wlogout {
