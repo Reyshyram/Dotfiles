@@ -25,12 +25,12 @@ button {
 }
 
 button:focus {
-    background-color: shade(@color5, 0.5);
+    background-color: shade(@color4, 0.75);
     background-size: 35%;
 }
 
 button:hover {
-    background-color: @color5;
+    background-color: shade(@color12, 0.75);
     background-size: 45%;
     border-radius: 10px;
     animation: gradient_f 20s ease-in infinite;
