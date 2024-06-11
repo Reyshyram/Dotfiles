@@ -2,7 +2,7 @@
 configuration {
     modi:                        "drun";
     show-icons:                  false;
-    font:                        "FiraCode Mono Nerd Font 9";
+    font:                        "FiraCode Mono Nerd Font 11";
     hover-select:               true;
     me-select-entry:            "MouseSecondary";
     me-accept-entry:            "MousePrimary";
