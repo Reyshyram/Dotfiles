@@ -87,7 +87,6 @@ mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
 
 # Copy Hyprland config
-# TODO
 echo "Copying Hyprland config..."
 mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
