@@ -3,7 +3,7 @@
 .control-center .notification-row:focus,
 .control-center .notification-row:hover {
     opacity: 1;
-    background: alpha(@color7, 0.25);
+    background: alpha(@color12, 0.25);
     border-radius: 0px;
     margin: 0px;
 }
@@ -12,7 +12,7 @@
     border-radius: 10px;
     padding: 0;
     border: 2px solid @color12;
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     /* box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);*/
 }
 
@@ -22,8 +22,8 @@
 }
 
 .close-button {
-    background: shade(@color5, 0.25);
-    color: @color7;
+    background: shade(@color4, 0.25);
+    color: @color12;
     text-shadow: none;
     padding: 0;
     border-radius: 100%;
@@ -37,7 +37,7 @@
 
 .close-button:hover {
     box-shadow: none;
-    background: shade(@color5, 0.5);
+    background: shade(@color12, 0.5);
     transition: all .15s ease-in-out;
     border: none
 }
@@ -47,9 +47,9 @@
     padding: 4px;
     margin: 0;
     box-shadow: none;
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     border: none;
-    color: @color15;
+    color: @color12;
     transition: all .15s ease-in-out;
     font-size: 10.5pt;
 }
@@ -57,7 +57,7 @@
 .notification-default-action:hover,
 .notification-action:hover {
     -gtk-icon-effect: none;
-    background: shade(@color5, 0.5);
+    background: shade(@color12, 0.5);
     /* text-shadow: 0 0 3px @color15; */
 }
 
@@ -89,36 +89,42 @@
 .notification-group-headers {
     font-weight: bold;
     font-size: 10.5pt;
-    color: @foreground;
+    color: @color12;
+}
+
+.notification-group-header {
+    color: @color12;
 }
 
 .notification-group-icon {
-    color: @color7;
+    color: @color12;
     margin-right: 8px;
 }
 
 .notification-group-collapse-button {
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     border: 2px solid @color12;
+    color: @color12;
     min-width: 24px;
     min-height: 24px;
 }
 
 .notification-group-collapse-button:hover {
-    background: shade(@color5, 0.5);
-    color: @color7;
+    background: shade(@color12, 0.5);
+    color: @color12;
 }
 
 .notification-group-close-all-button {
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     border: 2px solid @color12;
+    color: @color12;
     min-width: 24px;
     min-height: 24px;
 }
 
 .notification-group-close-all-button:hover {
-    background: shade(@color5, 0.5);
-    color: @color7
+    background: shade(@color12, 0.5);
+    color: @color12
 }
 
 .inline-reply {
@@ -126,29 +132,29 @@
 }
 
 .inline-reply-entry {
-    background: shade(@color5, 0.25);
-    color: @color15;
-    caret-color: @color15;
-    border: 1px solid @color12;
+    background: shade(@color4, 0.25);
+    color: @color12;
+    caret-color: @color12;
+    border: 2px solid @color12;
     border-radius: 10px
 }
 
 .inline-reply-button {
     margin-left: 4px;
-    background: shade(@color5, 0.25);
-    border: 1px solid @color12;
+    background: shade(@color4, 0.25);
+    border: 2px solid @color12;
     border-radius: 10px;
-    color: @color15
+    color: @color12
 }
 
 .inline-reply-button:disabled {
     background: initial;
-    color: shade(@color15, 0.5);
+    color: shade(@color12, 0.5);
     border: 1px solid transparent
 }
 
 .inline-reply-button:hover {
-    background: shade(@color5, 0.5);
+    background: shade(@color12, 0.5);
 }
 
 .body-image {
@@ -162,7 +168,7 @@
     font-weight: bold;
     font-style: italic;
     background: transparent;
-    color: @color7;
+    color: @color12;
     margin-left: 10px;
     /* text-shadow: 0 0 3px @color7; */
 }
@@ -172,7 +178,7 @@
     font-weight: bold;
     font-style: italic;
     background: transparent;
-    color: @color5;
+    color: @color12;
     text-shadow: none;
     margin-right: 10px
 }
@@ -181,7 +187,7 @@
     font-size: 10.5pt;
     font-weight: normal;
     background: transparent;
-    color: @color15;
+    color: @color12;
     text-shadow: none;
     font-weight: bold;
     margin-left: 10px;
@@ -216,7 +222,7 @@
 }
 
 .widget-title {
-    color: @color7;
+    color: @color12;
     margin: 20px 20px 5px 20px;
     font-size: 10.5pt;
     font-weight: bold;
@@ -227,21 +233,21 @@
 .widget-title>button {
     font-size: initial;
     font-weight: bold;
-    color: @color5;
+    color: @color12;
     text-shadow: none;
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     border: 2px solid @color12;
     box-shadow: none;
     border-radius: 10px;
 }
 
 .widget-title>button:hover {
-    background: shade(@color5, 0.5);
+    background: shade(@color12, 0.5);
     /* text-shadow: 0 0 3px @color5; */
 }
 
 .widget-dnd {
-    color: @color15;
+    color: @color12;
     margin: 5px 20px 5px 20px;
     font-size: 10.5pt;
     font-weight: bold;
@@ -250,7 +256,7 @@
 .widget-dnd>switch {
     font-size: initial;
     border-radius: 999px;
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     border: 2px solid @color12;
     box-shadow: none;
     padding: 2px;
@@ -258,11 +264,11 @@
 }
 
 .widget-dnd>switch:checked {
-    background: @color5
+    background: @color12
 }
 
 .widget-dnd>switch slider {
-    background: shade(@color5, 0.5);
+    background: shade(@color12, 0.5);
     border-radius: 999px
 }
 
@@ -272,12 +278,12 @@
 
 .widget-label>label {
     font-size: 1.5rem;
-    color: @color15;
+    color: @color12;
 }
 
 .widget-mpris {
-    color: @color15;
-    background: shade(@color5, 0.25);
+    color: @color12;
+    background: shade(@color4, 0.25);
     padding: 10px;
     margin: 10px;
     border: 2px solid @color12;
@@ -290,6 +296,15 @@
     margin: 0;
     border-radius: 12px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    color: @color12;
+}
+
+.widget-mpris-player button {
+    color: @color12;
+}
+
+.widget-mpris-player button:hover {
+    color: shade(@color12, 1.2);
 }
 
 .widget-mpris-title {
@@ -307,7 +322,7 @@
     margin: 20px 10px 10px;
     border: 2px solid @color12;
     border-radius: 10px;
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);*/
 }
 
@@ -315,12 +330,12 @@
     margin: 3px;
     background: transparent;
     border-radius: 10px;
-    color: @color15
+    color: @color12
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-    /* background: shade(@color5, 0.5); */
-    color: @color5;
+    /* background: shade(@color12, 0.5); */
+    color: @color4;
     /* text-shadow: 0 0 3px @foreground; */
 }
 
@@ -335,37 +350,37 @@
 }
 
 .widget-volume {
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     padding: 8px;
     padding-left: 16px;
     margin: 10px;
     border: 2px solid @color12;
     border-radius: 8px;
     font-size: x-large;
-    color: @color5;
+    color: @color12;
 }
 
 .widget-volume>box>button {
-    background: @color7;
+    background: @color12;
     border: 2px solid @color12;
 }
 
 .per-app-volume {
-    background-color: shade(@color5, 0.25);
+    background-color: shade(@color4, 0.25);
     padding: 4px 8px 8px;
     margin: 0 8px 8px;
     border-radius: 10px
 }
 
 .widget-backlight {
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     padding: 8px;
     padding-left: 16px;
     margin: 10px;
     border: 2px solid @color12;
     border-radius: 8px;
     font-size: x-large;
-    color: @color5;
+    color: @color4;
 }
 
 .widget-inhibitors {
@@ -375,14 +390,14 @@
 
 .widget-inhibitors>button {
     font-size: initial;
-    color: @color15;
+    color: @color12;
     text-shadow: none;
-    background: shade(@color5, 0.25);
+    background: shade(@color4, 0.25);
     border: 2px solid @color12;
     box-shadow: none;
     border-radius: 10px
 }
 
 .widget-inhibitors>button:hover {
-    background: shade(@color5, 0.5)
+    background: shade(@color4, 0.5)
 }
