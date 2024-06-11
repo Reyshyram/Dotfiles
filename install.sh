@@ -81,11 +81,13 @@ echo "Preparing btop theme..."
 cp -r ./config/btop/* ~/.config/btop/
 
 # Swaync config
+# TODO
 echo "Applying swaync config..."
 mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
 
 # Copy Hyprland config
+# TODO
 echo "Copying Hyprland config..."
 mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
@@ -138,10 +140,12 @@ echo "Applying rofi theme..."
 cp -r ./config/rofi ~/.config/
 
 # Nwg-drawer config
+# TODO
 echo "Applying nwg-drawer theme..."
 cp -r ./config/nwg-drawer ~/.config/
 
 # Logout menu
+# TODO
 echo "Applying wlogout config..."
 cp -r ./config/wlogout ~/.config/
 
@@ -172,6 +176,7 @@ echo "Enabling bluetooth..."
 systemctl enable bluetooth.service
 
 # Copying waybar config
+# TODO
 echo "Copying waybar configuration..."
 cp -r ./config/waybar ~/.config/
 chmod +x ~/.config/waybar/scripts/checkupdates.sh
