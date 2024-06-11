@@ -81,7 +81,7 @@ element {
     border-radius:               10px;
     cursor:                      pointer;
     background-color:            transparent;
-    text-color:                  @main-fg;
+    text-color:                  @text-fg;
 }
 @media(max-aspect-ratio: 1.8) {
     element {
