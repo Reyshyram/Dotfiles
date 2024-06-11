@@ -26,8 +26,8 @@
     border-color: @background;
     spacing: 2;
 
-    color12: {color12};
-    color4: {color4};
+    color9: {color9};
+    color1: {color1};
     color0: {color0};
     color15: {color15};
 }}

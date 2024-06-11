@@ -2,9 +2,9 @@
 
 * {
     main-bg:            @color0;
-    main-fg:            @color12;
-    main-br:            @color12;
-    select-bg:          @color4;
+    main-fg:            @color9;
+    main-br:            @color9;
+    select-bg:          @color1;
     select-fg:          @color0;
     text-fg:            @color15;
     separatorcolor:     transparent;

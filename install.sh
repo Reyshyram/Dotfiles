@@ -134,7 +134,6 @@ cp -r ./config/qt* ~/.config/
 cp -r ./config/Kvantum ~/.config/
 
 # Rofi Config
-# TODO
 echo "Applying rofi theme..."
 cp -r ./config/rofi ~/.config/
 
