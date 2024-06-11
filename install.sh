@@ -144,7 +144,6 @@ echo "Applying nwg-drawer theme..."
 cp -r ./config/nwg-drawer ~/.config/
 
 # Logout menu
-# TODO
 echo "Applying wlogout config..."
 cp -r ./config/wlogout ~/.config/
 
