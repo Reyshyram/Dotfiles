@@ -201,9 +201,9 @@ progressbar {
 /* Music player */
 .widget-mpris {
   background: @background-alt;
-  border-radius: 16px;
+  border-radius: 10px;
   color: @text;
-  margin: 20px 6px;
+  margin: 10px 6px;
 }
 
 /* NOTE: Background need *opacity 1* otherwise will turn into the album art blurred  */
