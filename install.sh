@@ -106,7 +106,9 @@ mkdir -p ~/.config/wal/templates
 cp -r ./config/pywal/* ~/.config/wal/templates
 
 # Plugins
-# None working for 0.41
+hyprpm update
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprexpo
 
 # Applications Associations
 xdg-settings set default-web-browser firefox.desktop
