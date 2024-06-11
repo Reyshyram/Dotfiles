@@ -4,12 +4,12 @@ window {
     background-color: @background;
     color: #eeeeee;
     border-radius: 10px;
-    border: 2px solid @color12;
+    border: 2px solid @color9;
 }
 
 /* search entry */
 entry {
-    box-shadow: 0 0 6px 5px shade(@color12, 0.5);
+    box-shadow: 0 0 6px 5px shade(@color9, 0.5);
     background-color: rgba (0, 0, 0, 0.2);
     margin-top: 30px;
 }
@@ -23,12 +23,12 @@ image {
 }
 
 button:hover {
-    background-color: alpha(@color12, 0.1);
+    background-color: alpha(@color9, 0.1);
     border: none;
 }
 
 button:focus {
-    background-color: shade(@color4, 0.75);
+    background-color: shade(@color1, 0.75);
     border: none;
 }
 
