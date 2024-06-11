@@ -16,7 +16,6 @@ execute_swww_img() {
     nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 125 -mb 125 -ml 150 -mr 150 -c 6 -ovl &
     swaync-client -rs
     killall -SIGUSR2 waybar
-    pywalfox update
 }
 
 # Detect monitor resolution and scale
