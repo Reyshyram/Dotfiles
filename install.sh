@@ -193,7 +193,7 @@ pipx install pywal16
 pipx ensurepath
 
 mkdir -p ~/.config/wal/templates
-cp -r ./pywal16-libadwaita/templates ~/.config/wal/templates
+cp -r ./pywal16-libadwaita/templates/* ~/.config/wal/templates
  
 ./pywal16-libadwaita/scripts/apply-theme.sh
 
