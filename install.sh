@@ -107,8 +107,8 @@ cp -r ./config/pywal/* ~/.config/wal/templates
 
 # Plugins
 hyprpm update
-hyprpm add https://github.com/hyprwm/hyprland-plugins
-hyprpm enable hyprexpo
+hyprpm add https://github.com/KZDKM/Hyprspace
+hyprpm enable Hyprspace
 
 # Applications Associations
 xdg-settings set default-web-browser firefox.desktop
