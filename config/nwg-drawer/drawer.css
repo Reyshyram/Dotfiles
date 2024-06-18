@@ -1,7 +1,7 @@
 @import '../../.cache/wal/colors-waybar.css';
 
 window {
-    background-color: @background;
+    background-color: alpha(@background, 0.85);
     color: #eeeeee;
     border-radius: 10px;
     border: 2px solid @color9;
