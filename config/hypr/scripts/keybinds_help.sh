@@ -58,8 +58,8 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "Ctrl + Print Screen" "Select the area of the screenshot, frozen screen" "(slurp | grimblast | swappy)" \
 "" "" "" \
 "   + Q" "Close Active Window" "(killactive)" \
-"Alt + Enter" "Kind of maximize a floating windows" "(resizeactive and center)" \
-"   + Enter" "Toggle Fullscreen" "(fullscreen)" \
+"   + Return" "Kind of maximize a floating windows" "(resizeactive and center)" \
+"   + Alt +  Return" "Toggle Fullscreen" "(fullscreen)" \
 "F11" "Toggle Fullscreen" "(fullscreen)" \
 "   + Shift + F" "Pin a Window" "(pin)" \
 "   + G" "Toggle group mode" "(togglegroup)" \
