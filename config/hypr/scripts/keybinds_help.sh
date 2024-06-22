@@ -92,5 +92,10 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + S" "Toggle Special Workspace" "(togglespecialworkspace)" \
 "   + Shift + S" "Move Active Windows to Special Workspace" "(movetoworkspace special)" \
 "" "" "" \
+"" "Note: You can use this keybind up to four times by using" "" \
+"" "ALT, CTRL or SHIFT in the key combination." "" \
+"" "Each key combination can only minimize one window" "" \
+"   + M" "Minimize window, reuse to unminimize" "(togglespecialworkspace)" \
+"" "" "" \
 "   + H" "Choose a wallpaper" "(yad)" \
 "   + Shift + H" "Choose a random wallpaper" "(script)" \
