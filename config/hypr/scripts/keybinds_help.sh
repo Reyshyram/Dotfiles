@@ -68,6 +68,8 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + W" "Toggle Floating Mode" "(togglefloating)" \
 "   + Shift + W" "Toggle Floating Mode For All Windows" "(allfloat)" \
 "" "" "" \
+"   + J" "Toggle between blurred and 100% opacity" "(toggleopaque)" \
+"" "" "" \
 "Alt + Tab" "Cycle to Next Window" "(cyclenext)" \
 "   + Left/Right/Up/Down" "Move Focus in Selected direction" "(movefocus)" \
 "" "" "" \
