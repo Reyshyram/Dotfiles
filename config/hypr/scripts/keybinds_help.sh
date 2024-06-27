@@ -73,7 +73,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "Alt + Tab" "Cycle to Next Window" "(cyclenext)" \
 "   + Left/Right/Up/Down" "Move Focus in Selected direction" "(movefocus)" \
 "" "" "" \
-"   + Tab" "Open overview" "(hyprexpo)" \
+"   + Tab" "Open overview" "(hyprspace)" \
 "" "" "" \
 "   + Left Mouse Click" "Move Selected Window" "(movewindow)" \
 "   + Ctrl Left/Right/Up/Down" "Move Active Window" "(movewindow)" \

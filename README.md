@@ -31,6 +31,8 @@ chmod +x ./install.sh && ./install.sh
 
 Follow the instructions on your terminal. If there's a problem, feel free to open an issue.
 
+After rebooting, please select a wallpaper using `Super + H`. Then, open Gradience and select the pywal preset. After doing so, reselect a wallpaper and log out. After login in again, everything should work ok.
+
 >[!IMPORTANT]
 >If you are using a Nvidia GPU, please follow the instructions on the [Hyprland wiki](https://wiki.hyprland.org/Nvidia/) before rebooting.
 
