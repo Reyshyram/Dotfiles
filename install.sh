@@ -194,7 +194,9 @@ pipx ensurepath
 
 mkdir -p ~/.config/wal/templates
 cp -r ./pywal16-libadwaita/templates/* ~/.config/wal/templates
- 
+
+mkdir -p ~/.config/presets/user
+
 ./pywal16-libadwaita/scripts/apply-theme.sh
 
 ~/.local/bin/wal --cols16 -i ~/Pictures/Wallpapers/celeste.png -n
