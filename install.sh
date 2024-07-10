@@ -17,7 +17,7 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts fastfetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man libreoffice-fresh evince gnome-clocks rofi-wayland p7zip unrar swww imagemagick gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
+sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts fastfetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man libreoffice-fresh evince gnome-clocks rofi-wayland p7zip unrar swww imagemagick gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly pkgconf
 yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin g4music hardcode-fixer-git nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr python-zombie-imp gradience adw-gtk-theme
 
 # SDDM Configuration
@@ -107,8 +107,8 @@ cp -r ./config/pywal/* ~/.config/wal/templates
 
 # Plugins
 hyprpm update
-hyprpm add https://github.com/DreamMaoMao/hycov
-hyprpm enable hycov
+hyprpm add https://github.com/KZDKM/Hyprspace
+hyprpm enable Hyprspace
 
 # Applications Associations
 xdg-settings set default-web-browser firefox.desktop
