@@ -15,24 +15,90 @@ window#waybar {
     background-color: transparent;
 }
 
+/* Default for all modules */
+#clock,
+#custom-notification,
+#custom-updates,
+#tray,
+#window,
+#workspaces,
+#mpris,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-wlogout {
+    min-height: 0;
+    min-width: 0;
+    padding: 4px 12px;
+    margin-right: 6px;
+    color: @color9;
+    background-color: @background;
+}
+
+/* Remove margin if first or last */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+/* Don't show window's name if there's not one */
+window#waybar.empty #window {
+    background-color: transparent;
+    border: none;
+}
+
+/* Customize each module */
+#custom-notification {
+    font-size: 20px;
+}
+
+#custom-updates {
+    font-size: 14px;
+}
+
+#pulseaudio {
+    font-family: "MesloLGS Nerd Font";
+    padding-right: 14px;
+}
+
+#battery.warning {
+    color: @color13;
+}
+
+#battery.critical {
+    color: @color12;
+}
+
+#custom-wlogout {
+    font-size: 16px;
+    margin-right: 0px;
+}
+
+#tray menu {
+    border-radius: 10px;
+    padding: 8px 6px;
+}
+
 tooltip {
     min-height: 0;
     min-width: 0;
     background-color: @background;
-    color: @color1;
-    border: 1px solid @color9;
-    border-radius: 25px;
+    border-radius: 20px;
+}
+
+tooltip label {
+	color: @color9;
+    padding: 0px;
 }
 
 /* Workspaces */
 #workspaces {
-    min-height: 0;
-    min-width: 0;
-    background: @background;
-    margin-left: 0px;
-    margin-right: 0px;
     font-size: 16px;
-    color: @color9;
+    padding-right: 8px;
+    padding-left: 8px;
 }
 
 #workspaces button {
@@ -58,90 +124,4 @@ tooltip {
     color: @color9;
     background: shade(@color1, 0.35);
     border-radius: 15px;
-}
-
-/* Default for all modules */
-#clock,
-#custom-notification,
-#custom-updates,
-#tray,
-#window,
-#workspaces,
-#mpris,
-#pulseaudio,
-#backlight,
-#battery,
-#custom-wlogout {
-    min-height: 0;
-    min-width: 0;
-    padding: 2px 10px;
-    margin-right: 4px;
-    color: @color9;
-    background-color: @background;
-    border: 2px solid @color9;
-}
-
-/* Remove margin if first or last */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-/* Don't show window's name if there's not one */
-window#waybar.empty #window {
-    background-color: transparent;
-    border: none;
-}
-
-/* Customize each module */
-#custom-notification {
-    font-size: 20px;
-}
-
-#custom-updates {
-    font-size: 14px;
-    color: @color9;
-    border: 2px solid @color9;
-}
-
-#pulseaudio {
-    font-family: "MesloLGS Nerd Font";
-    padding-right: 12px;
-}
-
-#battery {
-    color: @color9;
-    border: 2px solid @color9;
-}
-
-#battery.good {
-    color: @color9;
-    border: 2px solid @color9;
-}
-
-#battery.warning {
-    color: @color13;
-    border: 2px solid @color13;
-}
-
-#battery.critical {
-    color: @color12;
-    border: 2px solid @color12;
-}
-
-#custom-wlogout {
-    font-size: 16px;
-    margin-right: 0px;
-}
-
-#tray {
-    padding-right: 8px;
-}
-
-#tray menu {
-    border-radius: 10px;
-    padding: 8px 6px;
 }
