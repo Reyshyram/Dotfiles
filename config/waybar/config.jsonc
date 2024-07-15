@@ -1,10 +1,9 @@
 {
     "layer": "top", // Waybar at top layer
-    "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 0, // Gaps between modules (4px)
-    "margin-top": 16,
-    "margin-right": 16,
-    "margin-left": 16,
+    "margin-top": 8,
+    "margin-right": 8,
+    "margin-left": 8,
     "margin-bottom": 0,
     "fixed-center": true,
     "modules-left": [
@@ -122,13 +121,13 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "notification": "",
             "none": "",
-            "dnd-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "dnd-notification": "",
             "dnd-none": "",
-            "inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "inhibited-notification": "",
             "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "dnd-inhibited-notification": "",
             "dnd-inhibited-none": ""
         },
         "return-type": "json",

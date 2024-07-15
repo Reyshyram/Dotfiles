@@ -2,46 +2,56 @@
     font-family: "MesloLGS NF", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
     border: none;
-    border-radius: 10px;
+    border-radius: 999px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 @import "../../.cache/wal/colors-waybar.css";
 
 window#waybar {
+    min-height: 0;
+    min-width: 0;
     background-color: transparent;
 }
 
 tooltip {
+    min-height: 0;
+    min-width: 0;
     background-color: @background;
     color: @color1;
     border: 1px solid @color9;
+    border-radius: 25px;
 }
 
 /* Workspaces */
 #workspaces {
+    min-height: 0;
+    min-width: 0;
     background: @background;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 10px;
     font-size: 16px;
     color: @color9;
 }
 
 #workspaces button {
-    padding: 0px 4px;
-    margin: 4px 2px;
+    min-height: 0;
+    min-width: 0;
+    padding: 3px 8px;
+    margin: 1px 2px;
     border-radius: 15px;
     color: @color9;
     background-color: @background;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 #workspaces button.active {
     color: shade(@color9, 1.2);
     background: shade(@color1, 0.5);
     border-radius: 15px;
-    min-width: 40px;
-    transition: all 0.3s ease-in-out;
+    min-width: 30px;
+    transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
@@ -62,19 +72,21 @@ tooltip {
 #backlight,
 #battery,
 #custom-wlogout {
-    padding: 0 10px;
-    margin-right: 8px;
+    min-height: 0;
+    min-width: 0;
+    padding: 2px 10px;
+    margin-right: 4px;
     color: @color9;
     background-color: @background;
     border: 2px solid @color9;
 }
 
 /* Remove margin if first or last */
-.modules-left>widget:first-child>#workspaces {
+.modules-left > widget:first-child > #workspaces {
     margin-left: 0;
 }
 
-.modules-right>widget:last-child>#workspaces {
+.modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
 
@@ -87,7 +99,6 @@ window#waybar.empty #window {
 /* Customize each module */
 #custom-notification {
     font-size: 20px;
-    padding: 0 12px;
 }
 
 #custom-updates {
@@ -98,6 +109,7 @@ window#waybar.empty #window {
 
 #pulseaudio {
     font-family: "MesloLGS Nerd Font";
+    padding-right: 12px;
 }
 
 #battery {
@@ -123,5 +135,13 @@ window#waybar.empty #window {
 #custom-wlogout {
     font-size: 16px;
     margin-right: 0px;
-    padding: 0 14px;
+}
+
+#tray {
+    padding-right: 8px;
+}
+
+#tray menu {
+    border-radius: 10px;
+    padding: 8px 6px;
 }
