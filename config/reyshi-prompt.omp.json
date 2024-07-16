@@ -12,13 +12,23 @@
             "newline": true,
             "segments": [
                 {
+                    "type": "command",
+                    "alias": "IsRoot",
+                    "style": "plain",
+                    "background": "transparent",
+                    "foreground": "transparent",
+                    "properties": {
+                        "command": "if [ ! -w \"$PWD\" ]; then echo 'locked'; else echo 'unlocked'; fi"
+                    }
+                },
+                {
                     "type": "path",
                     "style": "diamond",
                     "leading_diamond": "\ue0b6",
                     "trailing_diamond": "\ue0b4",
                     "foreground": "lightWhite",
                     "background": "blue",
-                    "template": " {{ .Path }} ",
+                    "template": " {{ if eq (.Segments.IsRoot.Output | trim) \"locked\" }}\uf023{{ else }}\ue5ff{{ end }} <b>{{ .Path }}</b> ",
                     "properties": {
                         "style": "full"
                     }
@@ -50,7 +60,7 @@
                     "trailing_diamond": "\ue0b4",
                     "foreground": "lightWhite",
                     "background": "yellow",
-                    "template": " {{ .FormattedMs }} ",
+                    "template": " 󰔚 {{ .FormattedMs }} ",
                     "properties": {
                         "threshold": 2500,
                         "style": "round"
