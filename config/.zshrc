@@ -67,6 +67,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
 # Command correction
 setopt correct_all
 
+# Try to cd if command doesn't exist
+setopt autocd
+
 # Aliases
 alias ls='ls --color'
 alias c='clear'
