@@ -60,7 +60,7 @@
                     "trailing_diamond": "\ue0b4",
                     "foreground": "lightWhite",
                     "background": "yellow",
-                    "template": " 󰔚 {{ .FormattedMs }} ",
+                    "template": " {{ .FormattedMs }} ",
                     "properties": {
                         "threshold": 2500,
                         "style": "round"
