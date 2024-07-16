@@ -1,0 +1,92 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "version": 2,
+    "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+    "final_space": true,
+    "shell_integration": true,
+    "enable_cursor_positioning": true,
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "type": "path",
+                    "style": "diamond",
+                    "leading_diamond": "\ue0b6",
+                    "trailing_diamond": "\ue0b4",
+                    "foreground": "lightWhite",
+                    "background": "blue",
+                    "template": " {{ .Path }} ",
+                    "properties": {
+                        "style": "full"
+                    }
+                },
+                {
+                    "type": "git",
+                    "style": "diamond",
+                    "leading_diamond": "",
+                    "trailing_diamond": "\ue0b4",
+                    "foreground": "lightWhite",
+                    "background": "magenta",
+                    "template": "  {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>",
+                    "properties": {
+                        "branch_icon": "",
+                        "commit_icon": "@",
+                        "fetch_status": true
+                    }
+                }
+            ]
+        },
+        {
+            "type": "rprompt",
+            "overflow": "hidden",
+            "segments": [
+                {
+                    "type": "executiontime",
+                    "style": "diamond",
+                    "leading_diamond": "\ue0b6",
+                    "trailing_diamond": "\ue0b4",
+                    "foreground": "lightWhite",
+                    "background": "yellow",
+                    "template": " {{ .FormattedMs }} ",
+                    "properties": {
+                        "threshold": 2500,
+                        "style": "round"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "type": "text",
+                    "style": "plain",
+                    "foreground_templates": [
+                        "{{if gt .Code 0}}red{{end}}",
+                        "{{if eq .Code 0}}green{{end}}"
+                    ],
+                    "background": "transparent",
+                    "template": "❯"
+                }
+            ]
+        }
+    ],
+    "transient_prompt": {
+        "foreground_templates": [
+            "{{if gt .Code 0}}red{{end}}",
+            "{{if eq .Code 0}}green{{end}}"
+        ],
+        "background": "transparent",
+        "template": "❯ "
+    },
+    "secondary_prompt": {
+        "foreground": "green",
+        "background": "transparent",
+        "template": "❯❯ "
+    }
+}

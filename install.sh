@@ -17,7 +17,7 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts fastfetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man libreoffice-fresh evince gnome-clocks rofi-wayland p7zip unrar swww imagemagick gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly pkgconf pinta vim fzf reflector
+sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts fastfetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man libreoffice-fresh evince gnome-clocks rofi-wayland p7zip unrar swww imagemagick gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide
 yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin g4music hardcode-fixer-git nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors
 
 # SDDM Configuration
@@ -47,16 +47,11 @@ cp -r ./config/kitty/* ~/.config/kitty
 echo "Preparing zsh configuration..."
 chsh -s $(which zsh)
 sudo chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-mkdir -p ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/themes
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+curl -s https://ohmyposh.dev/install.sh | sudo bash -s
 cp ./config/.zshrc ~/.zshrc
 cp ./config/.zprofile ~/.zprofile
-cp ./config/.p10k.zsh ~/.p10k.zsh
-cp ./config/autosuggestions.zsh ~/.oh-my-zsh/custom/autosuggestions.zsh
+mkdir -p ~/.config/oh-my-posh
+cp ./config/reyshi-prompt.omp.json ~/.config/oh-my-posh/reyshi-prompt.omp.json
 fc-cache
 
 # Micro theme configuration
