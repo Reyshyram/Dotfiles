@@ -47,7 +47,7 @@ cp -r ./config/kitty/* ~/.config/kitty
 echo "Preparing zsh configuration..."
 chsh -s $(which zsh)
 sudo chsh -s $(which zsh)
-curl -s https://ohmyposh.dev/install.sh | sudo bash -s
+curl -s https://ohmyposh.dev/install.sh | bash -s
 cp ./config/.zshrc ~/.zshrc
 cp ./config/.zprofile ~/.zprofile
 mkdir -p ~/.config/oh-my-posh

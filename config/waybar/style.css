@@ -5,6 +5,7 @@
     border-radius: 999px;
     margin-top: 0;
     margin-bottom: 0;
+    box-shadow: none;
 }
 
 @import "../../.cache/wal/colors-waybar.css";
@@ -90,7 +91,7 @@ tooltip {
 }
 
 tooltip label {
-	color: @color9;
+    color: @color9;
     padding: 0px;
 }
 
