@@ -78,6 +78,11 @@ alias c='clear'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+# Fix some keys not working as intended
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+bindkey "^[[3~" delete-char
+
 # Pywal
 (cat ~/.cache/wal/sequences &)
 
