@@ -1,5 +1,17 @@
 #!/bin/bash
 
+#
+ask_yes_no() {
+    while true; do
+        read -p "$1 (Yy/Nn): " reponse
+        case $reponse in
+            [Yy]* ) return 0;;
+            [Nn]* ) return 1;;
+            * ) echo "Please answer by y or n.";;
+        esac
+    done
+}
+
 echo "Installing Reyshyram's dotfiles..."
 
 # Enable extra things for pacman
@@ -17,8 +29,42 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S --needed --noconfirm micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects qt5-quickcontrols2 qt5-svg noto-fonts noto-fonts-cjk fastfetch plymouth ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld waybar xdg-desktop-portal-gtk bluez bluez-utils blueman network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man libreoffice-fresh evince gnome-clocks p7zip unrar swww imagemagick gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide
-yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin g4music hardcode-fixer-git nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors smile clipse
+sudo pacman -S --needed --noconfirm \
+    micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects \
+    qt5-quickcontrols2 qt5-svg noto-fonts noto-fonts-cjk fastfetch plymouth \
+    ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber \
+    xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct \
+    papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl \
+    xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler \
+    ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber \
+    networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse \
+    gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld \
+    waybar xdg-desktop-portal-gtk bluez bluez-utils blueman \
+    network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha \
+    kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle \
+    python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man \
+    libreoffice-fresh evince gnome-clocks p7zip unrar swww imagemagick \
+    gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good \
+    gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide
+
+yay -S --needed --noconfirm \
+    bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k \
+    visual-studio-code-bin g4music hardcode-fixer-git nwg-drawer-bin \
+    wlogout xwaylandvideobridge github-desktop-bin hyprpicker grimblast-git \
+    aurutils arch-update nwg-displays wlr-randr python-zombie-imp gradience \
+    adw-gtk-theme pywal-16-colors smile clipse
+
+if ask_yes_no "Would you like to download additional gaming packages?"; then
+    echo "Downloading gaming packages..."
+    sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls \
+        mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error \
+        lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo \
+        sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama \
+        ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 \
+        lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
+else
+    echo "Skipping downloading gaming packages."
+fi
 
 # SDDM Configuration
 echo "Preparing SDDM theme..."
