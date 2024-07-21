@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#
+# Function to ask yes or no questions
 ask_yes_no() {
     while true; do
-        read -p "$1 (Yy/Nn): " reponse
-        case $reponse in
+        read -p "$1 (Yy/Nn): " response
+        case $response in
             [Yy]* ) return 0;;
             [Nn]* ) return 1;;
             * ) echo "Please answer by y or n.";;
@@ -14,14 +14,12 @@ ask_yes_no() {
 
 echo "Installing Reyshyram's dotfiles..."
 
-# Enable extra things for pacman
-echo "Making pacman better..."
-sudo sed -i "/^#Color/c\Color\nILoveCandy
-    /^#VerbosePkgLists/c\VerbosePkgLists
-    /^#ParallelDownloads/c\ParallelDownloads = 5" /etc/pacman.conf
+# Enhance pacman
+echo "Configuring pacman..."
+sudo sed -i 's/^#Color/Color/; s/^#VerbosePkgLists/VerbosePkgLists/; s/^#ParallelDownloads/ParallelDownloads = 5/' /etc/pacman.conf
 sudo sed -i '/^#\[multilib\]/,+1 s/^#//' /etc/pacman.conf
 
-# Install required packages
+# Install necessary packages
 echo "Installing required packages..."
 sudo pacman -S --needed --noconfirm git base-devel
 git clone https://aur.archlinux.org/yay.git
@@ -29,52 +27,56 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
-sudo pacman -S --needed --noconfirm \
-    micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects \
-    qt5-quickcontrols2 qt5-svg noto-fonts noto-fonts-cjk fastfetch plymouth \
-    ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber \
-    xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct \
-    papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl \
-    xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler \
-    ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber \
-    networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse \
-    gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld \
-    waybar xdg-desktop-portal-gtk bluez bluez-utils blueman \
-    network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha \
-    kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle \
-    python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man \
-    libreoffice-fresh evince gnome-clocks p7zip unrar swww imagemagick \
-    gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good \
+
+# Install additional packages
+echo "Installing additional packages..."
+PACKAGES=(
+    micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects
+    qt5-quickcontrols2 qt5-svg noto-fonts noto-fonts-cjk fastfetch plymouth
+    ttf-firacode-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber
+    xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct
+    papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl
+    xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler
+    ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber
+    networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse
+    gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld
+    waybar xdg-desktop-portal-gtk bluez bluez-utils blueman
+    network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha
+    kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle
+    python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man
+    libreoffice-fresh evince gnome-clocks p7zip unrar swww imagemagick
+    gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
     gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide
+)
 
-yay -S --needed --noconfirm \
-    bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k \
-    visual-studio-code-bin g4music hardcode-fixer-git nwg-drawer-bin \
-    wlogout xwaylandvideobridge github-desktop-bin hyprpicker grimblast-git \
-    aurutils arch-update nwg-displays wlr-randr python-zombie-imp gradience \
-    adw-gtk-theme pywal-16-colors smile clipse
+yay -S --needed --noconfirm "${PACKAGES[@]}"
+yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin g4music hardcode-fixer-git nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors smile clipse
 
+# Install gaming packages if user agrees
 if ask_yes_no "Would you like to download additional gaming packages?"; then
     echo "Downloading gaming packages..."
-    sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls \
-        mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error \
-        lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo \
-        sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama \
-        ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 \
+    GAMING_PACKAGES=(
+        wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls
+        mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error
+        lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo
+        sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama
+        ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3
         lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
+    )
+    sudo pacman -S --needed "${GAMING_PACKAGES[@]}"
 else
-    echo "Skipping downloading gaming packages."
+    echo "Skipping gaming packages."
 fi
 
-# SDDM Configuration
-echo "Preparing SDDM theme..."
-systemctl enable sddm.service
+# Configure SDDM
+echo "Configuring SDDM..."
 sudo cp -r ./config/sddm/sugar-candy /usr/share/sddm/themes/
 sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
-sudo chown $USER /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
+sudo chown "$USER" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
+systemctl enable sddm.service
 
-# Grub theme and configuration
-echo "Preparing grub theme..."
+# Configure GRUB
+echo "Configuring GRUB..."
 git clone https://github.com/Coopydood/HyperFluent-GRUB-Theme.git
 sudo mkdir -p /usr/share/grub/themes/
 sudo cp -r ./HyperFluent-GRUB-Theme/arch /usr/share/grub/themes/
@@ -84,15 +86,15 @@ sudo sed -i 's|^#GRUB_THEME="/path/to/gfxtheme"|GRUB_THEME="/usr/share/grub/them
 sudo sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=saved/; s/^#GRUB_SAVEDEFAULT=true/GRUB_SAVEDEFAULT=true/' /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-# Kitty configuration
-echo "Preparing kitty configuration..."
+# Configure Kitty
+echo "Configuring Kitty..."
 mkdir -p ~/.config/kitty
 cp -r ./config/kitty/* ~/.config/kitty
 
-# Zsh configuration
-echo "Preparing zsh configuration..."
-chsh -s $(which zsh)
-sudo chsh -s $(which zsh)
+# Configure Zsh
+echo "Configuring Zsh..."
+chsh -s "$(which zsh)"
+sudo chsh -s "$(which zsh)"
 curl -s https://ohmyposh.dev/install.sh | bash -s
 cp ./config/.zshrc ~/.zshrc
 cp ./config/.zprofile ~/.zprofile
@@ -100,8 +102,8 @@ mkdir -p ~/.config/oh-my-posh
 cp ./config/reyshi-prompt.omp.json ~/.config/oh-my-posh/reyshi-prompt.omp.json
 fc-cache
 
-# Micro theme configuration
-echo "Preparing micro theme..."
+# Configure Micro theme
+echo "Configuring Micro theme..."
 git clone https://github.com/catppuccin/micro.git
 mkdir -p ~/.config/micro/colorschemes
 cp -r ./micro/src/* ~/.config/micro/colorschemes
@@ -109,8 +111,8 @@ rm -rf ./micro
 sed -i '1d' ~/.config/micro/colorschemes/catppuccin-mocha.micro
 cp ./config/micro/settings.json ~/.config/micro/settings.json
 
-# Plymouth theme
-echo "Preparing plymouth theme..."
+# Configure Plymouth
+echo "Configuring Plymouth..."
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 systemd.show_status=auto rd.udev.log_level=3"/' /etc/default/grub
 sudo sed -i '/^\[Daemon\]/a ShowDelay=0' /etc/plymouth/plymouthd.conf
 sudo sed -i '/^HOOKS=/ s/)$/ plymouth)/' /etc/mkinitcpio.conf
@@ -118,128 +120,117 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo cp -r ./config/plymouth/black_hud /usr/share/plymouth/themes/
 sudo plymouth-set-default-theme -R black_hud
 
-# Btop theme
-echo "Preparing btop theme..."
+# Configure Btop
+echo "Configuring Btop..."
 cp -r ./config/btop/* ~/.config/btop/
 
-# Swaync config
-echo "Applying swaync config..."
+# Configure Swaync
+echo "Configuring Swaync..."
 mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
 
-# Copy Hyprland config
-echo "Copying Hyprland config..."
+# Configure Hyprland
+echo "Configuring Hyprland..."
 mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
-chmod +x ~/.config/hypr/scripts/dontkillsteam.sh
-chmod +x ~/.config/hypr/scripts/sounds.sh
-chmod +x ~/.config/hypr/scripts/media.sh
-chmod +x ~/.config/hypr/scripts/volume.sh
-chmod +x ~/.config/hypr/scripts/brightness.sh
-chmod +x ~/.config/hypr/scripts/keybinds_help.sh
-chmod +x ~/.config/hypr/scripts/logoutmenu.sh
-chmod +x ~/.config/hypr/scripts/wallpaper.sh
-chmod +x ~/.config/hypr/scripts/random-wallpaper.sh
-chmod +x ~/.config/hypr/scripts/clipboard.sh
-chmod +x ~/.config/hypr/scripts/desktop-portal.sh
+chmod +x ~/.config/hypr/scripts/*.sh
 
+# Configure Pywal templates
 mkdir -p ~/.config/wal/templates
 cp -r ./config/pywal/* ~/.config/wal/templates
 
-# Plugins
+# Install Hyprland plugins
 hyprpm update
 hyprpm add https://github.com/KZDKM/Hyprspace
 hyprpm enable Hyprspace
 
-# Applications Associations
+# Set application associations
 xdg-settings set default-web-browser firefox.desktop
 xdg-mime default pcmanfm-qt.desktop inode/directory
 
-# Papyrus icon theme
+# Apply Papirus icon theme
 echo "Applying icon theme..."
 sudo hardcode-fixer
 papirus-folders -C cat-mocha-lavender
 
-# Gtk theme
-echo "Applying Gtk theme..."
-mkdir -p ~/.config/gtk-4.0
-mkdir -p ~/.config/gtk-3.0
+# Apply GTK theme
+echo "Applying GTK theme..."
+mkdir -p ~/.config/gtk-3.0 ~/.config/gtk-4.0
 cp -r ./config/gtk-* ~/.config/
 cp -r ./config/nwg-look ~/.config/
 cp -r ./config/xsettingsd ~/.config/
-cp ./config/.gtkrc-2.0 ~/.gtkrc-2.0
+cp ./config/.gtkrc-2.0 ~/
 
-# QT theme
-echo "Applying Qt theme..."
+# Apply QT theme
+echo "Applying QT theme..."
 cp -r ./config/qt* ~/.config/
 cp -r ./config/Kvantum ~/.config/
 
-# Nwg-drawer config
-echo "Applying nwg-drawer theme..."
+# Configure Nwg-drawer
+echo "Configuring Nwg-drawer..."
 cp -r ./config/nwg-drawer ~/.config/
 
-# Logout menu
-echo "Applying wlogout config..."
+# Configure Wlogout
+echo "Configuring Wlogout..."
 cp -r ./config/wlogout ~/.config/
 
-# Auto cpu frequency
-echo "Installing auto-cpufreq, please select install..."
+# Install and configure auto-cpufreq
+echo "Installing auto-cpufreq..."
 git clone https://github.com/AdnanHodzic/auto-cpufreq.git
-cd auto-cpufreq && sudo ./auto-cpufreq-installer
+cd auto-cpufreq
+sudo ./auto-cpufreq-installer
 cd ..
-rm -rf ./auto-cpufreq/
+rm -rf auto-cpufreq
 sudo auto-cpufreq --install
 
 # Copy wallpapers
 echo "Copying wallpapers..."
-mkdir -p ~/Pictures/Wallpapers
-mkdir -p ~/Pictures/Screenshots
+mkdir -p ~/Pictures/Wallpapers ~/Pictures/Screenshots
 cp -r ./Wallpapers/* ~/Pictures/Wallpapers
 
 # Enable firewalld
 echo "Enabling firewalld..."
-systemctl enable firewalld.service
+sudo systemctl enable firewalld.service
 
-# Adding user to input group
+# Add user to input group
 echo "Adding user to input group..."
-sudo usermod -a -G input $USER
+sudo usermod -a -G input "$USER"
 
-# Enabling bluetooth
-echo "Enabling bluetooth..."
-systemctl enable bluetooth.service
+# Enable Bluetooth
+echo "Enabling Bluetooth..."
+sudo systemctl enable bluetooth.service
 
-# Copying waybar config
-echo "Copying waybar configuration..."
-cp -r ./config/waybar ~/.config/
-chmod +x ~/.config/waybar/scripts/checkupdates.sh
+# Configure Waybar
+echo "Configuring Waybar..."
+mkdir -p ~/.config/waybar
+cp -r ./config/waybar/* ~/.config/waybar/
+chmod +x ~/.config/waybar/scripts/*.sh
 
-# Pcmanfm-qt
-echo "Applying pcmanfm-qt configuration..."
+# Configure Pcmanfm-qt
+echo "Configuring Pcmanfm-qt..."
 cp -r ./config/pcmanfm-qt ~/.config/
 
-# Fastfetch
-echo "Copying fastfetch theme..."
+# Configure Fastfetch
+echo "Configuring Fastfetch..."
 cp -r ./config/fastfetch ~/.config/
 
-# Swappy
-echo "Copying swappy config..."
+# Configure Swappy
+echo "Configuring Swappy..."
 cp -r ./config/swappy ~/.config/
 
-# Pywal setup
-mkdir -p ~/.config/wal/templates
+# Configure Pywal setup
+echo "Configuring Pywal..."
+mkdir -p ~/.config/wal/templates ~/.config/presets/user
 cp -r ./pywal16-libadwaita/templates/* ~/.config/wal/templates
-
-mkdir -p ~/.config/presets/user
-
 ./pywal16-libadwaita/scripts/apply-theme.sh
-
 wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n
 gradience-cli apply -n "pywal" --gtk both
 
-# Pipx setup
+# Ensure Pipx path
+echo "Ensuring Pipx path..."
 pipx ensurepath
 
-# Enable reflector
-echo "Enabling reflector..."
+# Enable Reflector
+echo "Enabling Reflector..."
 sudo cp ./config/reflector.conf /etc/xdg/reflector/reflector.conf
-systemctl enable reflector.timer
+sudo systemctl enable reflector.timer
