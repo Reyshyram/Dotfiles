@@ -45,9 +45,9 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "CTRL + SHIFT + ESCAPE" "System Monitor" "(btop)" \
 "" "" "" \
 "   + A" "Search Applications" "(nwg-drawer)" \
-"   + V" "Clipboard Manager" "(cliphist | rofi)" \
+"   + V" "Clipboard Manager" "(clipse)" \
 "   + P" "Color picker" "(hyprpicker)" \
-"   + B" "Emoji picker" "(rofi)" \
+"   + B" "Emoji picker" "(smile)" \
 "   + N" "Toggle Notification Area" "(swaync)" \
 "   + Backspace" "Logout menu" "(wlogout)" \
 "   + L" "Lock Screen" "(hyprlock)" \
