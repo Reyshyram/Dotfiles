@@ -45,14 +45,14 @@ install_yay() {
 # Function to install AMD GPU drivers and tools
 install_amd() {
     echo "Installing AMD GPU drivers and tools..."
-    sudo pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
-    yay -S --noconfirm lact
+    sudo pacman -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+    yay -S lact
 }
 
 # Function to install Nvidia GPU drivers and tools
 install_nvidia() {
     echo "Installing Nvidia GPU drivers and tools..."
-    sudo pacman -S --noconfirm --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia egl-wayland libva-nvidia-driver
+    sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia egl-wayland libva-nvidia-driver
     
     echo "Editing /etc/mkinitcpio.conf to add Nvidia modules..."
     sudo sed -i 's/^MODULES=(/&nvidia nvidia_modeset nvidia_uvm nvidia_drm /' /etc/mkinitcpio.conf
@@ -151,8 +151,8 @@ sudo systemctl enable fstrim.timer
 
 # Install additional packages
 echo "Installing required packages..."
-sudo pacman -S --needed --noconfirm "${PACKAGES[@]}"
-yay -S --needed --noconfirm "${YAY_PACKAGES[@]}"
+sudo pacman -S --needed "${PACKAGES[@]}"
+yay -S --needed "${YAY_PACKAGES[@]}"
 
 # Configure SDDM
 echo "Configuring SDDM..."
@@ -337,8 +337,8 @@ fi
 # Install gaming packages if user agrees
 if ask_yes_no "Would you like to download additional gaming packages?"; then
     echo "Downloading gaming packages..."
-    sudo pacman -S --needed --noconfirm "${GAMING_PACKAGES[@]}"
-    yay -S --needed --noconfirm "${GAMING_PACKAGES_YAY[@]}"
+    sudo pacman -S --needed "${GAMING_PACKAGES[@]}"
+    yay -S --needed "${GAMING_PACKAGES_YAY[@]}"
 else
     echo "Skipping gaming packages."
 fi
