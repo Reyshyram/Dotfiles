@@ -281,6 +281,10 @@ sudo systemctl enable firewalld.service
 echo "Adding user to input group..."
 sudo usermod -a -G input "$USER"
 
+# Add user to video group
+echo "Adding user to video group..."
+sudo usermod -a -G video "$USER"
+
 # Enable Bluetooth
 echo "Enabling Bluetooth..."
 sudo systemctl enable bluetooth.service
