@@ -12,24 +12,88 @@ ask_yes_no() {
     done
 }
 
-echo "Installing Reyshyram's dotfiles..."
+# Function to check and enable multilib repository
+enable_multilib() {
+    if ! grep -q "^\[multilib\]" /etc/pacman.conf; then
+        echo "Enabling multilib repository..."
+        sudo tee -a /etc/pacman.conf > /dev/null <<EOT
 
-# Enhance pacman
-echo "Configuring pacman..."
-sudo sed -i 's/^#Color/Color/; s/^#VerbosePkgLists/VerbosePkgLists/; s/^#ParallelDownloads/ParallelDownloads = 5/' /etc/pacman.conf
-sudo sed -i '/^#\[multilib\]/,+1 s/^#//' /etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+EOT
+        echo "Multilib repository has been enabled."
+    else
+        echo "Multilib repository is already enabled."
+    fi
+}
 
-# Install necessary packages
-echo "Installing required packages..."
-sudo pacman -S --needed --noconfirm git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd ..
-rm -rf yay
+# Function to install yay
+install_yay() {
+    if ! command -v yay &> /dev/null; then
+        echo "Installing yay..."
+        sudo pacman -S --needed --noconfirm git base-devel
+        git clone https://aur.archlinux.org/yay-bin.git
+        cd yay-bin || exit
+        makepkg -si --noconfirm
+        cd .. && rm -rf yay-bin
+        export PATH="$PATH:$HOME/.local/bin"
+    else
+        echo "yay is already installed."
+    fi
+}
 
-# Install additional packages
-echo "Installing additional packages..."
+install_amd() {
+    echo "Installing AMD GPU drivers and tools"
+
+    # Install AMD drivers and tools
+    sudo pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+    yay -S --noconfirm lact
+    }
+
+install_nvidia() {
+    echo "Installing Nvidia GPU drivers"
+    
+    # Install Nvidia drivers and tools
+    sudo pacman -S --noconfirm --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia \
+        egl-wayland libva-nvidia-driver
+    
+    # Edit /etc/mkinitcpio.conf to add Nvidia modules
+    echo "Editing /etc/mkinitcpio.conf to add Nvidia modules"
+    sudo sed -i 's/^MODULES=(/&nvidia nvidia_modeset nvidia_uvm nvidia_drm /' /etc/mkinitcpio.conf
+
+    # Create and edit /etc/modprobe.d/nvidia.conf
+    echo "Creating and editing /etc/modprobe.d/nvidia.conf"
+    echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee /etc/modprobe.d/nvidia.conf
+
+    # Rebuild the initramfs
+    echo "Rebuilding the initramfs"
+    sudo mkinitcpio -P
+
+    # Add environment variables to ~/.config/hypr/env_variables.conf
+    echo "Adding environment variables to ~/.config/hypr/env_variables.conf"
+    cat <<EOL >> ~/.config/hypr/en_variables.conf
+env = LIBVA_DRIVER_NAME,nvidia
+env = GBM_BACKEND,nvidia_drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = NVD_BACKEND,direct
+
+cursor {
+    no_hardware_cursors = true
+}
+EOL
+
+    # Enable required services
+    echo "Enabling required services."
+    sudo systemctl enable nvidia-suspend.service
+    sudo systemctl enable nvidia-hibernate.service
+    sudo systemctl enable nvidia-resume.service
+
+    # Adding kernel parameter
+    echo "Adding kernel paramater to grub..."
+    sudo sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="[^"]*\)/\1 nvidia.NVreg_PreserveVideoMemoryAllocations=1/' /etc/default/grub
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+}
+
 PACKAGES=(
     micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects
     qt5-quickcontrols2 qt5-svg noto-fonts noto-fonts-cjk fastfetch plymouth
@@ -46,27 +110,49 @@ PACKAGES=(
     python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man
     libreoffice-fresh evince gnome-clocks p7zip unrar swww imagemagick
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
-    gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide
+    gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
+)
+YAY_PACKAGES=(
+    bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k
+    visual-studio-code-bin g4music hardcode-fixer-git
+    nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin
+    hyprpicker grimblast-git aurutils arch-update nwg-displays
+    wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors
+    smile clipse
+)
+GAMING_PACKAGES=(
+    steam lutris wine-staging winetricks gamemode lib32-gamemode
+    giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap
+    gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal
+    v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error
+    alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib
+    libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite
+    libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader
+    libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3
+    gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
+    obs-studio mangohud lib32-mangohud goverlay gamescope
+)
+GAMING_PACKAGES_YAY=(
+    vkbasalt lib32-vkbasalt proton-ge-custom-bin dxvk-bin vesktop-bin
 )
 
-yay -S --needed --noconfirm "${PACKAGES[@]}"
-yay -S --needed --noconfirm bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin g4music hardcode-fixer-git nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin hyprpicker grimblast-git aurutils arch-update nwg-displays wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors smile clipse
+echo "Installing Reyshyram's dotfiles..."
 
-# Install gaming packages if user agrees
-if ask_yes_no "Would you like to download additional gaming packages?"; then
-    echo "Downloading gaming packages..."
-    GAMING_PACKAGES=(
-        wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls
-        mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error
-        lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo
-        sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama
-        ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3
-        lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
-    )
-    sudo pacman -S --needed "${GAMING_PACKAGES[@]}"
-else
-    echo "Skipping gaming packages."
-fi
+# Enhance pacman
+echo "Configuring pacman..."
+sudo sed -i 's/^#Color/Color/; s/^#VerbosePkgLists/VerbosePkgLists/; s/^#ParallelDownloads/ParallelDownloads = 5/' /etc/pacman.conf
+enable_multilib
+
+# Install yay
+install_yay
+
+# Enable TRIM for SSDs
+sudo systemctl enable fstrim.timer
+
+# Install additional packages
+echo "Installing required packages..."
+sudo pacman -S --needed --noconfirm "${PACKAGES[@]}"
+yay -S --needed --noconfirm "${YAY_PACKAGES[@]}"
 
 # Configure SDDM
 echo "Configuring SDDM..."
@@ -234,3 +320,33 @@ pipx ensurepath
 echo "Enabling Reflector..."
 sudo cp ./config/reflector.conf /etc/xdg/reflector/reflector.conf
 sudo systemctl enable reflector.timer
+
+# Ask about AMD installation
+if ask_yes_no "Do you want to install AMD GPU drivers?"; then
+    install_amd
+else
+    echo "AMD GPU installation skipped."
+fi
+
+# Ask about Nvidia installation
+if ask_yes_no "Do you want to install Nvidia GPU drivers?"; then
+    install_nvidia
+else
+    echo "Nvidia GPU installation skipped."
+fi
+
+# Install gaming packages if user agrees
+if ask_yes_no "Would you like to download additional gaming packages?"; then
+    echo "Downloading gaming packages..."
+    sudo pacman -S --needed --noconfirm "${GAMING_PACKAGES[@]}"
+    yay -S --needed --noconfirm "${GAMING_PACKAGES_YAY[@]}"
+else
+    echo "Skipping gaming packages."
+fi
+
+# Ask about restart
+if ask_yes_no "Dotfiles successfully installed. Do you want to restart now?"; then
+    sudo reboot now
+else
+    echo "Not restarting. Please restart in order to use the dotfiles."
+fi
