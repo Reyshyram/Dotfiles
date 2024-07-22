@@ -7,7 +7,7 @@ ask_yes_no() {
         case $response in
             [Yy]* ) return 0;;
             [Nn]* ) return 1;;
-            * ) echo "Please answer by y or n.";;
+            * ) echo "Please answer with y or n.";;
         esac
     done
 }
@@ -42,36 +42,30 @@ install_yay() {
     fi
 }
 
+# Function to install AMD GPU drivers and tools
 install_amd() {
-    echo "Installing AMD GPU drivers and tools"
-
-    # Install AMD drivers and tools
+    echo "Installing AMD GPU drivers and tools..."
     sudo pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
     yay -S --noconfirm lact
-    }
+}
 
+# Function to install Nvidia GPU drivers and tools
 install_nvidia() {
-    echo "Installing Nvidia GPU drivers"
+    echo "Installing Nvidia GPU drivers and tools..."
+    sudo pacman -S --noconfirm --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia egl-wayland libva-nvidia-driver
     
-    # Install Nvidia drivers and tools
-    sudo pacman -S --noconfirm --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia \
-        egl-wayland libva-nvidia-driver
-    
-    # Edit /etc/mkinitcpio.conf to add Nvidia modules
-    echo "Editing /etc/mkinitcpio.conf to add Nvidia modules"
+    echo "Editing /etc/mkinitcpio.conf to add Nvidia modules..."
     sudo sed -i 's/^MODULES=(/&nvidia nvidia_modeset nvidia_uvm nvidia_drm /' /etc/mkinitcpio.conf
 
-    # Create and edit /etc/modprobe.d/nvidia.conf
-    echo "Creating and editing /etc/modprobe.d/nvidia.conf"
+    echo "Creating and editing /etc/modprobe.d/nvidia.conf..."
     echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee /etc/modprobe.d/nvidia.conf
 
-    # Rebuild the initramfs
-    echo "Rebuilding the initramfs"
+    echo "Rebuilding the initramfs..."
     sudo mkinitcpio -P
 
-    # Add environment variables to ~/.config/hypr/env_variables.conf
-    echo "Adding environment variables to ~/.config/hypr/env_variables.conf"
-    cat <<EOL >> ~/.config/hypr/en_variables.conf
+    echo "Adding environment variables to ~/.config/hypr/env_variables.conf..."
+    mkdir -p ~/.config/hypr
+    cat <<EOL >> ~/.config/hypr/env_variables.conf
 env = LIBVA_DRIVER_NAME,nvidia
 env = GBM_BACKEND,nvidia_drm
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
@@ -82,18 +76,17 @@ cursor {
 }
 EOL
 
-    # Enable required services
-    echo "Enabling required services."
+    echo "Enabling required services..."
     sudo systemctl enable nvidia-suspend.service
     sudo systemctl enable nvidia-hibernate.service
     sudo systemctl enable nvidia-resume.service
 
-    # Adding kernel parameter
-    echo "Adding kernel paramater to grub..."
+    echo "Adding kernel parameter to GRUB..."
     sudo sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="[^"]*\)/\1 nvidia.NVreg_PreserveVideoMemoryAllocations=1/' /etc/default/grub
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
+# Packages to install
 PACKAGES=(
     micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects
     qt5-quickcontrols2 qt5-svg noto-fonts noto-fonts-cjk fastfetch plymouth
@@ -112,6 +105,8 @@ PACKAGES=(
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
     gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
 )
+
+# AUR packages to install
 YAY_PACKAGES=(
     bibata-cursor-theme ttf-meslo-nerd-font-powerlevel10k
     visual-studio-code-bin g4music hardcode-fixer-git
@@ -120,6 +115,8 @@ YAY_PACKAGES=(
     wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors
     smile clipse
 )
+
+# Gaming packages to install
 GAMING_PACKAGES=(
     steam lutris wine-staging winetricks gamemode lib32-gamemode
     giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap
@@ -132,6 +129,8 @@ GAMING_PACKAGES=(
     gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
     obs-studio mangohud lib32-mangohud goverlay gamescope
 )
+
+# AUR gaming packages to install
 GAMING_PACKAGES_YAY=(
     vkbasalt lib32-vkbasalt proton-ge-custom-bin dxvk-bin vesktop-bin
 )
