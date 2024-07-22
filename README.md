@@ -31,11 +31,6 @@ chmod +x ./install.sh && ./install.sh
 
 Follow the instructions on your terminal. If there's a problem, feel free to open an issue.
 
->[!IMPORTANT]
->If you are using a Nvidia GPU, please follow the instructions on the [Hyprland wiki](https://wiki.hyprland.org/Nvidia/) before rebooting.
-
-
-
 ## Informations
 
 This rice relies heavily on pywal for generating color schemes. Colors of most apps will be updated with the colors of your wallpaper when selecting a new one.
