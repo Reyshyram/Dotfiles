@@ -104,6 +104,7 @@ PACKAGES=(
     libreoffice-fresh evince gnome-clocks p7zip unrar swww imagemagick
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
     gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
+    zenity
 )
 
 # AUR packages to install
@@ -219,15 +220,14 @@ echo "Configuring Hyprland..."
 mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
 chmod +x ~/.config/hypr/scripts/*.sh
+# Disable plugin keybind while not installed
+sed -i 's/^bind = $mainMod, Tab, overview:toggle, all/#&/' ~/.config/hypr/keybinds.conf
+# Send notification post install when restarting
+echo "exec-once = ~/.config/hypr/scripts/post_install_listener" >> ~/.config/hypr/startup.conf
 
 # Configure Pywal templates
 mkdir -p ~/.config/wal/templates
 cp -r ./config/pywal/* ~/.config/wal/templates
-
-# Install Hyprland plugins
-hyprpm update
-hyprpm add https://github.com/KZDKM/Hyprspace
-hyprpm enable Hyprspace
 
 # Set application associations
 xdg-settings set default-web-browser firefox.desktop

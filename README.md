@@ -30,6 +30,7 @@ chmod +x ./install.sh && ./install.sh
 ```
 
 Follow the instructions on your terminal. If there's a problem, feel free to open an issue.
+After rebooting, a window will show up asking you to perform the post install steps.
 
 ## Informations
 
