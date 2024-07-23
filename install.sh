@@ -113,7 +113,7 @@ YAY_PACKAGES=(
     nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin
     hyprpicker grimblast-git aurutils arch-update nwg-displays
     wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors
-    smile clipse swayosd-git
+    smile clipse swayosd-git ttf-meslo-nerd-font-powerlevel10k
 )
 
 # Gaming packages to install
