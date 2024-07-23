@@ -214,6 +214,10 @@ echo "Configuring Swaync..."
 mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
 
+# Enable SwayOSD backend
+echo "Enabling SwayOSD backend..."
+sudo systemctl enable --now swayosd-libinput-backend.service
+
 # Configure Hyprland
 echo "Configuring Hyprland..."
 mkdir -p ~/.config/hypr
