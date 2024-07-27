@@ -28,6 +28,7 @@ window#waybar {
 #backlight,
 #battery,
 #language,
+#idle_inhibitor,
 #custom-wlogout {
     min-height: 0;
     min-width: 0;
@@ -74,9 +75,21 @@ window#waybar.empty #window {
     color: @color12;
 }
 
+#idle_inhibitor {
+    font-family: "MesloLGS Nerd Font";
+    margin-right: 0px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: 8px;
+}
+
 #custom-wlogout {
     font-size: 16px;
     margin-right: 0px;
+    margin-left: 0px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 8px;
 }
 
 #tray menu {

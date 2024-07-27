@@ -22,6 +22,7 @@
         "backlight",
         "battery",
         "hyprland/language",
+        "idle_inhibitor",
         "custom/wlogout"
     ],
     // Modules configuration
@@ -148,6 +149,14 @@
     "custom/wlogout": {
         "format": "",
         "on-click": "~/.config/hypr/scripts/logoutmenu.sh",
+        "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
         "tooltip": false
     },
     "hyprland/workspaces": {
