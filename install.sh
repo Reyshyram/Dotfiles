@@ -132,7 +132,7 @@ GAMING_PACKAGES=(
 
 # AUR gaming packages to install
 GAMING_PACKAGES_YAY=(
-    vkbasalt lib32-vkbasalt proton-ge-custom-bin dxvk-bin vesktop-bin
+    vkbasalt lib32-vkbasalt proton-ge-custom-bin dxvk-bin vesktop-bin protontricks
 )
 
 echo "Installing Reyshyram's dotfiles..."
