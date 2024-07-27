@@ -52,10 +52,10 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + Backspace" "Logout menu" "(wlogout)" \
 "   + L" "Lock Screen" "(hyprlock)" \
 "" "" "" \
-"Print Screen" "Screenshot of all monitors" "(grimblast | swappy)" \
-"Alt + Print Screen" "Screenshot of current monitor" "(grimblast | swappy)" \
-"   + Print Screen" "Select the area of the screenshot" "(slurp | grimblast | swappy)" \
-"Ctrl + Print Screen" "Select the area of the screenshot, frozen screen" "(slurp | grimblast | swappy)" \
+"Print Screen" "Screenshot of current monitor" "(grimblast)" \
+"   + Print Screen" "Screenshot of all monitors" "(grimblast)" \
+"Ctrl + Print Screen" "Select the area of the screenshot" "(grimblast)" \
+"Alt + Print Screen" "Select the area of the screenshot, frozen screen" "(grimblast)" \
 "" "" "" \
 "   + Q" "Close Active Window" "(killactive)" \
 "   + Return" "Kind of maximize a floating windows" "(resizeactive and center)" \
