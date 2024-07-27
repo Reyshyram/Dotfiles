@@ -70,6 +70,8 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "" "" "" \
 "   + J" "Toggle between blurred and 100% opacity" "(toggleopaque)" \
 "" "" "" \
+"   + K" "Switch keyboard layout" "(hyprctl)" \
+"" "" "" \
 "Alt + Tab" "Cycle to Next Window" "(cyclenext)" \
 "   + Left/Right/Up/Down" "Move Focus in Selected direction" "(movefocus)" \
 "" "" "" \
