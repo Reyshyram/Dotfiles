@@ -14,7 +14,7 @@ temp_svg="/tmp/keyboard_temp.svg"
 cp ~/.config/swaync/icons/keyboard.svg "$temp_svg"
 
 # Modify temp svg color
-sed -i "s/fill=\"[^\"]*\"/fill=\"$color\"/" "$temp_svg"
+sed -i 's/fill="#FFFFFF"/fill="'$color'"/' "$temp_svg"
 
 # Send notification
 notify-send -i "$temp_svg" "Changed keyboard layout" "New layout: $keyboard_layout" -t 3000 --hint=int:transient:1
