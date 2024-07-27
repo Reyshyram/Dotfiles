@@ -27,6 +27,7 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #battery,
+#language,
 #custom-wlogout {
     min-height: 0;
     min-width: 0;
@@ -125,4 +126,8 @@ tooltip label {
     color: @color9;
     background: shade(@color1, 0.35);
     border-radius: 15px;
+}
+
+#language {
+    font-family: "MesloLGS Nerd Font";
 }

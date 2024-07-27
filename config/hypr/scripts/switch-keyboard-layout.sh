@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Change keyboard layout
+# Switch to next keyboard layout
 hyprctl switchxkblayout at-translated-set-2-keyboard next
 
 # Get new layout

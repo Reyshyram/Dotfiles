@@ -21,6 +21,7 @@
         "pulseaudio",
         "backlight",
         "battery",
+        "hyprland/language",
         "custom/wlogout"
     ],
     // Modules configuration
@@ -167,5 +168,9 @@
         "max-length": 25,
         "separate-outputs": true,
         "format": "{title}"
+    },
+    "hyprland/language": {
+        "format": "  {}",
+        "on-click": "zsh ~/.config/hypr/scripts/switch-keyboard-layout.sh"
     }
 }
