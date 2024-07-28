@@ -154,10 +154,11 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         },
-        "tooltip": false
+        "tooltip-format-activated": "The computer is prevented from going to sleep",
+        "tooltip-format-deactivated": "The computer will go to sleep if the user is idle"
     },
     "hyprland/workspaces": {
         "all-outputs": true,

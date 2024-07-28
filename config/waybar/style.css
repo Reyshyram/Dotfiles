@@ -77,6 +77,7 @@ window#waybar.empty #window {
 
 #idle_inhibitor {
     font-family: "MesloLGS Nerd Font";
+    font-size: 16px;
     margin-right: 0px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -95,6 +96,10 @@ window#waybar.empty #window {
 #tray menu {
     border-radius: 10px;
     padding: 8px 6px;
+}
+
+#language {
+    font-family: "MesloLGS Nerd Font";
 }
 
 tooltip {
@@ -139,8 +144,4 @@ tooltip label {
     color: @color9;
     background: shade(@color1, 0.35);
     border-radius: 15px;
-}
-
-#language {
-    font-family: "MesloLGS Nerd Font";
 }
