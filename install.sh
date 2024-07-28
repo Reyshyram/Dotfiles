@@ -189,11 +189,7 @@ fc-cache
 
 # Configure Micro theme
 echo "Configuring Micro theme..."
-git clone https://github.com/catppuccin/micro.git
-mkdir -p ~/.config/micro/colorschemes
-cp -r ./micro/src/* ~/.config/micro/colorschemes
-rm -rf ./micro
-sed -i '1d' ~/.config/micro/colorschemes/catppuccin-mocha.micro
+mkdir -p ~/.config/micro/
 cp ./config/micro/settings.json ~/.config/micro/settings.json
 
 # Configure Plymouth
