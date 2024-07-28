@@ -36,13 +36,13 @@ yad --width=$dynamic_width --height=$dynamic_height \
     --column=Command: \
     --timeout-indicator=bottom \
 "ESC" "Close this Window" "" \
-"   =  " "SUPER KEY (Windows Key)" "(SUPER KEY)" \
+"   =  " "Super key (Windows Key)" "(Super key)" \
 "" "" "" \
 "   + T" "Terminal" "(kitty)" \
 "   + E" "File Browser" "(pcmanfm-qt)" \
 "   + F" "Internet Browser" "(firefox)" \
 "   + C" "Code Editor" "(vscode)" \
-"CTRL + SHIFT + ESCAPE" "System Monitor" "(btop)" \
+"Ctrl + Shift + Escape" "System Monitor" "(btop)" \
 "" "" "" \
 "   + A" "Search Applications" "(nwg-drawer)" \
 "   + V" "Clipboard Manager" "(clipse)" \
@@ -78,7 +78,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + Tab" "Open overview" "(Hyprspace)" \
 "" "" "" \
 "   + Left Mouse Click" "Move Selected Window" "(movewindow)" \
-"   + Ctrl Left/Right/Up/Down" "Move Active Window" "(movewindow)" \
+"   + Shift + Ctrl + Left/Right/Up/Down" "Move Active Window" "(movewindow)" \
 "" "" "" \
 "   + Right Mouse Click" "Resize Selected Window" "(resizewindow)" \
 "   + Shift Left/Right/Up/Down" "Resize Active Window" "(resizeactive)" \
@@ -88,7 +88,6 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + Ctrl + Left or Right" "Move to Next or Previous Workspace" "(workspace r-+1)" \
 "   + Ctrl + Down" "Move to First Empty Workspace" "(workspace empty)" \
 "" "" "" \
-"   + Shift + 1-0" "Move Window to Workspace 1-10" "(movetoworkspace 1-10)" \
 "   + Shift + 1-0" "Move Window to Workspace 1-10" "(movetoworkspace 1-10)" \
 "   + Alt + 1-0" "Move Window to Workspace 1-10 Without Following" "(movetoworkspacesilent 1-10)" \
 "   + Ctrl + Alt + Left or Right" "Move Window to Next or Previous Workspace" "(movetoworkspace r-+1)" \
