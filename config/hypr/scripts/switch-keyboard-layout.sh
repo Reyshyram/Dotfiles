@@ -17,7 +17,7 @@ cp ~/.config/swaync/icons/keyboard.svg "$temp_svg"
 sed -i 's/fill="#FFFFFF"/fill="'$color'"/' "$temp_svg"
 
 # Send notification
-notify-send -i "$temp_svg" "Changed keyboard layout" "New layout: $keyboard_layout" -t 3000 --hint=int:transient:1
+notify-send -a keyboard-layout -i "$temp_svg" "Changed keyboard layout" "New layout: $keyboard_layout" -t 3000 --hint=int:transient:1
 
 # Delete temp svg
 rm "$temp_svg"

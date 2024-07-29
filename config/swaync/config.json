@@ -44,5 +44,11 @@
             "image-size": 96,
             "image-radius": 10
         }
+    },
+    "scripts": {
+        "notification-sound": {
+            "exec": "play ~/.config/swaync/sounds/notification.ogg",
+            "app-name": "^(?!.*\\b(screenshot|keyboard-layout|color-picker)\\b).*"
+        }
     }
 }

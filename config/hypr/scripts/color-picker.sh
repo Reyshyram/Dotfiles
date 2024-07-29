@@ -14,7 +14,7 @@ if [ -n "$color" ]; then
     sed -i 's/fill="#FFFFFF"/fill="'$color'"/' "$temp_svg"
 
     # Send notification
-    notify-send -i "$temp_svg" "Color selected" "$color" -t 3000 --hint=int:transient:1
+    notify-send -a color-picker -i "$temp_svg" "Color selected" "$color" -t 3000 --hint=int:transient:1
 
     # Delete temp svg
     rm "$temp_svg"

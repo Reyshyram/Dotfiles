@@ -19,7 +19,7 @@ notify() {
     sed -i 's/stroke="#FFFFFF"/stroke="'$color'"/' "$temp_svg"
 
     # Send notification with action
-    action=$(notify-send -i "$temp_svg" "Screenshot copied" "Screenshot saved under ~/Pictures/Screenshots/screenshot_$timestamp.png" -t 5000 -A "swappy=Edit Screenshot")
+    action=$(notify-send -a screenshot -i "$temp_svg" "Screenshot copied" "Screenshot saved under ~/Pictures/Screenshots/screenshot_$timestamp.png" -t 5000 -A "swappy=Edit Screenshot")
 
     # Delete temp svg
     rm "$temp_svg"

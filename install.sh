@@ -104,7 +104,7 @@ PACKAGES=(
     libreoffice-fresh evince gnome-clocks p7zip unrar swww imagemagick
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
     gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
-    zenity baobab gnome-font-viewer unzip
+    zenity baobab gnome-font-viewer unzip sox
 )
 
 # AUR packages to install
