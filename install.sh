@@ -311,7 +311,7 @@ echo "Configuring Pywal..."
 mkdir -p ~/.config/wal/templates ~/.config/presets/user
 cp -r ./pywal16-libadwaita/templates/* ~/.config/wal/templates
 ./pywal16-libadwaita/scripts/apply-theme.sh
-wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n
+wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n -e
 gradience-cli apply -n "pywal" --gtk both
 
 # Ensure Pipx path
