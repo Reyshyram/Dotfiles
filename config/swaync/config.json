@@ -46,9 +46,9 @@
         }
     },
     "scripts": {
-        "notification-sound": {
-            "exec": "play ~/.config/swaync/sounds/notification.ogg",
-            "app-name": "^(?!.*\\b(screenshot|keyboard-layout|color-picker)\\b).*"
+        "notification-controller": {
+            "exec": "zsh /home/reyshyram/.config/swaync/notification-controller.sh",
+            "app-name": ".*"
         }
     }
 }

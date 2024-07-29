@@ -104,7 +104,7 @@ PACKAGES=(
     libreoffice-fresh evince gnome-clocks p7zip unrar swww imagemagick
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
     gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
-    zenity baobab gnome-font-viewer unzip sox
+    zenity baobab gnome-font-viewer unzip
 )
 
 # AUR packages to install
@@ -209,6 +209,8 @@ cp -r ./config/btop/* ~/.config/btop/
 echo "Configuring Swaync..."
 mkdir -p ~/.config/swaync
 cp -r ./config/swaync/* ~/.config/swaync/
+sed -i "s|/home/reyshyram|$HOME|g" ~/.config/swaync/config.json
+chmod +x ~/.config/swaync/notification-controller.sh
 
 # Enable SwayOSD backend
 echo "Enabling SwayOSD backend..."
