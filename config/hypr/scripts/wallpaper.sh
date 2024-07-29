@@ -10,7 +10,7 @@ execute_swww_img() {
     done < <(swww query)
 
     # Pywal
-    wal --cols16 -i $image_path -n
+    wal --cols16 -i $image_path -n -e
     gradience-cli apply -n "pywal" --gtk both
     pkill -f nwg-drawer
     nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 125 -mb 125 -ml 150 -mr 150 -c 6 -ovl &
