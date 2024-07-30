@@ -114,6 +114,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update nwg-displays
     wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors
     smile clipse swayosd-git ttf-meslo-nerd-font-powerlevel10k
+    apple-fonts
 )
 
 # Gaming packages to install

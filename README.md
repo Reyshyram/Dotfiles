@@ -44,6 +44,8 @@ You can change your wallpaper using `Super + H`, or select a random one using `S
 
 You can modify your display settings using the nwg-displays app.
 
+You may want to replace the file `~/.config/hypr/profile-picture.png` by your own profile picture.
+
 # Preview
 ![Preview](preview.png)
 ![Preview2](preview2.png)
