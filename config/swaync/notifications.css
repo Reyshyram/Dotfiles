@@ -3,7 +3,7 @@
 
   all: unset;
   font-size: 14px;
-  font-family: "SF Pro Text 10";
+  font-family: "SF Pro Text";
   transition: 200ms;
 
 }
