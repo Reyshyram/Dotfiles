@@ -9,7 +9,7 @@ mkdir -p "$directory"
 # Function to create and modify a temporary SVG
 create_temp_svg() {
     cp ~/.config/swaync/icons/screenshot.svg "$temp_svg"
-    color=$(sed -n '15p' ~/.cache/wal/colors)
+    color=$(sed -n '10p' ~/.cache/wal/colors)
     sed -i -e 's/fill="#FFFFFF"/fill="'$color'"/' -e 's/stroke="#FFFFFF"/stroke="'$color'"/' "$temp_svg"
 }
 

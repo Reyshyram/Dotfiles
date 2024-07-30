@@ -7,7 +7,7 @@ hyprctl switchxkblayout at-translated-set-2-keyboard next
 keyboard_layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')
 
 # Read pywal accent color
-color=$(sed -n '15p' ~/.cache/wal/colors)
+color=$(sed -n '10p' ~/.cache/wal/colors)
 
 # Create and modify a temporary SVG
 temp_svg=$(mktemp /tmp/keyboard_temp.XXXXXX.svg)

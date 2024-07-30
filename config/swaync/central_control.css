@@ -1,9 +1,3 @@
-@define-color text @foreground;
-@define-color background-alt alpha(@color1, .4);
-@define-color selected @color6;
-@define-color hover alpha(@selected, .4);
-@define-color urgent @color2;
-
 * {
   color: @text;
 
@@ -45,22 +39,22 @@
   padding: 8px 6px 2px 2px;
 }
 
-.control-center .notification-row .notification-background .notification>*:last-child>* {
+.control-center .notification-row .notification-background .notification > *:last-child > * {
   min-height: 3.4em;
 }
 
-.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action {
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
   background: alpha(@selected, .6);
   color: @text;
   border-radius: 12px;
   margin: 6px;
 }
 
-.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
   background: @selected;
 }
 
-.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:active {
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
   background-color: @selected;
 }
 
@@ -152,7 +146,7 @@ progressbar {
   font-size: 1.2rem;
 }
 
-.widget-dnd>switch {
+.widget-dnd > switch {
   background: @background-alt;
   font-size: initial;
   border-radius: 8px;
@@ -160,19 +154,19 @@ progressbar {
   padding: 2px;
 }
 
-.widget-dnd>switch:hover {
+.widget-dnd > switch:hover {
   background: @hover;
 }
 
-.widget-dnd>switch:checked {
+.widget-dnd > switch:checked {
   background: @selected;
 }
 
-.widget-dnd>switch:checked:hover {
+.widget-dnd > switch:checked:hover {
   background: @hover;
 }
 
-.widget-dnd>switch slider {
+.widget-dnd > switch slider {
   background: @text;
   border-radius: 6px;
 }
@@ -186,14 +180,14 @@ progressbar {
   background: @background-alt;
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button {
+.widget-buttons-grid > flowbox > flowboxchild > button {
   margin: 4px 10px;
   padding: 6px 12px;
   background: transparent;
   border-radius: 8px;
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
   background: @hover;
 }
 
@@ -214,7 +208,7 @@ progressbar {
   margin: 6px;
 }
 
-.widget-mpris>box>button {
+.widget-mpris > box > button {
   color: @text;
   border-radius: 20px;
 }

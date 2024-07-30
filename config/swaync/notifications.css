@@ -1,9 +1,3 @@
-@define-color text @foreground;
-@define-color background-alt @color1;
-@define-color selected @color3;
-@define-color hover @color5;
-@define-color urgent @color2;
-
 * {
   color: @text;
 

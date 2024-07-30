@@ -1,3 +1,8 @@
 @import '../../.cache/wal/colors-waybar.css';
+@define-color text @foreground;
+@define-color background-alt alpha(@color1, 0.4);
+@define-color selected @color9;
+@define-color hover alpha(@selected, 0.5);
+@define-color urgent #f38ba8;
 @import 'notifications.css';
 @import 'central_control.css';
