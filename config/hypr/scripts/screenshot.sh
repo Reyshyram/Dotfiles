@@ -1,71 +1,45 @@
 #!/bin/bash
 
 directory="$HOME/Pictures/Screenshots"
+temp_svg=$(mktemp /tmp/screenshot.XXXXXX.svg)
 
-if [ ! -d "$directory" ]; then
-  mkdir -p "$directory"
-fi
+# Ensure screenshot directory exists
+mkdir -p "$directory"
 
-notify() {
-    # Create temporary svg copy
-    temp_svg="/tmp/screenshot.svg"
+# Function to create and modify a temporary SVG
+create_temp_svg() {
     cp ~/.config/swaync/icons/screenshot.svg "$temp_svg"
-
-    # Read pywal accent color
-    color=$(sed -n '10p' ~/.cache/wal/colors)
-
-    # Modify temp svg color with pywal color
-    sed -i 's/fill="#FFFFFF"/fill="'$color'"/' "$temp_svg"
-    sed -i 's/stroke="#FFFFFF"/stroke="'$color'"/' "$temp_svg"
-
-    # Send notification with action
-    action=$(notify-send -a screenshot -i "$temp_svg" "Screenshot copied" "Screenshot saved under ~/Pictures/Screenshots/screenshot_$timestamp.png" -t 5000 -A "swappy=Edit Screenshot")
-
-    # Delete temp svg
-    rm "$temp_svg"
-
-    # Handle action
-    if [[ "$action" == "swappy" ]]; then
-        swappy -f "$directory/screenshot_$timestamp.png"
-    fi
+    color=$(sed -n '15p' ~/.cache/wal/colors)
+    sed -i -e 's/fill="#FFFFFF"/fill="'$color'"/' -e 's/stroke="#FFFFFF"/stroke="'$color'"/' "$temp_svg"
 }
 
+# Function to send a notification with an action
+send_notification() {
+    action=$(notify-send -a screenshot -i "$temp_svg" "Screenshot copied" "Screenshot saved under ~/Pictures/Screenshots/screenshot_$timestamp.png" -t 5000 -A "swappy=Edit Screenshot")
+    [[ "$action" == "swappy" ]] && swappy -f "$directory/screenshot_$timestamp.png"
+    rm "$temp_svg"
+}
+
+# Function to save the screenshot
 save_screenshot() {
     timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
     mv /tmp/screenshot.png "$directory/screenshot_$timestamp.png"
 }
 
-current_monitor() {
-    grimblast copysave output /tmp/screenshot.png
+# Function to handle screenshot actions
+take_screenshot() {
+    local type="$1"
+    grimblast copysave "$type" /tmp/screenshot.png
     save_screenshot
-    notify
+    create_temp_svg
+    send_notification
 }
 
-all_monitors() {
-    grimblast copysave screen /tmp/screenshot.png
-    save_screenshot
-    notify
-}
-
-area() {
-    grimblast copysave area /tmp/screenshot.png
-    save_screenshot
-    notify
-}
-
-frozen_area() {
-    grimblast --freeze copysave area /tmp/screenshot.png
-    save_screenshot
-    notify
-}
-
-# Execute accordingly
-if [[ "$1" == "--current-monitor" ]]; then
-    current_monitor
-elif [[ "$1" == "--all-monitors" ]]; then
-    all_monitors
-elif [[ "$1" == "--area" ]]; then
-    area
-elif [[ "$1" == "--frozen-area" ]]; then
-    frozen_area
-fi
+# Main script execution
+case "$1" in
+    --current-monitor) take_screenshot output ;;
+    --all-monitors) take_screenshot screen ;;
+    --area) take_screenshot area ;;
+    --frozen-area) grimblast --freeze copysave area /tmp/screenshot.png; save_screenshot; create_temp_svg; send_notification ;;
+    *) echo "Usage: $0 {--current-monitor|--all-monitors|--area|--frozen-area}" ;;
+esac

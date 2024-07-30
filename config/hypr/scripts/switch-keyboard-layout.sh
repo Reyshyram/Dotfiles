@@ -7,13 +7,11 @@ hyprctl switchxkblayout at-translated-set-2-keyboard next
 keyboard_layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')
 
 # Read pywal accent color
-color=$(sed -n '10p' ~/.cache/wal/colors)
+color=$(sed -n '15p' ~/.cache/wal/colors)
 
-# Create temporary copy
-temp_svg="/tmp/keyboard_temp.svg"
+# Create and modify a temporary SVG
+temp_svg=$(mktemp /tmp/keyboard_temp.XXXXXX.svg)
 cp ~/.config/swaync/icons/keyboard.svg "$temp_svg"
-
-# Modify temp svg color
 sed -i 's/fill="#FFFFFF"/fill="'$color'"/' "$temp_svg"
 
 # Send notification
