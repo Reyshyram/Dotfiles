@@ -5,6 +5,9 @@ echo "This script will finalize the installation."
 echo "Setting up a wallpaper..."
 swww img ~/Pictures/Wallpapers/jama.png -t any --transition-fps 60
 
+echo "Applying gradience theme..."
+gradience-cli apply -n "pywal" --gtk both
+
 echo "Installing Hyprspace plugin..."
 hyprpm update
 hyprpm add https://github.com/KZDKM/Hyprspace
