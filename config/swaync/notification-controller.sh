@@ -7,8 +7,8 @@ excluded_apps=("keyboard-layout" "screenshot" "color-picker")
 
 # Function to play notification sound
 play_sound() {
-    pw-play "$sound_file"
     date +%s > "$last_play_file"
+    pw-play "$sound_file"
 }
 
 # Function to check if a sound can be played (not played in the last 3 seconds)
