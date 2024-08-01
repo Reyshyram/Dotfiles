@@ -309,6 +309,9 @@ ln -s "$HOME/.cache/wal/pywal.json" "$HOME/.config/presets/user/pywal.json"
 ln -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
 ln -s "$HOME/.cache/wal/pywal.svg" "$HOME/.config/Kvantum/pywal/pywal.svg"
 wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n -e
+cd ~/.config/hypr/scripts/
+./pywal-accent-color-setup.sh
+cd -
 
 # Ensure Pipx path
 echo "Ensuring Pipx path..."

@@ -18,22 +18,32 @@ get_random_image() {
 execute_swww_img() {
     image_path=$1
 
+    # Set wallpaper
+    while IFS= read -r line; do
+        output_name=$(echo "$line" | cut -d':' -f1 | sed 's/^[[:space:]]*//')
+        swww img "$image_path" -o "$output_name" -t any --transition-fps 60
+    done < <(swww query)
+    cp "$image_path" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
+
     # Pywal
     wal --cols16 -i $image_path -n -e -q
+    cd ~/.config/hypr/scripts
+    source ./pywal-accent-color-env/bin/activate
+    python pywal-accent-color.py $image_path
+    deactivate
     gradience-cli apply -n "pywal" --gtk both
     pkill -f nwg-drawer
     nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 125 -mb 65 -ml 65 -mr 65 -c 5 -ovl &
     swaync-client -rs
     killall -SIGUSR2 waybar
-
-    # Set wallpaper
-    while IFS= read -r line; do
-        output_name=$(echo "$line" | cut -d':' -f1 | sed 's/^[[:space:]]*//')
-        swww img "$image_path" -o "$output_name" -t any --transition-fps 60
-        cp "$image_path" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
-    done < <(swww query)
-
 }
+
+# Check for virtual env
+cd ~/.config/hypr/scripts
+if [ ! -d "pywal-accent-color-env" ]; then
+    ./pywal-accent-color-setup.sh
+fi
+
 
 # Check for --random flag
 if [ "$1" == "--random" ]; then
