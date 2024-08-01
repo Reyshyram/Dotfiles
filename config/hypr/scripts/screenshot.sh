@@ -15,8 +15,8 @@ create_temp_svg() {
 
 # Function to send a notification with an action
 send_notification() {
-    action=$(notify-send -a screenshot -i "$temp_svg" "Screenshot copied" "Screenshot saved under ~/Pictures/Screenshots/screenshot_$timestamp.png" -t 5000 -A "swappy=Edit Screenshot")
-    [[ "$action" == "swappy" ]] && swappy -f "$directory/screenshot_$timestamp.png"
+    action=$(notify-send -a screenshot -i "$temp_svg" "Screenshot copied" "Screenshot saved under ~/Pictures/Screenshots/screenshot_$timestamp.png" -t 5000 -A "pinta=Edit Screenshot")
+    [[ "$action" == "pinta" ]] && pinta "$directory/screenshot_$timestamp.png"
     rm "$temp_svg"
 }
 

@@ -96,7 +96,7 @@ PACKAGES=(
     xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler
     ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber
     networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse
-    gst-plugin-pipewire cliphist slurp swappy noto-fonts-emoji firewalld
+    gst-plugin-pipewire cliphist slurp noto-fonts-emoji firewalld
     waybar xdg-desktop-portal-gtk bluez bluez-utils blueman
     network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha
     kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle
@@ -304,10 +304,6 @@ cp -r ./config/pcmanfm-qt ~/.config/
 # Configure Fastfetch
 echo "Configuring Fastfetch..."
 cp -r ./config/fastfetch ~/.config/
-
-# Configure Swappy
-echo "Configuring Swappy..."
-cp -r ./config/swappy ~/.config/
 
 # Configure Pywal setup
 echo "Configuring Pywal..."
