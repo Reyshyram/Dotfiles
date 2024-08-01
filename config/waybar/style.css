@@ -34,7 +34,7 @@ window#waybar {
     min-width: 0;
     padding: 4px 12px;
     margin-right: 6px;
-    color: @color9;
+    color: @accent;
     background-color: @background;
 }
 
@@ -58,7 +58,7 @@ window#waybar.empty #window {
     margin-left: 0px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    padding-left: 8px;
+    padding-left: 6px;
 }
 
 #custom-notification {
@@ -66,7 +66,7 @@ window#waybar.empty #window {
     margin-right: 0px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    padding-right: 8px;
+    padding-right: 4px;
 }
 
 #custom-updates {
@@ -76,14 +76,6 @@ window#waybar.empty #window {
 #pulseaudio {
     font-family: "MesloLGS Nerd Font";
     padding-right: 14px;
-}
-
-#battery.warning {
-    color: @color13;
-}
-
-#battery.critical {
-    color: @color12;
 }
 
 #idle_inhibitor {
@@ -121,7 +113,7 @@ tooltip {
 }
 
 tooltip label {
-    color: @color9;
+    color: @accent;
     padding: 0px;
 }
 
@@ -138,21 +130,21 @@ tooltip label {
     padding: 3px 8px;
     margin: 1px 2px;
     border-radius: 15px;
-    color: @color9;
+    color: @accent;
     background-color: @background;
     transition: all 0.5s ease-in-out;
 }
 
 #workspaces button.active {
-    color: shade(@color9, 1.2);
-    background: shade(@color1, 0.5);
+    color: shade(@accent, 1.2);
+    background: shade(@accent, 0.5);
     border-radius: 15px;
     min-width: 30px;
     transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
-    color: @color9;
-    background: shade(@color1, 0.35);
+    color: @accent;
+    background: shade(@accent, 0.35);
     border-radius: 15px;
 }
