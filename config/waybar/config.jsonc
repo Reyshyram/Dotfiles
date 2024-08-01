@@ -7,8 +7,8 @@
     "margin-bottom": 0,
     "fixed-center": true,
     "modules-left": [
-        "clock",
         "custom/notification",
+        "clock",
         "custom/updates",
         "tray",
         "hyprland/window"

@@ -54,8 +54,19 @@ window#waybar.empty #window {
 }
 
 /* Customize each module */
+#clock {
+    margin-left: 0px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 8px;
+}
+
 #custom-notification {
     font-size: 20px;
+    margin-right: 0px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: 8px;
 }
 
 #custom-updates {

@@ -1,6 +1,7 @@
 @import '../../.cache/wal/colors-waybar.css';
 
 * {
+    font-family: Ubuntu;
     background-image: none;
     font-size: 24px;
 }

@@ -1,10 +1,9 @@
 * {
-  color: @text;
-
   all: unset;
   font-size: 14px;
-  font-family: "SF Pro Text";
+  font-family: "Ubuntu";
   transition: 200ms;
+  color: @text;
 }
 
 /* Avoid 'annoying' backgroud */
