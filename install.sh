@@ -227,10 +227,6 @@ sed -i 's/^bind = $mainMod, Tab, overview:toggle, all/#&/' ~/.config/hypr/keybin
 # Send notification post install when restarting
 echo "exec-once = ~/.config/hypr/scripts/post_install_listener" >> ~/.config/hypr/startup.conf
 
-# Configure Pywal templates
-mkdir -p ~/.config/wal/templates
-cp -r ./config/pywal/* ~/.config/wal/templates
-
 # Set application associations
 xdg-settings set default-web-browser firefox.desktop
 xdg-mime default pcmanfm-qt.desktop inode/directory
@@ -308,8 +304,10 @@ cp -r ./config/fastfetch ~/.config/
 # Configure Pywal setup
 echo "Configuring Pywal..."
 mkdir -p ~/.config/wal/templates ~/.config/presets/user
-cp -r ./pywal16-libadwaita/templates/* ~/.config/wal/templates
-./pywal16-libadwaita/scripts/apply-theme.sh
+cp -r ./config/pywal/templates ~/.config/wal/templates
+ln -s "$HOME/.cache/wal/pywal.json" "$HOME/.config/presets/user/pywal.json"
+ln -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
+ln -s "$HOME/.cache/wal/pywal.svg" "$HOME/.config/Kvantum/pywal/pywal.svg"
 wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n -e
 
 # Ensure Pipx path
