@@ -1,4 +1,6 @@
 import colorsys
+import hashlib
+import json
 import os
 import sys
 
@@ -18,6 +20,9 @@ MAX_BRIGHTNESS = 168  # Maximum brightness level for the color to be considered 
 CSS_FILE_PATH = os.path.expanduser(
     "~/.cache/wal/colors-waybar.css"
 )  # Path to the CSS file to be updated
+CACHE_FILE_PATH = os.path.expanduser(
+    "~/.cache/wal/colors-cache.json"
+)  # Path to the cache file
 
 
 def adjust_brightness(color, factor):
@@ -49,6 +54,48 @@ def is_brightness_in_range(color, min_brightness, max_brightness):
     # Calculate brightness using the luminance formula
     brightness = 0.2126 * r + 0.7152 * g + 0.0722 * b
     return min_brightness <= brightness <= max_brightness
+
+
+def compute_image_hash(image_path):
+    """Compute a hash for the image file.
+
+    Args:
+        image_path (str): Path to the image file.
+
+    Returns:
+        str: The SHA-256 hash of the image file contents.
+    """
+    hash_sha256 = hashlib.sha256()
+    with open(image_path, "rb") as f:
+        while chunk := f.read(8192):
+            hash_sha256.update(chunk)
+    return hash_sha256.hexdigest()
+
+
+def load_cache(cache_file_path):
+    """Load the cache from the cache file.
+
+    Args:
+        cache_file_path (str): Path to the cache file.
+
+    Returns:
+        dict: The cache as a dictionary.
+    """
+    if os.path.isfile(cache_file_path):
+        with open(cache_file_path, encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_cache(cache_file_path, cache):
+    """Save the cache to the cache file.
+
+    Args:
+        cache_file_path (str): Path to the cache file.
+        cache (dict): The cache to save.
+    """
+    with open(cache_file_path, "w", encoding="utf-8") as f:
+        json.dump(cache, f, indent=4)
 
 
 def get_representative_color(
@@ -134,17 +181,22 @@ def update_css_file(css_file_path, color_hex):
 
 def main(image_path):
     """Main function to find the representative color and update the CSS file."""
-    # Validate CSS file existence
     if not os.path.isfile(CSS_FILE_PATH):
         print(f"CSS file does not exist: {CSS_FILE_PATH}")
         sys.exit(1)
 
-    # Get the representative color from the image
-    representative_color = get_representative_color(image_path)
-    # Format the color as a hex string
-    representative_color_hex = "#{:02x}{:02x}{:02x}".format(*representative_color)
+    image_hash = compute_image_hash(image_path)
+    cache = load_cache(CACHE_FILE_PATH)
 
-    # Update the CSS file with the representative color
+    if image_hash in cache:
+        representative_color_hex = cache[image_hash]
+        print(f"Using cached color: {representative_color_hex}")
+    else:
+        representative_color = get_representative_color(image_path)
+        representative_color_hex = "#{:02x}{:02x}{:02x}".format(*representative_color)
+        cache[image_hash] = representative_color_hex
+        save_cache(CACHE_FILE_PATH, cache)
+
     update_css_file(CSS_FILE_PATH, representative_color_hex)
 
 
