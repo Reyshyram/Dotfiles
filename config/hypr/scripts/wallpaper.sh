@@ -25,7 +25,6 @@ execute_swww_img() {
     nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 125 -mb 65 -ml 65 -mr 65 -c 5 -ovl &
     swaync-client -rs
     killall -SIGUSR2 waybar
-    pywalfox update
 
     # Set wallpaper
     while IFS= read -r line; do
