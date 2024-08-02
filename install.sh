@@ -109,7 +109,7 @@ PACKAGES=(
 
 # AUR packages to install
 YAY_PACKAGES=(
-    bibata-cursor-theme visual-studio-code-bin g4music hardcode-fixer-git
+    bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
     nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin
     hyprpicker grimblast-git aurutils arch-update nwg-displays
     wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors
