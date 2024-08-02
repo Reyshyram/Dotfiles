@@ -14,36 +14,22 @@ entry {
     margin-top: 30px;
 }
 
+entry:focus {
+    border-color: shade(@accent, 0.75);
+}
+
 button,
 image {
     background: none;
     border: none;
+    outline: none;
     margin: 4px;
-
 }
 
 button:hover {
     background-color: alpha(@accent, 0.1);
-    border: none;
 }
 
 button:focus {
-    background-color: shade(@color1, 0.75);
-    border: none;
-}
-
-/* in case you wanted to give category buttons a different look */
-#category-button {
-    margin: 0 10px 0 10px;
-}
-
-#pinned-box {
-    padding-bottom: 5px;
-    border-bottom: 1px dotted gray
-}
-
-#files-box {
-    padding: 5px;
-    border: none;
-    border-radius: 15px
+    background-color: alpha(@accent, 0.25);
 }
