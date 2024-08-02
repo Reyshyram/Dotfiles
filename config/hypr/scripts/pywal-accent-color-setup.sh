@@ -13,7 +13,7 @@ source $VENV_NAME/bin/activate
 pip install --upgrade pip
 
 # Install the required packages
-pip install numpy pillow scikit-image scikit-learn
+pip install pillow numpy scipy scikit-learn
 
 # Inform the user
 echo "Virtual environment '$VENV_NAME' created and packages installed."
