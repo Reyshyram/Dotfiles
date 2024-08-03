@@ -94,7 +94,7 @@ PACKAGES=(
     xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct
     papirus-icon-theme kvantum sddm brightnessctl pamixer playerctl
     xdg-user-dirs sound-theme-freedesktop yad jq vlc gwenview tumbler
-    ffmpegthumbnailer polkit-gnome udiskie grim socat pipewire wireplumber
+    ffmpegthumbnailer polkit-gnome udiskie grim socat wireplumber
     networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse
     gst-plugin-pipewire cliphist slurp noto-fonts-emoji firewalld
     waybar xdg-desktop-portal-gtk bluez bluez-utils blueman
