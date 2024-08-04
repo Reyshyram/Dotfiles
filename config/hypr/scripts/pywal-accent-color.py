@@ -7,7 +7,6 @@ import sys
 
 import numpy as np
 from PIL import Image
-from scipy.spatial import distance
 from sklearn.cluster import KMeans
 from sklearn.utils import shuffle
 
@@ -127,107 +126,64 @@ def get_representative_color(
             img = img.resize(IMAGE_RESIZE_DIM)
             # Flatten the image into a list of RGB tuples and normalize pixel values
             pixels = np.array(img).reshape(-1, 3).astype(np.float64) / 255.0
+            # Sample a subset of pixels for clustering to improve performance
+            pixels = shuffle(pixels, random_state=42, n_samples=PIXEL_SAMPLE_SIZE)
+            # Perform KMeans clustering to find dominant colors
+            kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+            kmeans.fit(pixels)
 
-        # Sample a subset of pixels for clustering to improve performance
-        pixels = shuffle(pixels, random_state=42, n_samples=PIXEL_SAMPLE_SIZE)
+            # Convert cluster centers from normalized (0-1) to standard (0-255) RGB values
+            cluster_centers = kmeans.cluster_centers_ * 255.0
 
-        # Perform KMeans clustering to find dominant colors
-        kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
-        kmeans.fit(pixels)
-        # Convert cluster centers from normalized (0-1) to standard (0-255) RGB values
-        cluster_centers = kmeans.cluster_centers_ * 255.0
+            # Convert RGB cluster centers to HSV color space for better color representation
+            hsv_cluster_centers = np.array([
+                colorsys.rgb_to_hsv(*(center / 255.0)) for center in cluster_centers
+            ])
 
-        # Convert RGB cluster centers to HSV color space for better color representation
-        hsv_cluster_centers = np.array([
-            colorsys.rgb_to_hsv(*(center / 255.0)) for center in cluster_centers
-        ])
+            # Calculate a metric that emphasizes saturation and brightness
+            colorfulness_metric = hsv_cluster_centers[:, 1] * hsv_cluster_centers[:, 2]
+            representative_color = cluster_centers[
+                np.argmax(colorfulness_metric)
+            ].astype(int)
 
-        # Calculate a metric that emphasizes saturation and brightness
-        colorfulness_metric = hsv_cluster_centers[:, 1] * hsv_cluster_centers[:, 2]
-        representative_color = cluster_centers[np.argmax(colorfulness_metric)].astype(
-            int
-        )
-
-        # Sort clusters by colorfulness and pick the most vibrant color
-        sorted_indices = np.argsort(colorfulness_metric)[::-1]
-        for index in sorted_indices:
-            candidate_color = cluster_centers[index].astype(int)
-            if is_brightness_in_range(candidate_color, min_brightness, max_brightness):
-                representative_color = candidate_color
-                break
-
-        factor = 1.0
-        adjustment_step = 0.05
-        while not is_brightness_in_range(
-            representative_color, min_brightness, max_brightness
-        ):
-            if sum(representative_color) < min_brightness * 3:
-                factor += adjustment_step
-            else:
-                factor -= adjustment_step
-            representative_color = adjust_brightness(representative_color, factor)
-            # Cap the adjustment to avoid infinite loops
-            if factor <= 0.1 or factor >= 2.0:
-                break
-
-        return representative_color
-
+            # Sort clusters by colorfulness and pick the most vibrant color
+            sorted_indices = np.argsort(colorfulness_metric)[::-1]
+            for index in sorted_indices:
+                candidate_color = cluster_centers[index].astype(int)
+                if is_brightness_in_range(
+                    candidate_color, min_brightness, max_brightness
+                ):
+                    representative_color = candidate_color
+                    break
+            factor = 1.0
+            adjustment_step = 0.05
+            while not is_brightness_in_range(
+                representative_color, min_brightness, max_brightness
+            ):
+                if sum(representative_color) < min_brightness * 3:
+                    factor += adjustment_step
+                else:
+                    factor -= adjustment_step
+                representative_color = adjust_brightness(representative_color, factor)
+                if factor <= 0.1 or factor >= 2.0:
+                    break
+            return representative_color
     except Exception as e:
         logging.error(f"Error processing image: {e}")
         sys.exit(1)
 
 
-def read_css_colors(css_file_path):
-    """Read the defined colors from the CSS file.
-
-    Args:
-        css_file_path (str): Path to the CSS file.
-
-    Returns:
-        dict: A dictionary of color names and their RGB values.
-    """
-    colors = {}
-    with open(css_file_path, encoding="utf-8") as file:
-        lines = file.readlines()
-        for line in lines:
-            if line.startswith("@define-color"):
-                parts = line.split()
-                color_name = parts[1]
-                color_hex = parts[2].strip(";")
-                colors[color_name] = tuple(
-                    int(color_hex[i : i + 2], 16) for i in (1, 3, 5)
-                )
-    return colors
-
-
-def find_most_similar_color(representative_color, defined_colors):
-    """Find the most similar color in defined_colors to the representative color.
-
-    Args:
-        representative_color (tuple): The RGB color as a tuple of integers (R, G, B).
-        defined_colors (dict): Dictionary of color names and their RGB values.
-
-    Returns:
-        str: The name of the most similar color.
-    """
-    closest_color_name = None
-    min_distance = float("inf")
-    for color_name, color_value in defined_colors.items():
-        dist = distance.euclidean(representative_color, color_value)
-        if dist < min_distance:
-            min_distance = dist
-            closest_color_name = color_name
-    return closest_color_name
-
-
-def update_css_file(css_file_path, color_name):
+def update_css_file(css_file_path, representative_color):
     """Append the representative color to the CSS file.
 
     Args:
         css_file_path (str): Path to the CSS file.
-        color_name (str): The name of the most similar color.
+        representative_color (tuple): The RGB color as a tuple of integers (R, G, B).
     """
-    css_line = f"@define-color accent @{color_name};\n"
+    r, g, b = representative_color
+    hex_color = f"#{r:02x}{g:02x}{b:02x}"
+    css_line = f"@define-color accent {hex_color};\n"
+
     with open(css_file_path, "a", encoding="utf-8") as file:
         file.write(css_line)
     logging.info(f"Appended the line to {css_file_path}")
@@ -242,18 +198,15 @@ def main(image_path):
     cache = load_cache(CACHE_FILE_PATH)
 
     if image_hash in cache:
-        color_name = cache[image_hash]
-        logging.info(f"Using cached color: {color_name}")
+        representative_color = tuple(cache[image_hash])
+        logging.info(f"Using cached color: {representative_color}")
     else:
         representative_color = get_representative_color(image_path)
-        logging.info(f"The most representative color is {representative_color}")
-        defined_colors = read_css_colors(CSS_FILE_PATH)
-        color_name = find_most_similar_color(representative_color, defined_colors)
-        logging.info(f"The color chosen is {color_name}")
-        cache[image_hash] = color_name
+        logging.info(f"The representative color is {representative_color}")
+        cache[image_hash] = [int(c) for c in representative_color]
         save_cache(CACHE_FILE_PATH, cache)
 
-    update_css_file(CSS_FILE_PATH, color_name)
+    update_css_file(CSS_FILE_PATH, representative_color)
 
 
 if __name__ == "__main__":

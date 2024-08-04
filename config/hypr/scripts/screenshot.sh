@@ -9,12 +9,11 @@ mkdir -p "$directory"
 # Function to create and modify a temporary SVG
 create_temp_svg() {
     cp ~/.config/swaync/icons/screenshot.svg "$temp_svg"
+    
     # Read pywal accent color
     css_file="$HOME/.cache/wal/colors-waybar.css"
-    # Extract the name of the color that 'accent' points to
-    accent_name=$(grep -oP '^@define-color accent \K.+' "$css_file" | sed 's/@//' | sed 's/;//')
-    # Extract the actual value of the color variable that 'accent' points to
-    color=$(grep -oP "^@define-color $accent_name \K.+" "$css_file" | sed 's/;//')
+    color=$(grep -oP "^@define-color accent \K.+" "$css_file" | sed 's/;//')
+
     sed -i -e 's/fill="#FFFFFF"/fill="'$color'"/' -e 's/stroke="#FFFFFF"/stroke="'$color'"/' "$temp_svg"
 }
 

@@ -8,10 +8,7 @@ keyboard_layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == tru
 
 # Read pywal accent color
 css_file="$HOME/.cache/wal/colors-waybar.css"
-# Extract the name of the color that 'accent' points to
-accent_name=$(grep -oP '^@define-color accent \K.+' "$css_file" | sed 's/@//' | sed 's/;//')
-# Extract the actual value of the color variable that 'accent' points to
-color=$(grep -oP "^@define-color $accent_name \K.+" "$css_file" | sed 's/;//')
+color=$(grep -oP "^@define-color accent \K.+" "$css_file" | sed 's/;//')
 
 # Output the actual color value
 echo "The true value of the accent color is: $actual_value"
