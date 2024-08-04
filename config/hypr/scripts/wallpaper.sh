@@ -33,8 +33,13 @@ convert_to_png() {
 
     # Check if the converted image already exists in the cache
     if [[ ! -f "$output_image" ]]; then
-        # Convert image to PNG using ImageMagick
-        magick "$input_image" "$output_image"
+        if [[ "$input_image" == *.gif ]]; then
+            # Convert only the first frame of GIF to PNG
+            magick convert "$input_image[0]" "$output_image"
+        else
+            # Convert image to PNG using ImageMagick
+            magick "$input_image" "$output_image"
+        fi
     fi
 
     echo "$output_image"
