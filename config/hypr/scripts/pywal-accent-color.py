@@ -11,19 +11,19 @@ from sklearn.cluster import KMeans
 from sklearn.utils import shuffle
 
 # Constants for configuration
-IMAGE_RESIZE_DIM = (200, 200)  # Resize dimensions for image processing
-PIXEL_SAMPLE_SIZE = 10000  # Number of pixels to sample for clustering
-DEFAULT_N_CLUSTERS = 8  # Default number of clusters for KMeans algorithm
-MIN_BRIGHTNESS = 96  # Minimum brightness level for the color to be considered valid
-MAX_BRIGHTNESS = 164  # Maximum brightness level for the color to be considered valid
+IMAGE_RESIZE_DIM = (200, 200)  # Dimensions to resize images for processing
+PIXEL_SAMPLE_SIZE = 10000  # Number of pixels to randomly sample for clustering
+DEFAULT_N_CLUSTERS = 8  # Default number of clusters to use in KMeans clustering
+MIN_BRIGHTNESS = 96  # Minimum brightness level for considering a color valid
+MAX_BRIGHTNESS = 164  # Maximum brightness level for considering a color valid
 CSS_FILE_PATH = (
     Path.home() / ".cache" / "wal" / "colors-waybar.css"
-)  # Path to the CSS file to be updated
+)  # Path to the CSS file to update
 CACHE_FILE_PATH = (
     Path.home() / ".cache" / "wal" / "colors-cache.json"
 )  # Path to the cache file
 
-# Set up logging
+# Set up logging configuration
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
@@ -34,8 +34,8 @@ def adjust_brightness(color, factor):
     Adjust the brightness of an RGB color by a specified factor.
 
     Args:
-        color (tuple): The RGB color to adjust.
-        factor (float): The factor by which to adjust the brightness.
+        color (tuple): The RGB color to adjust, represented as (R, G, B).
+        factor (float): The factor by which to adjust the brightness (e.g., 0.5 for darker, 2 for lighter).
 
     Returns:
         tuple: The adjusted RGB color.
@@ -45,15 +45,15 @@ def adjust_brightness(color, factor):
 
 def is_brightness_in_range(color, min_brightness, max_brightness):
     """
-    Check if the color's brightness is within the desired range.
+    Check if the brightness of an RGB color falls within a specified range.
 
     Args:
-        color (tuple): The RGB color to check.
-        min_brightness (float): Minimum brightness level.
-        max_brightness (float): Maximum brightness level.
+        color (tuple): The RGB color to check, represented as (R, G, B).
+        min_brightness (float): Minimum acceptable brightness value.
+        max_brightness (float): Maximum acceptable brightness value.
 
     Returns:
-        bool: True if the color's brightness is within the range, otherwise False.
+        bool: True if the color's brightness is within the range; otherwise, False.
     """
     r, g, b = color
     brightness = 0.2126 * r + 0.7152 * g + 0.0722 * b
@@ -62,13 +62,13 @@ def is_brightness_in_range(color, min_brightness, max_brightness):
 
 def compute_image_hash(image_path):
     """
-    Compute a SHA-256 hash for the image file.
+    Compute a SHA-256 hash for an image file, which can be used to detect changes in the image.
 
     Args:
         image_path (str): Path to the image file.
 
     Returns:
-        str: SHA-256 hash of the image file.
+        str: The SHA-256 hash of the image file.
     """
     hash_sha256 = hashlib.sha256()
     try:
@@ -83,13 +83,13 @@ def compute_image_hash(image_path):
 
 def load_cache(cache_file_path):
     """
-    Load the cache from the cache file.
+    Load cached color data from a JSON file.
 
     Args:
         cache_file_path (Path): Path to the cache file.
 
     Returns:
-        dict: The loaded cache.
+        dict: Loaded cache data or an empty dictionary if the file cannot be read.
     """
     if cache_file_path.is_file():
         try:
@@ -97,17 +97,16 @@ def load_cache(cache_file_path):
                 return json.load(f)
         except (OSError, json.JSONDecodeError) as e:
             logging.error(f"Error loading cache file: {e}")
-            return {}
     return {}
 
 
 def save_cache(cache_file_path, cache):
     """
-    Save the cache to the cache file.
+    Save color data to the cache file in JSON format.
 
     Args:
         cache_file_path (Path): Path to the cache file.
-        cache (dict): The cache to save.
+        cache (dict): Data to be saved in the cache file.
     """
     try:
         with cache_file_path.open("w", encoding="utf-8") as f:
@@ -124,33 +123,44 @@ def get_representative_color(
     max_brightness=MAX_BRIGHTNESS,
 ):
     """
-    Extract a representative color from the image within the given brightness range.
+    Extract a representative color from an image within a specified brightness range using KMeans clustering.
 
     Args:
         image_path (str): Path to the image file.
-        n_clusters (int): Number of clusters for KMeans.
-        min_brightness (float): Minimum brightness level.
-        max_brightness (float): Maximum brightness level.
+        n_clusters (int): Number of clusters to form with KMeans.
+        min_brightness (float): Minimum acceptable brightness for the color.
+        max_brightness (float): Maximum acceptable brightness for the color.
 
     Returns:
-        tuple: The representative RGB color.
+        tuple: The representative RGB color that is within the specified brightness range.
     """
     try:
+        # Open and preprocess the image
         with Image.open(image_path).convert("RGB") as img:
-            img = img.resize(IMAGE_RESIZE_DIM)
-            pixels = np.array(img).reshape(-1, 3).astype(np.float64) / 255.0
-            pixels = shuffle(pixels, random_state=42, n_samples=PIXEL_SAMPLE_SIZE)
+            img = img.resize(IMAGE_RESIZE_DIM)  # Resize image to reduce processing time
+            pixels = (
+                np.array(img).reshape(-1, 3).astype(np.float64) / 255.0
+            )  # Normalize pixel values
+            pixels = shuffle(
+                pixels, random_state=42, n_samples=PIXEL_SAMPLE_SIZE
+            )  # Sample pixels for clustering
+
+            # Perform KMeans clustering
             kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
             kmeans.fit(pixels)
 
-            cluster_centers = kmeans.cluster_centers_ * 255.0
+            cluster_centers = (
+                kmeans.cluster_centers_ * 255.0
+            )  # Denormalize cluster centers
             hsv_cluster_centers = np.array([
                 colorsys.rgb_to_hsv(*(center / 255.0)) for center in cluster_centers
-            ])
+            ])  # Convert RGB to HSV for colorfulness measurement
 
+            # Compute colorfulness metric and sort cluster centers by colorfulness
             colorfulness_metric = hsv_cluster_centers[:, 1] * hsv_cluster_centers[:, 2]
             sorted_indices = np.argsort(colorfulness_metric)[::-1]
 
+            # Select the most colorfully representative color within brightness range
             for index in sorted_indices:
                 candidate_color = cluster_centers[index].astype(int)
                 if is_brightness_in_range(
@@ -158,7 +168,7 @@ def get_representative_color(
                 ):
                     return candidate_color
 
-            # Fallback: Adjust the color's brightness
+            # Fallback: Adjust brightness of the most colorfully representative color
             factor = 1.0
             adjustment_step = 0.05
             representative_color = cluster_centers[
@@ -186,11 +196,11 @@ def get_representative_color(
 
 def update_css_file(css_file_path, representative_color):
     """
-    Append the representative color to the CSS file.
+    Append the representative color to a CSS file for use in theming.
 
     Args:
-        css_file_path (Path): Path to the CSS file.
-        representative_color (tuple): The representative RGB color.
+        css_file_path (Path): Path to the CSS file to update.
+        representative_color (tuple): The RGB color to add to the CSS file.
     """
     hex_color = f"#{representative_color[0]:02x}{representative_color[1]:02x}{representative_color[2]:02x}"
     css_line = f"@define-color accent {hex_color};\n"
@@ -209,15 +219,17 @@ def main(image_path):
     Main function to process the image and update the CSS file with the representative color.
 
     Args:
-        image_path (str): Path to the image file.
+        image_path (str): Path to the image file to process.
     """
     if not CSS_FILE_PATH.is_file():
         logging.error(f"CSS file does not exist: {CSS_FILE_PATH}")
         sys.exit(1)
 
+    # Compute the hash of the image to check if it has been processed before
     image_hash = compute_image_hash(image_path)
     cache = load_cache(CACHE_FILE_PATH)
 
+    # Use cached color if available
     if image_hash in cache:
         representative_color = tuple(cache[image_hash])
         logging.info(f"Using cached color: {representative_color}")
@@ -227,6 +239,7 @@ def main(image_path):
         cache[image_hash] = [int(c) for c in representative_color]
         save_cache(CACHE_FILE_PATH, cache)
 
+    # Update the CSS file with the new representative color
     update_css_file(CSS_FILE_PATH, representative_color)
 
 
