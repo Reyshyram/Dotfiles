@@ -26,7 +26,7 @@ execute_swww_img() {
     cp "$image_path" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
 
     # Pywal
-    wal --cols16 -i $image_path -n -e -q
+    wal --cols16 -i $image_path -n -e -q --backend haishoku
     cd ~/.config/hypr/scripts
     source ./pywal-accent-color-env/bin/activate
     python pywal-accent-color.py $image_path

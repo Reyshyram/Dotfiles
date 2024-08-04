@@ -114,6 +114,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update nwg-displays
     wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors
     smile clipse swayosd-git ttf-meslo-nerd-font-powerlevel10k
+    python-haishoku
 )
 
 # Gaming packages to install
@@ -307,7 +308,7 @@ cp -r ./config/pywal/templates ~/.config/wal/templates
 ln -s "$HOME/.cache/wal/pywal.json" "$HOME/.config/presets/user/pywal.json"
 ln -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
 ln -s "$HOME/.cache/wal/pywal.svg" "$HOME/.config/Kvantum/pywal/pywal.svg"
-wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n -e
+wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n -e --backend haishoku
 cd ~/.config/hypr/scripts/
 ./pywal-accent-color-setup.sh
 cd -
