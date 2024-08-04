@@ -27,23 +27,14 @@ execute_swww_img() {
 
     # Pywal
     wal --cols16 -i $image_path -n -e -q --backend haishoku
-    cd ~/.config/hypr/scripts
-    source ./pywal-accent-color-env/bin/activate
-    python pywal-accent-color.py $image_path
-    deactivate
+    python ~/.config/hypr/scripts/pywal-accent-color.py $image_path
     gradience-cli apply -n "pywal" --gtk both
     pkill -f nwg-drawer
-    nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 125 -mb 65 -ml 65 -mr 65 -c 5 -ovl &
+    nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 100 -mb 50 -ml 50 -mr 50 -c 6 -nocats -nofs -ovl &
     swaync-client -rs
     killall -SIGUSR2 waybar
+    pywalfox update
 }
-
-# Check for virtual env
-cd ~/.config/hypr/scripts
-if [ ! -d "pywal-accent-color-env" ]; then
-    ./pywal-accent-color-setup.sh
-fi
-
 
 # Check for --random flag
 if [ "$1" == "--random" ]; then
