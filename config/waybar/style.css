@@ -10,6 +10,8 @@
 
 @import "../../.cache/wal/colors-waybar.css";
 
+@define-color background shade(@accent, 0.15);
+
 window#waybar {
     min-height: 0;
     min-width: 0;
