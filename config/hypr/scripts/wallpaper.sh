@@ -1,18 +1,43 @@
 #!/bin/bash
 
-# Function to get a random PNG image path from the ~/Pictures/Wallpapers directory
+# Cache directory for PNG images
+CACHE_DIR="$HOME/.cache/converted_images"
+mkdir -p "$CACHE_DIR"
+
+# Function to compute the hash of an image file
+compute_hash() {
+    local input_image="$1"
+    sha256sum "$input_image" | awk '{ print $1 }'
+}
+
+# Function to get a random image path from the ~/Pictures/Wallpapers directory
 get_random_image() {
     shopt -s nullglob
-    local image_files=($HOME/Pictures/Wallpapers/*.png)
+    local image_files=($HOME/Pictures/Wallpapers/*.{jpeg,jpg,png,gif,pnm,tga,tiff,webp,bmp,farbfeld})
     local image_count=${#image_files[@]}
     
     if (( image_count > 0 )); then
         local random_index=$((RANDOM % image_count))
         echo "${image_files[$random_index]}"
     else
-        echo "No PNG images found in $HOME/Pictures/Wallpapers directory."
+        echo "No images found in $HOME/Pictures/Wallpapers directory."
         exit 1
     fi
+}
+
+# Function to convert image to PNG format if it's not already
+convert_to_png() {
+    local input_image="$1"
+    local hash=$(compute_hash "$input_image")
+    local output_image="$CACHE_DIR/${hash}.png"
+
+    # Check if the converted image already exists in the cache
+    if [[ ! -f "$output_image" ]]; then
+        # Convert image to PNG using ImageMagick
+        magick "$input_image" "$output_image"
+    fi
+
+    echo "$output_image"
 }
 
 # Function to execute swww img command for each output
@@ -25,20 +50,24 @@ apply_wallpaper() {
         output_name=$(echo "$line" | cut -d':' -f1 | sed 's/^[[:space:]]*//')
         swww img "$image_path" -o "$output_name" -t any --transition-fps 60
     done < <(swww query)
+
+    converted_image=$(convert_to_png "$image_path")
     
-    cp "$image_path" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
+    cp "$converted_image" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
 
     # Pywal
-    wal --cols16 -i "$image_path" -n -e -q --backend haishoku
-    python "$HOME/.config/hypr/scripts/pywal-accent-color.py" "$image_path"
+    wal --cols16 -i "$converted_image" -n -e -q --backend haishoku
+    python "$HOME/.config/hypr/scripts/pywal-accent-color.py" "$converted_image"
 
     gradience-cli apply -n "pywal" --gtk both
     
     pkill -f nwg-drawer
-    nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 100 -mb 50 -ml 50 -mr 50 -c 6 -nocats -nofs -ovl &
+    nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 84 -mb 50 -ml 50 -mr 50 -c 6 -nocats -nofs -ovl &
     
     swaync-client -rs
     killall -SIGUSR2 waybar
+
+    pywalfox update
 }
 
 # Check for --random flag
@@ -51,16 +80,18 @@ else
     hypr_scale=$(hyprctl -j monitors | jq '.[] | select (.focused == true) | .scale' | sed 's/\.//')
 
     # Calculate width and height based on percentages and monitor resolution
-    local monitor_width=$((x_mon * hypr_scale / 100))
-    local monitor_height=$((y_mon * hypr_scale / 100))
+    monitor_width=$((x_mon * hypr_scale / 100))
+    monitor_height=$((y_mon * hypr_scale / 100))
 
     # Set percentage of screen size for dynamic adjustment
-    local percentage_width=70
-    local percentage_height=70
+    percentage_width=75
+    percentage_height=75
 
     # Calculate dynamic width and height
-    local dynamic_width=$((monitor_width * percentage_width / 100))
-    local dynamic_height=$((monitor_height * percentage_height / 100))
+    dynamic_width=$((monitor_width * percentage_width / 100))
+    dynamic_height=$((monitor_height * percentage_height / 100))
+
+    cd ~/Pictures/Wallpapers
 
     # Launch yad with calculated width and height for user to select an image
     selected_image=$(yad --width="$dynamic_width" --height="$dynamic_height" \
@@ -71,7 +102,7 @@ else
         --title='Choose a wallpaper')
 fi
 
-# Execute the apply_wallpaper function with the selected image
+# Convert image to PNG if necessary
 if [[ -n "$selected_image" ]]; then
     apply_wallpaper "$selected_image"
 fi
