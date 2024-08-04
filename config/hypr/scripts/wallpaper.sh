@@ -35,7 +35,7 @@ convert_to_png() {
     if [[ ! -f "$output_image" ]]; then
         if [[ "$input_image" == *.gif ]]; then
             # Convert only the first frame of GIF to PNG
-            magick convert "$input_image[0]" "$output_image"
+            magick "$input_image[0]" "$output_image"
         else
             # Convert image to PNG using ImageMagick
             magick "$input_image" "$output_image"
