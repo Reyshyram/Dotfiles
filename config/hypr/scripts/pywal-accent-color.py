@@ -184,6 +184,7 @@ def get_representative_color(
                     else -adjustment_step
                 )
                 representative_color = adjust_brightness(representative_color, factor)
+                # Prevent infinite loop
                 if factor <= 0.1 or factor >= 2.0:
                     break
 
