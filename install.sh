@@ -308,7 +308,7 @@ cp -r ./config/waypaper ~/.config/
 
 # Configure Pywal setup
 echo "Configuring Pywal..."
-mkdir -p ~/.config/wal/templates ~/.config/presets/user
+mkdir -p ~/.config/wal/templates ~/.config/presets/user ~/.config/Kvantum/pywal
 cp -r ./config/pywal/templates ~/.config/wal/templates
 ln -s "$HOME/.cache/wal/pywal.json" "$HOME/.config/presets/user/pywal.json"
 ln -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
