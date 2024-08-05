@@ -150,3 +150,10 @@ tooltip label {
     background: shade(@accent, 0.35);
     border-radius: 15px;
 }
+
+#window {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
