@@ -148,7 +148,7 @@
     },
     "custom/wlogout": {
         "format": "",
-        "on-click": "~/.config/hypr/scripts/logoutmenu.sh",
+        "on-click": "~/.config/hypr/scripts/wlogout.sh",
         "tooltip": false
     },
     "idle_inhibitor": {

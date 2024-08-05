@@ -335,7 +335,7 @@ if ask_yes_no "Are you using a laptop?"; then
     systemctl --user enable batsignal.service
     systemctl --user start batsignal.service
     mkdir -p ~/.config/systemd/user/batsignal.service.d
-    printf '[Service]\nExecStart=\nExecStart=batsignal -d 5 -c 15 -w 30 -f 97 -p' > ~/.config/systemd/user/batsignal.service.d/options.conf
+    printf '[Service]\nExecStart=\nExecStart=batsignal -d 5 -c 15 -w 30 -p' > ~/.config/systemd/user/batsignal.service.d/options.conf
 else
     echo "Laptop installation skipped installation skipped."
 fi
