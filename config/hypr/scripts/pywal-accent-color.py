@@ -2,6 +2,7 @@ import colorsys
 import hashlib
 import json
 import logging
+import re
 import sys
 from pathlib import Path
 
@@ -16,17 +17,56 @@ PIXEL_SAMPLE_SIZE = 10000  # Number of pixels to randomly sample for clustering
 DEFAULT_N_CLUSTERS = 8  # Default number of clusters to use in KMeans clustering
 MIN_BRIGHTNESS = 96  # Minimum brightness level for considering a color valid
 MAX_BRIGHTNESS = 164  # Maximum brightness level for considering a color valid
-CSS_FILE_PATH = (
-    Path.home() / ".cache" / "wal" / "colors-waybar.css"
-)  # Path to the CSS file to update
 CACHE_FILE_PATH = (
     Path.home() / ".cache" / "wal" / "colors-cache.json"
 )  # Path to the cache file
+WAL_DIR = (
+    Path.home() / ".cache" / "wal"
+)  # Path to the directory containing generated Pywal files
 
 # Set up logging configuration
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
+
+
+def hex_to_rgb(hex_color):
+    """
+    Convert a hex color to an RGB tuple.
+
+    Args:
+        hex_color (str): Hex color string.
+
+    Returns:
+        tuple: RGB color tuple.
+    """
+    hex_color = hex_color.lstrip("#")
+    return tuple(int(hex_color[i : i + 2], 16) for i in (0, 2, 4))
+
+
+def rgb_to_hex(rgb_color):
+    """
+    Convert an RGB tuple to a hex color string.
+
+    Args:
+        rgb_color (tuple): RGB color tuple.
+
+    Returns:
+        str: Hex color string.
+    """
+    return "#{:02x}{:02x}{:02x}".format(*rgb_color)
+
+
+def darken_color(color, amount):
+    """Darken a hex color."""
+    color = [int(col * (1 - amount)) for col in hex_to_rgb(color)]
+    return rgb_to_hex(color)
+
+
+def lighten_color(color, amount):
+    """Lighten a hex color."""
+    color = [int(col + (255 - col) * amount) for col in hex_to_rgb(color)]
+    return rgb_to_hex(color)
 
 
 def adjust_brightness(color, factor):
@@ -195,35 +235,67 @@ def get_representative_color(
         sys.exit(1)
 
 
-def update_css_file(css_file_path, representative_color):
+def replace_accent_in_files(directory, representative_color):
     """
-    Append the representative color to a CSS file for use in theming.
+    Replace instances of {accent} with the representative color in each file in the specified directory.
+
+    {accent} is replaced with the hex color including the #.
+    {accent.strip} is replaced with the hex color without the #.
+    {accent.lighten(amount%)} and {accent.darken(amount%)} lighten or darken the accent by the amount in percentage.
 
     Args:
-        css_file_path (Path): Path to the CSS file to update.
-        representative_color (tuple): The RGB color to add to the CSS file.
+        directory (Path): The directory containing the files to update.
+        representative_color (tuple): The RGB color to use for replacing {accent} and {accent.strip}.
     """
-    hex_color = f"#{representative_color[0]:02x}{representative_color[1]:02x}{representative_color[2]:02x}"
-    css_line = f"@define-color accent {hex_color};\n"
+    hex_color_with_hash = f"#{representative_color[0]:02x}{representative_color[1]:02x}{representative_color[2]:02x}"
+    hex_color_without_hash = f"{representative_color[0]:02x}{representative_color[1]:02x}{representative_color[2]:02x}"
+    files = directory.glob("*")
 
-    try:
-        with css_file_path.open("a", encoding="utf-8") as file:
-            file.write(css_line)
-        logging.info(f"Appended the line to {css_file_path}")
-    except OSError as e:
-        logging.error(f"Error updating CSS file: {e}")
-        sys.exit(1)
+    for file in files:
+        if file.is_file():
+            try:
+                with file.open("r", encoding="utf-8") as f:
+                    content = f.read()
+
+                # Replace {accent} and {accent.strip}
+                new_content = content.replace("{accent}", hex_color_with_hash)
+                new_content = new_content.replace(
+                    "{accent.strip}", hex_color_without_hash
+                )
+
+                # Handle {accent.darken(amount%)} and {accent.lighten(amount%)}
+                def replace_darken(match):
+                    amount = int(match.group(1)) / 100.0
+                    return darken_color(hex_color_with_hash, amount)
+
+                def replace_lighten(match):
+                    amount = int(match.group(1)) / 100.0
+                    return lighten_color(hex_color_with_hash, amount)
+
+                new_content = re.sub(
+                    r"\{accent\.darken\((\d+)%\)\}", replace_darken, new_content
+                )
+                new_content = re.sub(
+                    r"\{accent\.lighten\((\d+)%\)\}", replace_lighten, new_content
+                )
+
+                with file.open("w", encoding="utf-8") as f:
+                    f.write(new_content)
+                logging.info(f"Updated {file}")
+            except OSError as e:
+                logging.error(f"Error processing file {file}: {e}")
+                sys.exit(1)
 
 
 def main(image_path):
     """
-    Main function to process the image and update the CSS file with the representative color.
+    Main function to process the image and update the files with the representative color.
 
     Args:
         image_path (str): Path to the image file to process.
     """
-    if not CSS_FILE_PATH.is_file():
-        logging.error(f"CSS file does not exist: {CSS_FILE_PATH}")
+    if not WAL_DIR.is_dir():
+        logging.error(f"Directory does not exist: {WAL_DIR}")
         sys.exit(1)
 
     # Compute the hash of the image to check if it has been processed before
@@ -240,8 +312,8 @@ def main(image_path):
         cache[image_hash] = [int(c) for c in representative_color]
         save_cache(CACHE_FILE_PATH, cache)
 
-    # Update the CSS file with the new representative color
-    update_css_file(CSS_FILE_PATH, representative_color)
+    # Update the files with the new representative color
+    replace_accent_in_files(WAL_DIR, representative_color)
 
 
 if __name__ == "__main__":

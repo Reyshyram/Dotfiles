@@ -1,6 +1,6 @@
-@define-color accent_color {color12};
-@define-color accent_bg_color {color12};
-@define-color accent_fg_color #{color12.lighten(70%)};
+@define-color accent_color {{accent}};
+@define-color accent_bg_color {{accent}};
+@define-color accent_fg_color {{accent.lighten(70%)}};
 @define-color destructive_color {color11};
 @define-color destructive_bg_color {color3};
 @define-color destructive_fg_color #{color11.lighten(70%)};
@@ -30,7 +30,7 @@
 @define-color popover_bg_color {color0};
 @define-color popover_fg_color {color15};
 @define-color shade_color {color8};
-@define-color scrollbar_outline_color {color12};
+@define-color scrollbar_outline_color {{accent}};
 @define-color sidebar_bg_color {color0};
 @define-color sidebar_fg_color {color15};
 @define-color sidebar_backdrop_color #{color0.lighten(1%)};
