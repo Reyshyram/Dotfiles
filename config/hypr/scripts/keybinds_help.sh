@@ -59,6 +59,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "" "" "" \
 "   + Q" "Close Active Window" "(killactive)" \
 "   + Return" "Kind of maximize a floating windows" "(resizeactive and center)" \
+"   + Ctrl + Return" "Center a window" "(center)" \
 "   + Alt +  Return" "Toggle Fullscreen" "(fullscreen)" \
 "F11" "Toggle Fullscreen" "(fullscreen)" \
 "   + Shift + F" "Pin a Window" "(pin)" \
