@@ -113,7 +113,7 @@ YAY_PACKAGES=(
     bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
     nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin
     hyprpicker grimblast-git aurutils arch-update nwg-displays
-    wlr-randr python-zombie-imp gradience adw-gtk-theme pywal-16-colors
+    wlr-randr python-zombie-imp adw-gtk-theme pywal-16-colors
     smile clipse swayosd-git ttf-meslo-nerd-font-powerlevel10k
     python-haishoku
 )
@@ -308,12 +308,17 @@ cp -r ./config/waypaper ~/.config/
 
 # Configure Pywal setup
 echo "Configuring Pywal..."
-mkdir -p ~/.config/wal/templates ~/.config/presets/user ~/.config/Kvantum/pywal
+mkdir -p ~/.config/wal/templates ~/.config/Kvantum/pywal
 cp -r ./config/pywal/templates ~/.config/wal/templates
-ln -s "$HOME/.cache/wal/pywal.json" "$HOME/.config/presets/user/pywal.json"
-ln -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
-ln -s "$HOME/.cache/wal/pywal.svg" "$HOME/.config/Kvantum/pywal/pywal.svg"
+
+ln -f -s "$HOME/.cache/wal/gtk.css" "$HOME/.config/gtk-3.0/gtk.css"
+ln -f -s "$HOME/.cache/wal/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
+
+ln -f -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
+ln -f -s "$HOME/.cache/wal/pywal.svg" "$HOME/.config/Kvantum/pywal/pywal.svg"
+
 wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n -e --backend haishoku
+
 cd ~/.config/hypr/scripts/
 ./pywal-accent-color-setup.sh
 cd -
