@@ -47,8 +47,6 @@ apply_pywal() {
     # Pywal
     wal --cols16 -i "$converted_image" -n -e -q --backend haishoku
     python "$HOME/.config/hypr/scripts/pywal-accent-color.py" "$converted_image"
-
-    gradience-cli apply -n "pywal" --gtk both
     
     pkill -f nwg-drawer
     nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 84 -mb 50 -ml 50 -mr 50 -c 6 -nocats -nofs -ovl &
