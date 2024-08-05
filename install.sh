@@ -317,11 +317,8 @@ ln -f -s "$HOME/.cache/wal/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
 ln -f -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
 ln -f -s "$HOME/.cache/wal/pywal.svg" "$HOME/.config/Kvantum/pywal/pywal.svg"
 
-wal --cols16 -i ~/Pictures/Wallpapers/jama.png -n -e --backend haishoku
-
-cd ~/.config/hypr/scripts/
-./pywal-accent-color-setup.sh
-cd -
+wal --cols16 -i ~/Pictures/Wallpapers/anime-rose.png -n -e --backend haishoku
+python "$HOME/.config/hypr/scripts/pywal-accent-color.py" ~/Pictures/Wallpapers/anime-rose.png
 
 # Ensure Pipx path
 echo "Ensuring Pipx path..."

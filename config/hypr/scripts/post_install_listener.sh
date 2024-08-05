@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Show dialogue box
-zenity --info --text="Vous devez effectuer une finalisation post-installation" --ok-label="Finaliser l'installation"
+zenity --info --text="You need to perform a post-install finalisation" --ok-label="Finalize installation"
 
 # Launch when user validated the post install
 if [ $? -eq 0 ]; then
