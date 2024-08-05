@@ -302,6 +302,10 @@ cp -r ./config/pcmanfm-qt ~/.config/
 echo "Configuring Fastfetch..."
 cp -r ./config/fastfetch ~/.config/
 
+# Configure Waypaper
+echo "Configuring Waypaper..."
+cp -r ./config/waypaper ~/.config/
+
 # Configure Pywal setup
 echo "Configuring Pywal..."
 mkdir -p ~/.config/wal/templates ~/.config/presets/user
