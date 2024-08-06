@@ -45,9 +45,16 @@ apply_pywal() {
     cp "$converted_image" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
 
     # Pywal
+
+    # Prevent hyprland error message
+    sed -i '/    suppress_errors = false/c\    suppress_errors = true' ~/.config/hypr/misc.conf
+
     wal --cols16 -i "$converted_image" -n -e -q --backend haishoku
     python "$HOME/.config/hypr/scripts/pywal-accent-color.py" "$converted_image"
-    
+
+    # Reactivate hyprland error messages
+    sed -i '/    suppress_errors = true/c\    suppress_errors = false' ~/.config/hypr/misc.conf
+
     pkill -f nwg-drawer
     nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 84 -mb 50 -ml 50 -mr 50 -c 6 -nocats -nofs -ovl &
     
