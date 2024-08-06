@@ -21,20 +21,22 @@ button {
   box-shadow: 0 0 10px 2px transparent;
   border-radius: 36px;
   margin: 10px;
+  padding: 10px;
 }
 
 button:focus {
-  box-shadow: none;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
   background-size: 60%;
   background-color: shade(@accent, 0.75);
 }
 
 button:hover {
+  transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in, color 0.1s ease-in;
   background-size: 75%;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, .4);
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, .4);
   background-color: @accent;
   color: transparent;
-  transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+  padding: 100px;
 }
 
 #lock {
