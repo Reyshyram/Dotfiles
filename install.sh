@@ -182,12 +182,9 @@ cp -r ./config/kitty/* ~/.config/kitty
 echo "Configuring Zsh..."
 chsh -s "$(which zsh)"
 sudo chsh -s "$(which zsh)"
-curl -s https://ohmyposh.dev/install.sh | bash -s
 cp ./config/.zshrc ~/.zshrc
 cp ./config/.zprofile ~/.zprofile
-mkdir -p ~/.config/oh-my-posh
-cp ./config/reyshi-prompt.omp.json ~/.config/oh-my-posh/reyshi-prompt.omp.json
-fc-cache
+cp ./config/.p10k.zsh ~/.p10k.zsh
 
 # Configure Micro theme
 echo "Configuring Micro theme..."

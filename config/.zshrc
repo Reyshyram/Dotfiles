@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Download Zinit, if it's not there yet
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -38,8 +45,9 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-# Load Oh My Posh prompt
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/reyshi-prompt.omp.json)"
+# Load Powerlevel10k prompt
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # History
 HISTSIZE=5000
@@ -85,4 +93,3 @@ bindkey "^[[3~" delete-char
 
 # Pywal
 (cat ~/.cache/wal/sequences &)
-
