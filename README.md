@@ -47,6 +47,9 @@ You can modify your display settings using the nwg-displays app.
 You may want to replace the file `~/.config/hypr/profile-picture.png` by your own profile picture.
 
 # Preview
-![Preview](preview.png)
-![Preview2](preview2.png)
-![Preview3](preview3.png)
+![Preview](previews/1.png)
+![Preview2](previews/2.png)
+![Preview3](previews/3.png)
+![Preview4](previews/4.png)
+![Preview5](previews/5.png)
+![Preview6](previews/6.png)

@@ -115,7 +115,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update nwg-displays
     wlr-randr python-zombie-imp adw-gtk-theme pywal-16-colors
     smile clipse swayosd-git ttf-meslo-nerd-font-powerlevel10k
-    python-haishoku
+    python-haishoku dopamine-bin
 )
 
 # Gaming packages to install
