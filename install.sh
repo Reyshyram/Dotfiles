@@ -106,6 +106,7 @@ PACKAGES=(
     gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
     python-pillow python-scikit-learn python-numpy curl
+    qt6-5compat qt6-declarative qt6-svg openrgb bc
 )
 
 # AUR packages to install
@@ -157,11 +158,11 @@ yay -S --needed "${YAY_PACKAGES[@]}"
 
 # Configure SDDM
 echo "Configuring SDDM..."
-sudo cp -r ./config/sddm/eucalyptus-drop /usr/share/sddm/themes/
+sudo cp -r ./config/sddm/sddm-astronaut /usr/share/sddm/themes/
 sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
-sudo chown $USER /usr/share/sddm/themes/eucalyptus-drop/theme.conf
-sudo chown $USER /usr/share/sddm/themes/eucalyptus-drop/Backgrounds/cache.png
-sudo chown $USER /usr/share/sddm/themes/eucalyptus-drop/
+sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/theme.conf
+sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/background.png
+sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/
 systemctl enable sddm.service
 
 # Configure GRUB

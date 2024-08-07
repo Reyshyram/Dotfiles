@@ -42,7 +42,7 @@ apply_pywal() {
 
     converted_image=$(convert_to_png "$image_path")
     
-    cp "$converted_image" /usr/share/sddm/themes/eucalyptus-drop/Backgrounds/cache.png
+    cp "$converted_image" /usr/share/sddm/themes/sddm-astronaut/background.png
 
     # Pywal
 
@@ -61,16 +61,17 @@ apply_pywal() {
     swaync-client -rs
     killall -SIGUSR2 waybar
 
-    pywalfox update
+    # pywalfox update
 
     # SDDM colors
     background_color=$(sed -n '1p' ~/.cache/wal/colors)
-    main_color=$(sed -n '16p' ~/.cache/wal/colors)
     accent_color=$(sed -n '17p' ~/.cache/wal/colors)
 
-    sed -i "s/^BackgroundColour=\".*\"/BackgroundColour=\"$background_color\"/" /usr/share/sddm/themes/eucalyptus-drop/theme.conf
-    sed -i "s/^MainColour=\".*\"/MainColour=\"$main_color\"/" /usr/share/sddm/themes/eucalyptus-drop/theme.conf
-    sed -i "s/^AccentColour=\".*\"/AccentColour=\"$accent_color\"/" /usr/share/sddm/themes/eucalyptus-drop/theme.conf
+    sed -i "s/^BackgroundColor=\".*\"/BackgroundColor=\"$background_color\"/" /usr/share/sddm/themes/sddm-astronaut/theme.conf
+    sed -i "s/^AccentColor=\".*\"/AccentColor=\"$accent_color\"/" /usr/share/sddm/themes/sddm-astronaut/theme.conf
+
+    # OpenRGB Color
+    openrgb -c ${accent_color:1}
 }
 
 # Check if image path is provided
