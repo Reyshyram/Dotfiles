@@ -24,6 +24,7 @@ RowLayout {
             text: modelData[1]
             font.pointSize: root.font.pointSize * 0.8
             Layout.alignment: Qt.AlignHCenter
+            icon.color: root.palette.text
             icon.source: modelData ? Qt.resolvedUrl("../Assets/" + modelData[0] + ".svgz") : ""
             icon.height: 2 * Math.round((root.font.pointSize * 3) / 2)
             icon.width: 2 * Math.round((root.font.pointSize * 3) / 2)
@@ -53,6 +54,7 @@ RowLayout {
                     when: parent.children[index].down
                     PropertyChanges {
                         target: parent.children[index]
+                        icon.color: Qt.darker(root.palette.highlight, 1.1)
                         palette.buttonText: Qt.darker(root.palette.highlight, 1.1)
                     }
                     PropertyChanges {
@@ -65,6 +67,7 @@ RowLayout {
                     when: parent.children[index].hovered
                     PropertyChanges {
                         target: parent.children[index]
+                        icon.color: Qt.lighter(root.palette.highlight, 1.1)
                         palette.buttonText: Qt.lighter(root.palette.highlight, 1.1)
                     }
                     PropertyChanges {
@@ -77,6 +80,7 @@ RowLayout {
                     when: parent.children[index].activeFocus
                     PropertyChanges {
                         target: parent.children[index]
+                        icon.color: root.palette.highlight
                         palette.buttonText: root.palette.highlight
                     }
                     PropertyChanges {
@@ -89,7 +93,7 @@ RowLayout {
             transitions: [
                 Transition {
                     PropertyAnimation {
-                        properties: "palette.buttonText, border.color"
+                        properties: "icon.color, palette.buttonText, border.color"
                         duration: 150
                     }
                 }
