@@ -105,7 +105,7 @@ PACKAGES=(
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
     gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
-    python-pillow python-scikit-learn python-numpy
+    python-pillow python-scikit-learn python-numpy curl
 )
 
 # AUR packages to install
