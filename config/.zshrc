@@ -87,9 +87,11 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Fix some keys not working as intended
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
-bindkey "^[[3~" delete-char
+bindkey "^[[H" beginning-of-line # Home
+bindkey "^[[F" end-of-line # End
+bindkey "^[[3~" delete-char # Delete
+bindkey "^[[5~" history-search-backward # Page up
+bindkey "^[[6~" history-search-forward # Page down
 
 # Pywal
 (cat ~/.cache/wal/sequences &)
