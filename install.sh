@@ -228,6 +228,7 @@ sed -i 's/^bind = $mainMod, Tab, overview:toggle, all/#&/' ~/.config/hypr/keybin
 echo "exec-once = ~/.config/hypr/scripts/post_install_listener" >> ~/.config/hypr/startup.conf
 # User icon
 ln -s -f ~/.config/hypr/profile-picture.png ~/.face.icon
+ln -s -f ~/.config/hypr/profile-picture.png ~/.face
 
 # Set application associations
 xdg-settings set default-web-browser firefox.desktop
