@@ -157,9 +157,11 @@ yay -S --needed "${YAY_PACKAGES[@]}"
 
 # Configure SDDM
 echo "Configuring SDDM..."
-sudo cp -r ./config/sddm/sugar-candy /usr/share/sddm/themes/
+sudo cp -r ./config/sddm/eucalyptus-drop /usr/share/sddm/themes/
 sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
-sudo ln -s -f ~/.config/hypr/cache.png /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
+sudo chown $USER /usr/share/sddm/themes/eucalyptus-drop/theme.conf
+sudo chown $USER /usr/share/sddm/themes/eucalyptus-drop/Backgrounds/cache.png
+sudo chown $USER /usr/share/sddm/themes/eucalyptus-drop/
 systemctl enable sddm.service
 
 # Configure GRUB

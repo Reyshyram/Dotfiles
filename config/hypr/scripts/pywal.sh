@@ -42,7 +42,7 @@ apply_pywal() {
 
     converted_image=$(convert_to_png "$image_path")
     
-    ln -s -f "$converted_image" ~/.config/hypr/cache.png
+    cp "$converted_image" /usr/share/sddm/themes/eucalyptus-drop/Backgrounds/cache.png
 
     # Pywal
 
@@ -62,6 +62,15 @@ apply_pywal() {
     killall -SIGUSR2 waybar
 
     pywalfox update
+
+    # SDDM colors
+    background_color=$(sed -n '1p' ~/.cache/wal/colors)
+    main_color=$(sed -n '16p' ~/.cache/wal/colors)
+    accent_color=$(sed -n '17p' ~/.cache/wal/colors)
+
+    sed -i "s/^BackgroundColour=\".*\"/BackgroundColour=\"$background_color\"/" /usr/share/sddm/themes/eucalyptus-drop/theme.conf
+    sed -i "s/^MainColour=\".*\"/MainColour=\"$main_color\"/" /usr/share/sddm/themes/eucalyptus-drop/theme.conf
+    sed -i "s/^AccentColour=\".*\"/AccentColour=\"$accent_color\"/" /usr/share/sddm/themes/eucalyptus-drop/theme.conf
 }
 
 # Check if image path is provided
