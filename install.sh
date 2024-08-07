@@ -42,6 +42,16 @@ install_yay() {
     fi
 }
 
+# Function to enable chaotic aur
+enable_chaotic_aur() {
+    echo "Enabling chaotic aur..."
+    sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+    sudo pacman-key --lsign-key 3056513887B78AEB
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+    echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf
+}
+
 # Function to install AMD GPU drivers and tools
 install_amd() {
     echo "Installing AMD GPU drivers and tools..."
@@ -106,17 +116,16 @@ PACKAGES=(
     gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
     python-pillow python-scikit-learn python-numpy curl
-    qt6-5compat qt6-declarative qt6-svg openrgb bc
+    qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
 )
 
 # AUR packages to install
 YAY_PACKAGES=(
     bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
-    nwg-drawer-bin wlogout xwaylandvideobridge github-desktop-bin
+    nwg-drawer wlogout xwaylandvideobridge github-desktop
     hyprpicker grimblast-git aurutils arch-update nwg-displays
-    wlr-randr python-zombie-imp adw-gtk-theme pywal-16-colors
-    smile clipse swayosd-git ttf-meslo-nerd-font-powerlevel10k
-    python-haishoku dopamine-bin
+    adw-gtk-theme pywal-16-colors smile clipse swayosd-git
+    ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-bin
 )
 
 # Gaming packages to install
@@ -135,7 +144,7 @@ GAMING_PACKAGES=(
 
 # AUR gaming packages to install
 GAMING_PACKAGES_YAY=(
-    vkbasalt lib32-vkbasalt proton-ge-custom-bin dxvk-bin vesktop-bin protontricks
+    vkbasalt lib32-vkbasalt proton-ge-custom dxvk-bin vesktop protontricks
 )
 
 echo "Installing Reyshyram's dotfiles..."
@@ -147,6 +156,7 @@ enable_multilib
 
 # Install yay
 install_yay
+enable_chaotic_aur
 
 # Enable TRIM for SSDs
 sudo systemctl enable fstrim.timer
