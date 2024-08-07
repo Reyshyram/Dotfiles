@@ -159,7 +159,7 @@ yay -S --needed "${YAY_PACKAGES[@]}"
 echo "Configuring SDDM..."
 sudo cp -r ./config/sddm/sugar-candy /usr/share/sddm/themes/
 sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
-sudo chown "$USER" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
+sudo ln -s -f ~/.config/hypr/cache.png /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
 systemctl enable sddm.service
 
 # Configure GRUB

@@ -42,7 +42,7 @@ apply_pywal() {
 
     converted_image=$(convert_to_png "$image_path")
     
-    cp "$converted_image" /usr/share/sddm/themes/sugar-candy/Backgrounds/cache.png
+    ln -s -f "$converted_image" ~/.config/hypr/cache.png
 
     # Pywal
 
