@@ -7,11 +7,8 @@ hyprctl switchxkblayout at-translated-set-2-keyboard next
 keyboard_layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')
 
 # Read pywal accent color
-css_file="$HOME/.cache/wal/colors-waybar.css"
-color=$(grep -oP "^@define-color accent \K.+" "$css_file" | sed 's/;//')
+color=$(sed -n '17p' ~/.cache/wal/colors)
 
-# Output the actual color value
-echo "The true value of the accent color is: $actual_value"
 # Create and modify a temporary SVG
 temp_svg=$(mktemp /tmp/keyboard_temp.XXXXXX.svg)
 cp ~/.config/swaync/icons/keyboard.svg "$temp_svg"

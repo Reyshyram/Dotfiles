@@ -11,8 +11,7 @@ create_temp_svg() {
     cp ~/.config/swaync/icons/screenshot.svg "$temp_svg"
     
     # Read pywal accent color
-    css_file="$HOME/.cache/wal/colors-waybar.css"
-    color=$(grep -oP "^@define-color accent \K.+" "$css_file" | sed 's/;//')
+    color=$(sed -n '17p' ~/.cache/wal/colors)
 
     sed -i -e 's/fill="#FFFFFF"/fill="'$color'"/' -e 's/stroke="#FFFFFF"/stroke="'$color'"/' "$temp_svg"
 }
