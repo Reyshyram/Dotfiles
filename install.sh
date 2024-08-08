@@ -125,7 +125,7 @@ YAY_PACKAGES=(
     nwg-drawer wlogout xwaylandvideobridge github-desktop
     hyprpicker grimblast-git aurutils arch-update nwg-displays
     adw-gtk-theme pywal-16-colors smile clipse swayosd-git
-    ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-bin
+    ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
 )
 
 # Gaming packages to install
