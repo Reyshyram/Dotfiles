@@ -59,7 +59,6 @@ apply_pywal() {
     nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 84 -mb 50 -ml 50 -mr 50 -c 6 -nocats -nofs -ovl &
     
     swaync-client -rs
-    killall -SIGUSR2 waybar
 
     # pywalfox update
 
