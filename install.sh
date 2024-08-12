@@ -117,6 +117,7 @@ PACKAGES=(
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
+    adw-gtk-theme libadwaita
 )
 
 # AUR packages to install
@@ -124,7 +125,7 @@ YAY_PACKAGES=(
     bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
     nwg-drawer wlogout xwaylandvideobridge github-desktop
     hyprpicker grimblast-git aurutils arch-update nwg-displays
-    adw-gtk-theme pywal-16-colors smile clipse swayosd-git
+    pywal-16-colors smile clipse swayosd-git
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
 )
 
