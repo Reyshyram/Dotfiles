@@ -9,14 +9,14 @@ window {
   font-family: Ubuntu;
   font-size: 16pt;
   color: @text;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 button {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
-  background-color: @background;
+  background-color: alpha(@background, 0.75);
   transition: all 0.3s ease-in, color 1s ease-in;
   box-shadow: 0 0 10px 2px transparent;
   border-radius: 36px;
@@ -27,14 +27,14 @@ button {
 button:focus {
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
   background-size: 60%;
-  background-color: shade(@accent, 0.75);
+  background-color: alpha(shade(@accent, 0.75), 0.5);
 }
 
 button:hover {
   transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in, color 0.1s ease-in;
   background-size: 75%;
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, .4);
-  background-color: @accent;
+  background-color: alpha(@accent, 0.5);
   color: transparent;
   padding: 100px;
 }

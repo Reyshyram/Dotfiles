@@ -6,11 +6,11 @@
     margin-top: 0;
     margin-bottom: 0;
     box-shadow: none;
+    outline: none;
+    border: none;
 }
 
 @import "../../.cache/wal/colors-waybar.css";
-
-@define-color background shade(@accent, 0.08);
 
 window#waybar {
     min-height: 0;
@@ -37,7 +37,7 @@ window#waybar {
     padding: 4px 12px;
     margin-right: 6px;
     color: @accent;
-    background-color: @background;
+    background-color: alpha(@background, 0.85);
 }
 
 /* Remove margin if first or last */
@@ -101,6 +101,7 @@ window#waybar.empty #window {
 #tray menu {
     border-radius: 10px;
     padding: 8px 6px;
+    background-color: alpha(@background, 0.9);
 }
 
 #language {
@@ -110,7 +111,7 @@ window#waybar.empty #window {
 tooltip {
     min-height: 0;
     min-width: 0;
-    background-color: @background;
+    background-color: alpha(@background, 0.9);
     border-radius: 20px;
 }
 
@@ -133,7 +134,7 @@ tooltip label {
     margin: 1px 2px;
     border-radius: 15px;
     color: @accent;
-    background-color: @background;
+    background-color: transparent;
     transition: all 0.5s ease-in-out;
 }
 
