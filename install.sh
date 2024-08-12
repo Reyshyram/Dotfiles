@@ -341,6 +341,7 @@ pipx ensurepath
 # Enable Reflector
 echo "Enabling Reflector..."
 sudo cp ./config/reflector.conf /etc/xdg/reflector/reflector.conf
+sudo systemctl start reflector.timer
 sudo systemctl enable reflector.timer
 
 # Ask about using a laptop
