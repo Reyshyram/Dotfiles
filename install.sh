@@ -117,7 +117,7 @@ PACKAGES=(
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
-    adw-gtk-theme libadwaita
+    adw-gtk-theme libadwaita wl-clip-persist
 )
 
 # AUR packages to install
