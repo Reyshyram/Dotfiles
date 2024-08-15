@@ -125,7 +125,7 @@ YAY_PACKAGES=(
     bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
     nwg-drawer wlogout xwaylandvideobridge github-desktop
     hyprpicker grimblast-git aurutils arch-update nwg-displays
-    pywal-16-colors smile clipse swayosd-git
+    pywal-16-colors smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
 )
 
