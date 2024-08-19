@@ -182,6 +182,6 @@
     },
     "hyprland/language": {
         "format": "  {}",
-        "on-click": "zsh ~/.config/hypr/scripts/switch-keyboard-layout.sh"
+        "on-click": "~/.config/hypr/scripts/switch-keyboard-layout.sh"
     }
 }
