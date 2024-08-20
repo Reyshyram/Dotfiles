@@ -181,7 +181,7 @@
         "format": "{title}"
     },
     "hyprland/language": {
-        "format": "  {}",
+        "format": "  <span text_transform=\"uppercase\">{short}</span> <span text_transform=\"capitalize\">{variant}</span>",
         "on-click": "~/.config/hypr/scripts/switch-keyboard-layout.sh"
     }
 }
