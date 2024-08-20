@@ -159,6 +159,10 @@ enable_multilib
 install_yay
 enable_chaotic_aur
 
+# Make package compression faster
+echo "Reducing package compression time..."
+sudo sed -i 's/COMPRESSZST=(zstd -c -T0 --ultra -20 -)/COMPRESSZST=(zstd -c -T0 --fast -)/' /etc/makepkg.conf
+
 # Enable TRIM for SSDs
 sudo systemctl enable fstrim.timer
 
