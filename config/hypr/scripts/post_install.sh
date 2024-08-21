@@ -9,7 +9,9 @@ echo "Installing Hyprspace plugin..."
 hyprpm update
 hyprpm add https://github.com/KZDKM/Hyprspace
 hyprpm enable Hyprspace
-sed -i 's/^#bind = \$mainMod, Tab, overview:toggle, all$/bind = $mainMod, Tab, overview:toggle, all/' ~/.config/hypr/keybinds.conf
+hyprpm add https://github.com/Duckonaut/split-monitor-workspaces
+hyprpm enable split-monitor-workspaces
+hyprpm reload
 
 echo "Removing post install listener from startup.conf..."
 sed -i '/^exec-once = ~\/.config\/hypr\/scripts\/post_install_listener/d' ~/.config/hypr/startup.conf

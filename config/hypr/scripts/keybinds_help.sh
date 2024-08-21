@@ -84,17 +84,18 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + Right Mouse Click" "Resize Selected Window" "(resizewindow)" \
 "   + Shift Left/Right/Up/Down" "Resize Active Window" "(resizeactive)" \
 "" "" "" \
-"   + 1-0" "Move to Workspace 1-10" "(workspace 1-10)" \
-"   + Mousewheel" "Cycle Through Workspaces" "(workspace r-+1)" \
-"   + Ctrl + Left or Right" "Move to Next or Previous Workspace" "(workspace r-+1)" \
-"   + Ctrl + Down" "Move to First Empty Workspace" "(workspace empty)" \
+"   + 1-0" "Move to Workspace 1-10" "(split-workspace 1-10)" \
+"   + Mousewheel" "Cycle Through Workspaces" "(split-workspace r-+1)" \
+"   + Ctrl + Left or Right" "Move to Next or Previous Workspace" "(split-workspace r-+1)" \
+"   + Ctrl + Down" "Move to First Empty Workspace" "(split-workspace empty)" \
 "" "" "" \
-"   + Shift + 1-0" "Move Window to Workspace 1-10" "(movetoworkspace 1-10)" \
-"   + Alt + 1-0" "Move Window to Workspace 1-10 Without Following" "(movetoworkspacesilent 1-10)" \
-"   + Ctrl + Alt + Left or Right" "Move Window to Next or Previous Workspace" "(movetoworkspace r-+1)" \
+"   + Shift + 1-0" "Move Window to Workspace 1-10" "(split-movetoworkspace 1-10)" \
+"   + Alt + 1-0" "Move Window to Workspace 1-10 Without Following" "(split-movetoworkspacesilent 1-10)" \
+"   + Ctrl + Alt + Left or Right" "Move Window to Next or Previous Workspace" "(split-movetoworkspace r-+1)" \
+"   + Ctrl + Alt + Shift + Left or Right" "Move Window to Next or Previous Workspace Silently" "(split-movetoworkspacesilent r-+1)" \
 "" "" "" \
 "   + S" "Toggle Special Workspace" "(togglespecialworkspace)" \
-"   + Shift + S" "Move Active Windows to Special Workspace" "(movetoworkspace special)" \
+"   + Shift + S" "Move Active Windows to Special Workspace" "(split-movetoworkspace special)" \
 "" "" "" \
 "" "Note: You can use this keybind up to four times by using" "" \
 "" "ALT, CTRL or SHIFT in the key combination." "" \

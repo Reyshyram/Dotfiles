@@ -238,8 +238,6 @@ echo "Configuring Hyprland..."
 mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
 chmod +x ~/.config/hypr/scripts/*.sh
-# Disable plugin keybind while not installed
-sed -i 's/^bind = $mainMod, Tab, overview:toggle, all/#&/' ~/.config/hypr/keybinds.conf
 # Send notification post install when restarting
 echo "exec-once = ~/.config/hypr/scripts/post_install_listener" >> ~/.config/hypr/startup.conf
 # User icon

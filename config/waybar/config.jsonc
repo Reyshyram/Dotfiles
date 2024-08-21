@@ -162,7 +162,7 @@
         "tooltip-format-deactivated": "The computer will go to sleep if the user is idle"
     },
     "hyprland/workspaces": {
-        "all-outputs": true,
+        "all-outputs": false,
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
@@ -171,9 +171,6 @@
         },
         "on-scroll-up": "hyprctl dispatch workspace r+1",
         "on-scroll-down": "hyprctl dispatch workspace r-1",
-        "persistent-workspaces": {
-            "*": 5
-        }
     },
     "hyprland/window": {
         "max-length": 25,
