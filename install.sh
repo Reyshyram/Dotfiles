@@ -127,6 +127,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update nwg-displays
     pywal-16-colors smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
+    auto-cpufreq
 )
 
 # Gaming packages to install
@@ -274,14 +275,9 @@ cp -r ./config/nwg-drawer ~/.config/
 echo "Configuring Wlogout..."
 cp -r ./config/wlogout ~/.config/
 
-# Install and configure auto-cpufreq
-echo "Installing auto-cpufreq..."
-git clone https://github.com/AdnanHodzic/auto-cpufreq.git
-cd auto-cpufreq
-sudo ./auto-cpufreq-installer
-cd ..
-rm -rf auto-cpufreq
-sudo auto-cpufreq --install
+# Enable auto-cpufreq
+echo "Enabling auto-cpufreq..."
+systemctl enable --now auto-cpufreq 
 
 # Copy wallpapers
 echo "Copying wallpapers..."
