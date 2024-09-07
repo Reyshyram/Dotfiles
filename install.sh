@@ -62,7 +62,14 @@ install_amd() {
 # Function to install Nvidia GPU drivers and tools
 install_nvidia() {
     echo "Installing Nvidia GPU drivers and tools..."
-    sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia egl-wayland libva-nvidia-driver
+
+    if ask_yes_no "Do you have an RTX gpu?"; then
+        sudo pacman -S --needed nvidia-open-dkms
+    else
+        sudo pacman -S --needed nvidia-dkms
+    fi
+
+    sudo pacman -S --needed nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia egl-wayland libva-nvidia-driver
     
     echo "Editing /etc/mkinitcpio.conf to add Nvidia modules..."
     sudo sed -i 's/^MODULES=(/&nvidia nvidia_modeset nvidia_uvm nvidia_drm /' /etc/mkinitcpio.conf
