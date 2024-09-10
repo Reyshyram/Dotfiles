@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Switch to next keyboard layout
-hyprctl switchxkblayout at-translated-set-2-keyboard next
+hyprctl switchxkblayout current next
 
 # Get new layout
 keyboard_layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')
