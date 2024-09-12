@@ -241,6 +241,12 @@ chmod +x ~/.config/swaync/notification-controller.sh
 echo "Enabling SwayOSD backend..."
 sudo systemctl enable --now swayosd-libinput-backend.service
 
+# Configure SwayOSD
+echo "Configuring SwayOSD..."
+mkdir -p ~/.config/swayosd
+cp -r ./config/swayosd/* ~/.config/swayosd/
+
+
 # Configure Hyprland
 echo "Configuring Hyprland..."
 mkdir -p ~/.config/hypr
