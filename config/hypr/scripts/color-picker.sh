@@ -5,11 +5,7 @@ color=$(hyprpicker -a)
 
 # Ensure a color was selected
 if [ -n "$color" ]; then
-    temp_svg=$(mktemp /tmp/color_picker_temp.XXXXXX.svg)
-    cp ~/.config/swaync/icons/color-picker.svg "$temp_svg"
-    sed -i 's/fill="#FFFFFF"/fill="'$color'"/' "$temp_svg"
-    notify-send -a color-picker -i "$temp_svg" "Color selected" "$color" -t 3000 --hint=int:transient:1
-    rm "$temp_svg"
+    swayosd-client --custom-message "Selected $color" --custom-icon gtk-color-picker
 else
-    notify-send -a color-picker -i "$HOME/.config/swaync/icons/color-picker.svg" "Hyprpicker" "No color selected" -t 3000 --hint=int:transient:1
+    swayosd-client --custom-message "No color selected" --custom-icon gtk-color-picker
 fi

@@ -1,3 +1,4 @@
 [server]
 show_percentage = true
 style = "~/.config/swayosd/style.css"
+top_margin = 0.9
