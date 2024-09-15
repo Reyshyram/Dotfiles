@@ -31,11 +31,11 @@ EOT
 install_yay() {
     if ! command -v yay &> /dev/null; then
         echo "Installing yay..."
-        sudo pacman -S --needed --noconfirm git base-devel
-        git clone https://aur.archlinux.org/yay-bin.git
-        cd yay-bin || exit
-        makepkg -si --noconfirm
-        cd .. && rm -rf yay-bin
+        sudo pacman -S --needed git base-devel
+        git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -si
+        cd .. && rm -rf yay
         export PATH="$PATH:$HOME/.local/bin"
     else
         echo "yay is already installed."
@@ -44,12 +44,17 @@ install_yay() {
 
 # Function to enable chaotic aur
 enable_chaotic_aur() {
-    echo "Enabling chaotic aur..."
-    sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-    sudo pacman-key --lsign-key 3056513887B78AEB
-    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-    echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf
+    if grep -q "\[chaotic-aur\]" /etc/pacman.conf; then
+        echo "Chaotic AUR is already enabled."
+    else
+        echo "Enabling Chaotic AUR..."
+        sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+        sudo pacman-key --lsign-key 3056513887B78AEB
+        sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+        sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+        echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf
+        sudo pacman -Sy
+    fi
 }
 
 # Function to install AMD GPU drivers and tools
@@ -124,17 +129,17 @@ PACKAGES=(
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
-    adw-gtk-theme libadwaita wl-clip-persist zip
+    adw-gtk-theme libadwaita wl-clip-persist zip nwg-drawer
+    xwaylandvideobridge nwg-displays
 )
 
 # AUR packages to install
 YAY_PACKAGES=(
     bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
-    nwg-drawer wlogout xwaylandvideobridge github-desktop
-    hyprpicker grimblast-git aurutils arch-update nwg-displays
+    wlogout github-desktop auto-cpufreq
+    hyprpicker grimblast-git aurutils arch-update 
     pywal-16-colors smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
-    auto-cpufreq
 )
 
 # Gaming packages to install
@@ -233,6 +238,7 @@ sudo plymouth-set-default-theme -R black_hud
 
 # Configure Btop
 echo "Configuring Btop..."
+mkdir -p ~/.config/btop/
 cp -r ./config/btop/* ~/.config/btop/
 
 # Configure Swaync
@@ -347,7 +353,7 @@ ln -f -s "$HOME/.cache/wal/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
 ln -f -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
 ln -f -s "$HOME/.cache/wal/pywal.svg" "$HOME/.config/Kvantum/pywal/pywal.svg"
 
-wal --cols16 -i ~/Pictures/Wallpapers/anime-rose.png -n -e --backend haishoku
+/usr/bin/wal --cols16 -i ~/Pictures/Wallpapers/anime-rose.png -n -e --backend haishoku
 python "$HOME/.config/hypr/scripts/pywal-accent-color.py" ~/Pictures/Wallpapers/anime-rose.png
 
 # Ensure Pipx path
