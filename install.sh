@@ -185,6 +185,7 @@ yay -S --needed "${YAY_PACKAGES[@]}"
 
 # Configure SDDM
 echo "Configuring SDDM..."
+sudo mkdir -p /usr/share/sddm/themes/
 sudo cp -r ./config/sddm/sddm-astronaut /usr/share/sddm/themes/
 sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
 sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/theme.conf
