@@ -164,7 +164,7 @@ git config --global http.postBuffer 157286400
 
 # Enhance pacman
 echo "Configuring pacman..."
-sudo sed -i 's/^#Color/Color/; s/^#VerbosePkgLists/VerbosePkgLists/; s/^#ParallelDownloads/ParallelDownloads = 5/' /etc/pacman.conf
+sudo sed -i 's/^#Color/Color/; s/^#VerbosePkgLists/VerbosePkgLists/; s/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
 enable_multilib
 
 # Install yay
