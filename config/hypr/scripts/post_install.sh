@@ -14,7 +14,7 @@ hyprpm enable split-monitor-workspaces
 hyprpm reload
 
 echo "Removing post install listener from startup.conf..."
-sed -i '/^exec-once = ~\/.config\/hypr\/scripts\/post_install_listener/d' ~/.config/hypr/startup.conf
+sed -i '/^exec-once = ~\/.config\/hypr\/scripts\/post_install_listener.sh/d' ~/.config/hypr/startup.conf
 
 echo "Post install complete."
 zenity --info --text="Post install complete."

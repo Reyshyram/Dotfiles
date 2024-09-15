@@ -138,7 +138,7 @@ YAY_PACKAGES=(
     bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
     wlogout github-desktop auto-cpufreq
     hyprpicker grimblast-git aurutils arch-update 
-    pywal-16-colors smile clipse swayosd-git waypaper
+    python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
 )
 
@@ -264,7 +264,7 @@ mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
 chmod +x ~/.config/hypr/scripts/*.sh
 # Send notification post install when restarting
-echo "exec-once = ~/.config/hypr/scripts/post_install_listener" >> ~/.config/hypr/startup.conf
+echo "exec-once = ~/.config/hypr/scripts/post_install_listener.sh" >> ~/.config/hypr/startup.conf
 # User icon
 ln -s -f ~/.config/hypr/profile-picture.png ~/.face.icon
 ln -s -f ~/.config/hypr/profile-picture.png ~/.face
@@ -345,7 +345,7 @@ cp -r ./config/waypaper ~/.config/
 # Configure Pywal setup
 echo "Configuring Pywal..."
 mkdir -p ~/.config/wal/templates ~/.config/Kvantum/pywal
-cp -r ./config/pywal/templates ~/.config/wal/templates
+cp -r ./config/pywal/templates/* ~/.config/wal/templates/
 
 ln -f -s "$HOME/.cache/wal/gtk.css" "$HOME/.config/gtk-3.0/gtk.css"
 ln -f -s "$HOME/.cache/wal/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
