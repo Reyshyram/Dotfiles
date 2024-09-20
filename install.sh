@@ -130,7 +130,7 @@ PACKAGES=(
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
     adw-gtk-theme libadwaita wl-clip-persist zip nwg-drawer
-    xwaylandvideobridge nwg-displays
+    xwaylandvideobridge nwg-displays luajit
 )
 
 # AUR packages to install
@@ -140,6 +140,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update 
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
+    ironbar-git
 )
 
 # Gaming packages to install
