@@ -339,6 +339,10 @@ cp -r ./config/pcmanfm-qt ~/.config/
 echo "Configuring Fastfetch..."
 cp -r ./config/fastfetch ~/.config/
 
+# Configure clipse
+echo "Configuring clipse..."
+cp -r ./config/clipse ~/.config/
+
 # Configure Waypaper
 echo "Configuring Waypaper..."
 cp -r ./config/waypaper ~/.config/
