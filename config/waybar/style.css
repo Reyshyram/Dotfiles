@@ -8,6 +8,7 @@
     box-shadow: none;
     outline: none;
     border: none;
+    transition: all 0.3s ease;
 }
 
 @import "../../.cache/wal/colors-waybar.css";
@@ -17,6 +18,7 @@ window#waybar {
     min-width: 0;
     background-color: transparent;
 }
+
 
 /* Default for all modules */
 #clock,
@@ -38,6 +40,22 @@ window#waybar {
     margin-right: 6px;
     color: @accent;
     background-color: alpha(@background, 0.85);
+}
+
+#clock:hover,
+#custom-notification:hover,
+#custom-updates:hover,
+#tray:hover,
+#window:hover,
+#mpris:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover,
+#language:hover,
+#idle_inhibitor:hover,
+#custom-wlogout:hover {
+    color: shade(@accent, 1.2);
+    background-color: alpha(shade(@background, 2), 0.85);
 }
 
 /* Remove margin if first or last */
