@@ -140,7 +140,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update 
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
-    python-screeninfo
+    python-screeninfo python-imageio
 )
 
 # Gaming packages to install
