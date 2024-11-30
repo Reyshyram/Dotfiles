@@ -365,7 +365,7 @@ python "$HOME/.config/hypr/scripts/pywal-accent-color.py" ~/Pictures/Wallpapers/
 echo "Ensuring Pipx path..."
 pipx ensurepath
 
-# Enable Reflector
+# Enable 21tor
 echo "Enabling Reflector..."
 sudo cp ./config/reflector.conf /etc/xdg/reflector/reflector.conf
 sudo systemctl start reflector.timer

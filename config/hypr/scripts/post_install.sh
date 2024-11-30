@@ -7,7 +7,7 @@ swww img ~/Pictures/Wallpapers/anime-rose.png -t any --transition-fps 60
 
 echo "Installing Hyprspace plugin..."
 hyprpm update
-hyprpm add https://github.com/KZDKM/Hyprspace
+hyprpm add https://github.com/KZDKM/Hyprspace 260f386075c7f6818033b05466a368d8821cde2d
 hyprpm enable Hyprspace
 hyprpm add https://github.com/Duckonaut/split-monitor-workspaces
 hyprpm enable split-monitor-workspaces
