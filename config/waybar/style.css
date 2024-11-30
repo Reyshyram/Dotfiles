@@ -55,7 +55,7 @@ window#waybar {
 #idle_inhibitor:hover,
 #custom-wlogout:hover {
     color: shade(@accent, 1.2);
-    background-color: alpha(shade(@background, 2), 0.85);
+    background-color: shade(@accent, 0.2);
 }
 
 /* Remove margin if first or last */
