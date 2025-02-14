@@ -54,9 +54,6 @@ apply_pywal() {
 
     # Reactivate hyprland error messages
     sed -i '/    suppress_errors = true/c\    suppress_errors = false' ~/.config/hypr/misc.conf
-
-    pkill -f nwg-drawer
-    nwg-drawer -r -fm "pcmanfm-qt" -term "kitty" -wm "hyprland" -mt 92 -mb 50 -ml 50 -mr 50 -c 6 -nocats -nofs -ovl &
     
     swaync-client -rs
 

@@ -44,7 +44,7 @@ yad --width=$dynamic_width --height=$dynamic_height \
 "   + C" "Code Editor" "(vscode)" \
 "Ctrl + Shift + Escape" "System Monitor" "(btop)" \
 "" "" "" \
-"   + A" "Search Applications" "(nwg-drawer)" \
+"   + A" "Search Applications" "(ulauncher)" \
 "   + V" "Clipboard Manager" "(clipse)" \
 "   + P" "Color picker" "(hyprpicker)" \
 "   + B" "Emoji picker" "(smile)" \

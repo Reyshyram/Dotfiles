@@ -129,7 +129,7 @@ PACKAGES=(
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
-    adw-gtk-theme libadwaita wl-clip-persist zip nwg-drawer
+    adw-gtk-theme libadwaita wl-clip-persist zip
     xwaylandvideobridge nwg-displays gdb
 )
 
@@ -140,7 +140,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update 
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
-    python-screeninfo python-imageio
+    python-screeninfo python-imageio ulauncher-git
 )
 
 # Gaming packages to install
@@ -292,10 +292,6 @@ echo "Applying QT theme..."
 cp -r ./config/qt* ~/.config/
 cp -r ./config/Kvantum ~/.config/
 
-# Configure Nwg-drawer
-echo "Configuring Nwg-drawer..."
-cp -r ./config/nwg-drawer ~/.config/
-
 # Configure Wlogout
 echo "Configuring Wlogout..."
 cp -r ./config/wlogout ~/.config/
@@ -346,6 +342,11 @@ cp -r ./config/clipse ~/.config/
 # Configure Waypaper
 echo "Configuring Waypaper..."
 cp -r ./config/waypaper ~/.config/
+
+# Configure Ulauncher
+echo "Configuring Ulauncher..."
+systemctl --user enable --now ulauncher
+cp -r ./config/ulauncher ~/.config/
 
 # Configure Pywal setup
 echo "Configuring Pywal..."
