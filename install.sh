@@ -214,6 +214,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 echo "Configuring Kitty..."
 mkdir -p ~/.config/kitty
 cp -r ./config/kitty/* ~/.config/kitty
+mkdir -p ~/.local/bin
+cp ./config/xdg-terminal-exec ~/.local/bin/xdg-terminal-exec
+chmod +x ~/.local/bin/xdg-terminal-exec
 
 # Configure Zsh
 echo "Configuring Zsh..."

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+test -n "$*" && args=("$@")
+exec kitty -d "$PWD" -e "${args[@]}" 
