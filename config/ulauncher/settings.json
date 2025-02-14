@@ -9,7 +9,7 @@
   "enable_application_mode": true,
   "grab_mouse_pointer": false,
   "jump_keys": "1234567890",
-  "max_recent_apps": 0,
+  "max_recent_apps": 10,
   "raise_if_started": false,
   "render_on_screen": "mouse-pointer-monitor",
   "show_recent_apps": "0",
