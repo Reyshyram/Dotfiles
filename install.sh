@@ -103,9 +103,8 @@ EOL
     sudo systemctl enable nvidia-hibernate.service
     sudo systemctl enable nvidia-resume.service
 
-    echo "Adding kernel parameter to GRUB..."
-    sudo sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="[^"]*\)/\1 nvidia.NVreg_PreserveVideoMemoryAllocations=1/' /etc/default/grub
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    echo "Adding kernel parameter to refind..."
+    sudo sed -i '/"Boot using default options"/s/\(.*\)"/\1 nvidia.NVreg_PreserveVideoMemoryAllocations=1"/' /boot/refind_linux.conf
 }
 
 # Packages to install
@@ -130,7 +129,7 @@ PACKAGES=(
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
     adw-gtk-theme libadwaita wl-clip-persist zip
-    xwaylandvideobridge nwg-displays gdb
+    xwaylandvideobridge nwg-displays gdb refind
 )
 
 # AUR packages to install
@@ -199,16 +198,29 @@ sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/background.png
 sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/
 systemctl enable sddm.service
 
-# Configure GRUB
-echo "Configuring GRUB..."
-git clone https://github.com/Coopydood/HyperFluent-GRUB-Theme.git
-sudo mkdir -p /usr/share/grub/themes/
-sudo cp -r ./HyperFluent-GRUB-Theme/arch /usr/share/grub/themes/
-rm -rf ./HyperFluent-GRUB-Theme
-sudo sed -i 's/^#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
-sudo sed -i 's|^#GRUB_THEME="/path/to/gfxtheme"|GRUB_THEME="/usr/share/grub/themes/arch/theme.txt"|' /etc/default/grub
-sudo sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=saved/; s/^#GRUB_SAVEDEFAULT=true/GRUB_SAVEDEFAULT=true/' /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+# Configure Refind
+echo "Configuring Refind..."
+sudo refind-install
+sudo mkdir -p /boot/EFI/refind/themes/
+sudo cp -r ./config/refind/* /boot/EFI/refind/themes/
+cat << EOF | sudo tee -a /boot/EFI/refind/refind.conf
+timeout 5
+resolution max
+use_graphics_for osx,linux,windows
+extra_kernel_version_strings "linux-hardened,linux-rt-lts,linux-zen,linux-lts,linux-rt,linux"
+include themes/shadow-refind/theme.conf
+EOF
+
+CONFIG_FILE="/boot/refind_linux.conf"
+ROOT_VALUE=$(grep -oP 'root=\K(PARTUUID=[a-fA-F0-9-]+|UUID=[a-fA-F0-9-]+|/dev/[a-zA-Z0-9]+)' "$CONFIG_FILE" | head -n 1)
+NEW_CONTENT=$(cat <<EOF
+\"Boot using default options\"     \"root=$ROOT_VALUE rw add_efi_memmap quiet splash loglevel=3 systemd.show_status=auto rd.udev.log_level=3\"
+\"Boot using fallback initramfs\"  \"root=$ROOT_VALUE rw add_efi_memmap initrd=boot\\initramfs-%v-fallback.img\"
+\"Boot to terminal\"               \"root=$ROOT_VALUE rw add_efi_memmap systemd.unit=multi-user.target\"
+EOF
+)
+sudo bash -c "echo \"$NEW_CONTENT\" > $CONFIG_FILE"
+echo "Successfully updated $CONFIG_FILE."
 
 # Configure Kitty
 echo "Configuring Kitty..."
@@ -233,10 +245,8 @@ cp ./config/micro/* ~/.config/micro/
 
 # Configure Plymouth
 echo "Configuring Plymouth..."
-sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 systemd.show_status=auto rd.udev.log_level=3"/' /etc/default/grub
 sudo sed -i '/^\[Daemon\]/a ShowDelay=0' /etc/plymouth/plymouthd.conf
 sudo sed -i '/^HOOKS=/ s/)$/ plymouth)/' /etc/mkinitcpio.conf
-sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo cp -r ./config/plymouth/black_hud /usr/share/plymouth/themes/
 sudo plymouth-set-default-theme -R black_hud
 

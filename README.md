@@ -2,7 +2,7 @@
 # Installation
 
 >[!CAUTION]
->The installation script is meant to be used on a minimal Arch installation, using the grub bootloader. It will replace any existing configuration. Please proceed with caution.
+>The installation script is meant to be used on a minimal Arch installation, and will install refind as the boot manager. It will replace any existing configuration. Please proceed with caution.
 
 First, update your system.
 ```

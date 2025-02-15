@@ -9,6 +9,8 @@ echo "Installing Hyprspace plugin..."
 hyprpm update
 hyprpm add https://github.com/Duckonaut/split-monitor-workspaces
 hyprpm enable split-monitor-workspaces
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprexpo
 hyprpm reload
 
 echo "Removing post install listener from startup.conf..."
