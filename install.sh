@@ -194,7 +194,16 @@ echo "Configuring SDDM..."
 sudo mkdir -p /usr/share/sddm/themes/
 sudo cp -r ./config/sddm/sddm-astronaut-theme /usr/share/sddm/themes/
 sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
+
+# If GDM is enabled, remove the symlink and enable sddm
+if [ -L /etc/systemd/system/display-manager.service ] && \
+   [ "$(readlink /etc/systemd/system/display-manager.service)" = "/usr/lib/systemd/system/gdm.service" ]; then
+    echo "Current display manager is GDM, disabling..."
+    sudo rm /etc/systemd/system/display-manager.service
+fi
+
 systemctl enable sddm.service
+echo "SDDM service enabled."
 
 # Configure Refind
 echo "Configuring Refind..."
