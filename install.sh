@@ -240,6 +240,11 @@ EOF
 sudo bash -c "echo \"$NEW_CONTENT\" > $CONFIG_FILE"
 echo "Successfully updated $CONFIG_FILE."
 
+# Pacman Hook
+echo "Adding pacman hook..."
+sudo mkdir -p /etc/pacman.d/hooks/
+sudo cp ./config/refind/refind.hook /etc/pacman.d/hooks/
+
 # Configure Kitty
 echo "Configuring Kitty..."
 mkdir -p ~/.config/kitty
