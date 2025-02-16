@@ -130,6 +130,7 @@ PACKAGES=(
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
     adw-gtk-theme libadwaita wl-clip-persist zip
     xwaylandvideobridge nwg-displays gdb refind
+    qt6-virtualkeyboard qt6-multimedia-ffmpeg
 )
 
 # AUR packages to install
@@ -191,11 +192,8 @@ yay -S --needed "${YAY_PACKAGES[@]}"
 # Configure SDDM
 echo "Configuring SDDM..."
 sudo mkdir -p /usr/share/sddm/themes/
-sudo cp -r ./config/sddm/sddm-astronaut /usr/share/sddm/themes/
+sudo cp -r ./config/sddm/sddm-astronaut-theme /usr/share/sddm/themes/
 sudo cp ./config/sddm/sddm.conf /etc/sddm.conf
-sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/theme.conf
-sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/background.png
-sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/
 systemctl enable sddm.service
 
 # Configure Refind
