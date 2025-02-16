@@ -231,7 +231,7 @@ FINAL_OPTIONS=$(echo "$FINAL_OPTIONS" | xargs)  # Remove extra whitespace
 # Construct the new content
 NEW_CONTENT=$(cat <<EOF
 \"Boot using default options\"     \"root=$ROOT_VALUE rw $FINAL_OPTIONS\"
-\"Boot using fallback initramfs\"  \"root=$ROOT_VALUE rw $FINAL_OPTIONS initrd=\\boot\\initramfs-%v-fallback.img\"
+\"Boot using fallback initramfs\"  \"root=$ROOT_VALUE rw $FINAL_OPTIONS initrd=initramfs-%v-fallback.img\"
 \"Boot to terminal\"               \"root=$ROOT_VALUE rw $FINAL_OPTIONS systemd.unit=multi-user.target\"
 EOF
 )
