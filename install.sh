@@ -213,12 +213,30 @@ EOF
 
 CONFIG_FILE="/boot/refind_linux.conf"
 ROOT_VALUE=$(grep -oP 'root=\K(PARTUUID=[a-fA-F0-9-]+|UUID=[a-fA-F0-9-]+|/dev/[a-zA-Z0-9]+)' "$CONFIG_FILE" | head -n 1)
+EXISTING_OPTIONS=$(grep -oP '"[^"]*root=[^"]*"' "$CONFIG_FILE" | head -n 1 | sed -E 's/(^.*root=[^ ]* |"$)//g')
+NEW_OPTIONS="add_efi_memmap quiet splash loglevel=3 systemd.show_status=auto rd.udev.log_level=3"
+
+# Remove ro and rw from existing options
+EXISTING_OPTIONS=$(echo "$EXISTING_OPTIONS" | sed -E 's/\b(ro|rw)\b//g')
+
+# Filter out options that are already present
+for opt in $EXISTING_OPTIONS; do
+    NEW_OPTIONS=$(echo "$NEW_OPTIONS" | sed "s/\b$opt\b//g")
+done
+
+# Combine the existing options with the new ones
+FINAL_OPTIONS="$EXISTING_OPTIONS $NEW_OPTIONS"
+FINAL_OPTIONS=$(echo "$FINAL_OPTIONS" | xargs)  # Remove extra whitespace
+
+# Construct the new content
 NEW_CONTENT=$(cat <<EOF
-\"Boot using default options\"     \"root=$ROOT_VALUE rw add_efi_memmap quiet splash loglevel=3 systemd.show_status=auto rd.udev.log_level=3\"
-\"Boot using fallback initramfs\"  \"root=$ROOT_VALUE rw add_efi_memmap initrd=boot\\initramfs-%v-fallback.img\"
-\"Boot to terminal\"               \"root=$ROOT_VALUE rw add_efi_memmap systemd.unit=multi-user.target\"
+\"Boot using default options\"     \"root=$ROOT_VALUE rw $FINAL_OPTIONS\"
+\"Boot using fallback initramfs\"  \"root=$ROOT_VALUE rw $FINAL_OPTIONS initrd=\\boot\\initramfs-%v-fallback.img\"
+\"Boot to terminal\"               \"root=$ROOT_VALUE rw $FINAL_OPTIONS systemd.unit=multi-user.target\"
 EOF
 )
+
+# Update the configuration file
 sudo bash -c "echo \"$NEW_CONTENT\" > $CONFIG_FILE"
 echo "Successfully updated $CONFIG_FILE."
 
