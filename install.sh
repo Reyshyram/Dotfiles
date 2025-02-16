@@ -197,10 +197,10 @@ sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/theme.conf
 sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/background.png
 sudo chown $USER /usr/share/sddm/themes/sddm-astronaut/
 
-# Remove the symlink and enable sddm
+# If GDM is enabled, remove the symlink and enable sddm
 if [ -L /etc/systemd/system/display-manager.service ] && \
    [ "$(readlink /etc/systemd/system/display-manager.service)" = "/usr/lib/systemd/system/gdm.service" ]; then
-    echo "current display manager is GDM, disabling..."
+    echo "Current display manager is GDM, disabling..."
     sudo rm /etc/systemd/system/display-manager.service
 fi
 systemctl enable sddm.service
