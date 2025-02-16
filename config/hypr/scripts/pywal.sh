@@ -42,7 +42,7 @@ apply_pywal() {
 
     converted_image=$(convert_to_png "$image_path")
     
-    cp "$converted_image" /usr/share/sddm/themes/sddm-astronaut/background.png
+    cp "$converted_image" ~/.config/hypr/background.png
 
     # Pywal
 
@@ -58,13 +58,6 @@ apply_pywal() {
     swaync-client -rs
 
     # pywalfox update
-
-    # SDDM colors
-    background_color=$(sed -n '1p' ~/.cache/wal/colors)
-    accent_color=$(sed -n '17p' ~/.cache/wal/colors)
-
-    sed -i "s/^BackgroundColor=\".*\"/BackgroundColor=\"$background_color\"/" /usr/share/sddm/themes/sddm-astronaut/theme.conf
-    sed -i "s/^AccentColor=\".*\"/AccentColor=\"$accent_color\"/" /usr/share/sddm/themes/sddm-astronaut/theme.conf
 
     # OpenRGB Color
     openrgb -c ${accent_color:1}
