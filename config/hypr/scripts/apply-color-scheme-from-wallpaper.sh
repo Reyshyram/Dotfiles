@@ -48,6 +48,7 @@ apply_color_scheme() {
     python "$HOME/.config/hypr/scripts/apply-matugen.py" "$converted_image"
     
     swaync-client -rs
+    pkill -SIGUSR2 waybar
 
     # pywalfox update
 
