@@ -1,4 +1,6 @@
-@define-color window_bg rgb(36, 36, 36);
+@import "colors.css";
+
+@define-color window_bg @surface_dim;
 @define-color prefs_backgroud rgba(255, 255, 255, 0.08);
 
 @define-color selected_bg_color #99c1f1;
@@ -7,7 +9,7 @@
 
 @define-color item_name rgba(255, 255, 255, 1);
 @define-color item_text rgba(255, 255, 255, 1);
-@define-color item_box_selected rgba(255, 255, 255, 0.08);
+@define-color item_box_selected alpha(@primary_fixed_dim, 0.2);
 @define-color item_text_selected @item_text;
 @define-color item_name_selected @item_name;
 @define-color item_shortcut_color @item_text;
