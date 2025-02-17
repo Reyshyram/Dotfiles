@@ -158,7 +158,7 @@ tooltip label {
 
 #workspaces button.active {
     color: @primary_fixed;
-    background: @on_primary;
+    background: @primary_container;
     border-radius: 15px;
     min-width: 30px;
     transition: all 0.2s ease-in-out;
@@ -166,7 +166,7 @@ tooltip label {
 
 #workspaces button:hover {
     color: @primary_fixed_dim;
-    background: @primary_container;
+    background: shade(@primary_container, 1.2);
     border-radius: 15px;
 }
 
