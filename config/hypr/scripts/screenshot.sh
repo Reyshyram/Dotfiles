@@ -10,8 +10,8 @@ mkdir -p "$directory"
 create_temp_svg() {
     cp ~/.config/swaync/icons/screenshot.svg "$temp_svg"
     
-    # Read pywal accent color
-    color=$(sed -n '17p' ~/.cache/wal/colors)
+    # Read accent color
+    color=$(sed -n '1p' ~/.cache/wal/accent-color)
 
     sed -i -e 's/fill="#FFFFFF"/fill="'$color'"/' -e 's/stroke="#FFFFFF"/stroke="'$color'"/' "$temp_svg"
 }

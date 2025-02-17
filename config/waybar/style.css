@@ -11,7 +11,7 @@
     transition: all 0.3s ease;
 }
 
-@import "../../.cache/wal/colors-waybar.css";
+@import "colors.css";
 
 window#waybar {
     min-height: 0;
@@ -38,8 +38,8 @@ window#waybar {
     min-width: 0;
     padding: 4px 12px;
     margin-right: 6px;
-    color: @accent;
-    background-color: alpha(@background, 0.85);
+    color: @primary_fixed_dim;
+    background-color: alpha(@surface_dim, 0.9);
 }
 
 #clock:hover,
@@ -54,8 +54,8 @@ window#waybar {
 #language:hover,
 #idle_inhibitor:hover,
 #custom-wlogout:hover {
-    color: shade(@accent, 1.2);
-    background-color: shade(@accent, 0.2);
+    color: @on_primary_container;
+    background-color: alpha(shade(@surface_dim, 1.2), 0.9);
 }
 
 /* Remove margin if first or last */
@@ -119,7 +119,7 @@ window#waybar.empty #window {
 #tray menu {
     border-radius: 10px;
     padding: 8px 6px;
-    background-color: alpha(@background, 0.9);
+    background-color: alpha(@surface_dim, 0.9);
 }
 
 #language {
@@ -129,12 +129,12 @@ window#waybar.empty #window {
 tooltip {
     min-height: 0;
     min-width: 0;
-    background-color: alpha(@background, 0.9);
+    background-color: alpha(@surface_dim, 0.9);
     border-radius: 20px;
 }
 
 tooltip label {
-    color: @accent;
+    color: @primary_fixed_dim;
     padding: 0px;
 }
 
@@ -151,22 +151,22 @@ tooltip label {
     padding: 3px 8px;
     margin: 1px 2px;
     border-radius: 15px;
-    color: @accent;
+    color: @primary_fixed_dim;
     background-color: transparent;
     transition: all 0.5s ease-in-out;
 }
 
 #workspaces button.active {
-    color: shade(@accent, 1.2);
-    background: shade(@accent, 0.5);
+    color: @primary_fixed;
+    background: @on_primary;
     border-radius: 15px;
     min-width: 30px;
     transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
-    color: @accent;
-    background: shade(@accent, 0.35);
+    color: @primary_fixed_dim;
+    background: @primary_container;
     border-radius: 15px;
 }
 

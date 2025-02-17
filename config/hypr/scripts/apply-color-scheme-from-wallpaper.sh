@@ -37,30 +37,21 @@ convert_to_png() {
     echo "$output_image"
 }
 
-apply_pywal() {
+apply_color_scheme() {
     local image_path="$1"
 
     converted_image=$(convert_to_png "$image_path")
     
     cp "$converted_image" ~/.config/hypr/background.png
 
-    # Pywal
-
-    # Prevent hyprland error message
-    sed -i '/    suppress_errors = false/c\    suppress_errors = true' ~/.config/hypr/misc.conf
-
     wal --cols16 -i "$converted_image" -n -e -q --backend haishoku
-    python "$HOME/.config/hypr/scripts/pywal-accent-color.py" "$converted_image"
-
-    # Reactivate hyprland error messages
-    sed -i '/    suppress_errors = true/c\    suppress_errors = false' ~/.config/hypr/misc.conf
+    python "$HOME/.config/hypr/scripts/apply-matugen.py" "$converted_image"
     
     swaync-client -rs
 
     # pywalfox update
 
-    # OpenRGB Color
-    openrgb -c ${accent_color:1}
+    openrgb -c $(sed -n '1p' ~/.cache/wal/accent-color | cut -c2-)
 }
 
 # Check if image path is provided
@@ -69,4 +60,4 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-apply_pywal "$1"
+apply_color_scheme "$1"

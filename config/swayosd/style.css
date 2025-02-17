@@ -1,5 +1,5 @@
-@import "../../.cache/wal/colors-waybar.css";
+@import "colors.css";
 
 window#osd {
-    background: alpha(@background, 0.9);
+    background: alpha(@surface_dim, 0.9);
 }

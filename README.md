@@ -34,7 +34,7 @@ After rebooting, a window will show up asking you to perform the post install st
 
 ## Informations
 
-This rice relies heavily on pywal for generating color schemes. Colors of most apps will be updated with the colors of your wallpaper when selecting a new one.
+This rice relies heavily on pywal, matugen and a custom script for generating color schemes. Colors of most apps will be updated with the colors of your wallpaper when selecting a new one.
 
 You can show a list of keybinds using the `Super + /` (or the key to the left of Right Shift) shortcut.
 

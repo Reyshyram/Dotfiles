@@ -140,7 +140,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update 
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
-    python-screeninfo python-imageio ulauncher-git
+    python-screeninfo python-imageio ulauncher-git matugen-bin
 )
 
 # Gaming packages to install
@@ -307,6 +307,7 @@ echo "Configuring Hyprland..."
 mkdir -p ~/.config/hypr
 cp -r ./config/hypr/* ~/.config/hypr/
 chmod +x ~/.config/hypr/scripts/*.sh
+chmod +x ~/.config/hypr/scripts/*.py
 # Send notification post install when restarting
 echo "exec-once = ~/.config/hypr/scripts/post_install_listener.sh" >> ~/.config/hypr/startup.conf
 # User icon
@@ -391,25 +392,18 @@ echo "Configuring Ulauncher..."
 systemctl --user enable --now ulauncher
 cp -r ./config/ulauncher ~/.config/
 
-# Configure Pywal setup
-echo "Configuring Pywal..."
-mkdir -p ~/.config/wal/templates ~/.config/Kvantum/pywal
-cp -r ./config/pywal/templates/* ~/.config/wal/templates/
-
-ln -f -s "$HOME/.cache/wal/gtk.css" "$HOME/.config/gtk-3.0/gtk.css"
-ln -f -s "$HOME/.cache/wal/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
-
-ln -f -s "$HOME/.cache/wal/pywal.kvconfig" "$HOME/.config/Kvantum/pywal/pywal.kvconfig"
-ln -f -s "$HOME/.cache/wal/pywal.svg" "$HOME/.config/Kvantum/pywal/pywal.svg"
-
+# Configure color scheme
+echo "Configuring wallpaper color scheme..."
+mkdir -p ~/.config/matugen/templates/
+cp -r ./config/matugen ~/.config/
 /usr/bin/wal --cols16 -i ~/Pictures/Wallpapers/anime-rose.png -n -e --backend haishoku
-python "$HOME/.config/hypr/scripts/pywal-accent-color.py" ~/Pictures/Wallpapers/anime-rose.png
+python "$HOME/.config/hypr/scripts/apply-matugen.py" ~/Pictures/Wallpapers/anime-rose.png
 
 # Ensure Pipx path
 echo "Ensuring Pipx path..."
 pipx ensurepath
 
-# Enable 21tor
+# Enable reflector
 echo "Enabling Reflector..."
 sudo cp ./config/reflector.conf /etc/xdg/reflector/reflector.conf
 sudo systemctl start reflector.timer
