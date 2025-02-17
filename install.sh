@@ -271,7 +271,7 @@ cp ./config/.p10k.zsh ~/.p10k.zsh
 # Configure Micro theme
 echo "Configuring Micro theme..."
 mkdir -p ~/.config/micro/
-cp ./config/micro/* ~/.config/micro/
+cp -r ./config/micro/* ~/.config/micro/
 
 # Configure Plymouth
 echo "Configuring Plymouth..."
