@@ -141,6 +141,7 @@ YAY_PACKAGES=(
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
     python-screeninfo python-imageio ulauncher-git matugen-bin
+    python-materialyoucolor
 )
 
 # Gaming packages to install
