@@ -81,6 +81,7 @@ setopt autocd
 # Aliases
 alias ls='ls --color'
 alias c='clear'
+alias allpng='for file in *.jpg; do if [ -f "$file" ]; then magick "$file" "${file%.*}.png"; fi; done'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -95,3 +96,5 @@ bindkey "^[[6~" history-search-forward # Page down
 
 # Pywal
 (cat ~/.cache/wal/sequences &)
+
+export PATH=$PATH:/home/reyshyram/.spicetify
