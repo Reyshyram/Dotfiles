@@ -3,16 +3,20 @@
 # Script for Battery Stats
 if [ "$1" == "-bat" ]; then
     # Check if the battery directory exists
-    if [ ! -d "/sys/class/power_supply/BAT0" ]; then
-        echo "No battery"
-        exit 0
-    fi
+	if [ -d "/sys/class/power_supply/BAT0" ]; then
+		battery_dir="/sys/class/power_supply/BAT0"
+	elif [ -d "/sys/class/power_supply/BAT1" ]; then
+		battery_dir="/sys/class/power_supply/BAT1"
+	else
+		echo "No battery"
+		exit 0
+	fi
     
 	# Get the current battery percentage
-	battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+	battery_percentage=$(cat "$battery_dir/capacity")
 
 	# Get the battery status (Charging or Discharging)
-	battery_status=$(cat /sys/class/power_supply/BAT0/status)
+	battery_status=$(cat "$battery_dir/status")
 
 	# Define the battery icons for each 10% segment
 	battery_icons=("󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹")
