@@ -1,5 +1,34 @@
 @import "colors.css";
 
 window#osd {
+    padding: 2px;
     background: alpha(@surface_dim, 0.9);
+}
+
+#container {
+    margin: 12px;
+}
+
+progressbar:disabled,
+image:disabled {
+    opacity: 0.5;
+}
+
+progressbar {
+    min-height: 5px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+}
+
+trough {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+}
+
+progress {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
 }
