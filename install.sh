@@ -124,12 +124,12 @@ PACKAGES=(
     python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man
     libreoffice-fresh evince gnome-clocks 7zip unrar swww imagemagick
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
-    gst-plugins-ugly pkgconf pinta vim fzf reflector zoxide wget
+    gst-plugins-ugly pkgconf vim fzf reflector zoxide wget
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
     adw-gtk-theme libadwaita wl-clip-persist zip
-    xwaylandvideobridge nwg-displays gdb refind
+    nwg-displays gdb refind
     qt6-virtualkeyboard qt6-multimedia-ffmpeg
 )
 
@@ -141,7 +141,7 @@ YAY_PACKAGES=(
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
     python-screeninfo python-imageio ulauncher-git matugen-bin
-    python-materialyoucolor
+    python-materialyoucolor xwaylandvideobridge pinta
 )
 
 # Gaming packages to install
